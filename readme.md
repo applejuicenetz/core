@@ -2,16 +2,10 @@
 
 Meta Repository für die appleJuice Core Releases
 
-## macOS
+## Anleitungen
 
-Die `AJCore.macOS.zip` downloaden, entpacken und ins `/Applications` Verzeichnis verschieben.
+Anleitung für `linux` befindet sich [hier](./linux/)
 
-### macOS RAM anpassen
+Anleitung für `windows` befindet sich [hier](./windows/)
 
-Im `Terminal` einmalig folgendes eingeben
-
-```bash
-defaults write de.applejuicenet.core ram 2048
-```
-
-Die 2048 durch den gewünschten Wert ersetzen.
+Anleitung für `darwin` befindet sich [hier](./darwin/)

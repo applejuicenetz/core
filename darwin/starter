@@ -1,0 +1,11 @@
+#!/bin/sh
+
+RAM=$(defaults read de.applejuicenet.core ram 2>/dev/null)
+
+set -e
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+set -x
+
+java -jar -Xmx${RAM:-1024}m ajcore.jar "$@"
