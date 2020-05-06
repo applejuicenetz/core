@@ -1,0 +1,19 @@
+#!/bin/ash
+
+set -e
+
+PUID=${PUID:-1000}
+PGID=${PGID:-1000}
+
+groupmod -o -g "$PGID" abc
+usermod -o -u "$PUID" abc
+
+chown abc:abc -R /config/
+
+if [ ! -f /config/appleJuice/settings.xml ]; then
+  mkdir -p /config/appleJuice/
+  cp /app/settings.xml /config/appleJuice/settings.xml
+  sed -i "s/dockerianer/dockerianer${RANDOM}/" /config/appleJuice/settings.xml
+fi
+
+sudo -Hu abc "$@"

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<client>
+    <nick>dockerianer</nick>
+    <port>9850</port>
+    <xmlport>9851</xmlport>
+    <autoconnect>true</autoconnect>
+    <maxupload>16384</maxupload>
+    <maxdownload>0</maxdownload>
+    <maxconnections>250</maxconnections>
+    <maxsourcesperfile>500</maxsourcesperfile>
+    <speedperslot>3</speedperslot>
+    <maxnewconnectionsperturn>50</maxnewconnectionsperturn>
+    <incomingdirectory>/config/appleJuice/incoming/</incomingdirectory>
+    <temporarydirectory>/config/appleJuice/temp/</temporarydirectory>
+    <password>de305845b091d971732a123977e2d816</password>
+    <share>
+        <directory name="/config/appleJuice/incoming" sharemode="subdirectory"/>
+    </share>
+</client>
