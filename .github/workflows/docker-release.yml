@@ -1,7 +1,8 @@
 name: '[docker] CI for releases'
 
 on:
-    push:
+    release:
+        types: [created]
 
 jobs:
     release:
