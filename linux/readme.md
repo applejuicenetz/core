@@ -1,15 +1,3 @@
-# appleJuice Core App für Linux
+# appleJuice Client für Linux
 
-
-## general
-
-add simple run script
-
-
-## debian based
-
-// TBD
-
-## rpm based
-
-// TBD
+es wird dringend empfohlen, den appleJuice Client unter Linux via [Docker](../docker/) zu betreiben!

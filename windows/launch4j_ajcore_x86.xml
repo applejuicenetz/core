@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>.\..\ajcore.jar</jar>
+  <outfile>Core\x86\ajcore.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>https://www.java.com/de/download/manual.jsp</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>Core\ajicon.ico</icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.7</minVersion>
+    <maxVersion>1.8</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>32</runtimeBits>
+    <maxHeapSize>2048</maxHeapSize>
+  </jre>
+  <splash>
+    <file>splash.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>5</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>0.31.149.110</fileVersion>
+    <txtFileVersion>0.31.149.110</txtFileVersion>
+    <fileDescription>appleJuiceNET Client</fileDescription>
+    <copyright>appleJuiceNET</copyright>
+    <productVersion>0.31.149.110</productVersion>
+    <txtProductVersion>appleJuiceNET</txtProductVersion>
+    <productName>Core</productName>
+    <companyName>appleJuiceNET</companyName>
+    <internalName>ajcore</internalName>
+    <originalFilename>ajcore.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>GERMAN</language>
+  </versionInfo>
+  <messages>
+    <startupErr>Beim starten des appleJuice Clients ist ein Fehler aufgetreten.</startupErr>
+    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+    <jreVersionErr>Der appleJuice Client benötigt ein Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>
