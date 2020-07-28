@@ -24,8 +24,12 @@ Das setup löscht eine etwaig vorhandene `ajnetmask.dll` im `?:\Windows\system32
 
 # Changelog
 
+### 1.4
+- Die Datei `?:\Windows\system32\ajnetmask.dll` wird nun auch wirklich gelöscht :wink:
+- Englisch als Setup Sprache entfernt
+
 ### 1.3
-- `noprofile` Starter hinzugefügt (`-c` bzw `configinjardir`)
+- `noprofile` Starter hinzugefügt (`-c` bzw `--configinjardir`)
 
 ### 1.2
 - deutsche Fehlermeldungen
