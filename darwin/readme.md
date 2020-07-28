@@ -1,4 +1,4 @@
-# appleJuice Core App für macOS
+# appleJuice Client für macOS
 
 Die native App kann aktuell leider nur unter macOS gebaut werden.
 

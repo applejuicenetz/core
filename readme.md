@@ -1,13 +1,14 @@
-# appleJuice Core
+# appleJuice Client (Core)
 
-Meta Repository für die appleJuice Core Releases
+Meta Repository für die appleJuice Core Releases und dazugehörige Setups
 
 ## Anleitungen
 
-Anleitung für `linux` befindet sich [hier](./linux/)
-
-Anleitung für `windows` befindet sich [hier](./windows/)
-
-Anleitung für `darwin` befindet sich [hier](./darwin/)
-
 Anleitung für `docker` befindet sich [hier](./docker/)
+
+Anleitung für `Linux` befindet sich [hier](./linux/)
+
+Anleitung für `Windows` befindet sich [hier](./windows/)
+
+Anleitung für `macOS` befindet sich [hier](./darwin/)
+
