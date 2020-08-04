@@ -1,0 +1,59 @@
+name: applejuice-core
+title: appleJuice Core
+version: '0.31.149.110'
+summary: appleJuice P2P Client
+icon: snap/gui/applejuice-core.png
+license: Proprietary
+description: |
+    German IPv4 P2P Client
+
+grade: stable
+confinement: strict
+base: core18
+
+architectures:
+    -   build-on: amd64
+#    -   build-on: i386
+#    -   build-on: armhf
+#    -   build-on: arm64
+
+apps:
+    ajcore:
+        command: ajcore
+        environment:
+            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64/
+            PATH: $JAVA_HOME/jre/bin:$PATH
+        plugs:
+            - home
+            - desktop
+            - network
+
+parts:
+    ajcore:
+        plugin: nil
+        override-pull: |
+            wget https://github.com/applejuicenet/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+        build-packages:
+            - wget
+            - ca-certificates
+            - ca-certificates-java
+            - openjdk-8-jre
+        stage-packages:
+            - openjdk-8-jre
+
+    launcher:
+        plugin: dump
+        source: wrapper
+        organize:
+            'ajcore': usr/bin/
+
+    ajnetmask:
+        plugin: dump
+        organize:
+            'libajnetmask-*.so': 'libajnetmask.so'
+        source:
+            -   on amd64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
+            -   on i386:  https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
+            -   on armhf: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
+            -   on arm64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
+

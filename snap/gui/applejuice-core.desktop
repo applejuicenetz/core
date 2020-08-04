@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=appleJuice Core
+GenericName=appleJuice Core
+Comment=appleJuice Core
+Exec=applejuice-core.ajcore
+Icon=${SNAP}/meta/gui/applejuice-core.png
+Terminal=true
+Type=Application
+Categories=Network;
