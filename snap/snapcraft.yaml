@@ -1,11 +1,10 @@
 name: applejuice-core
-title: appleJuice Core
-version: '0.31.149.110'
+title: appleJuice Client
 summary: appleJuice P2P Client
+description: German P2P Client
 icon: snap/gui/applejuice-core.png
+version: 0.31.149.111
 license: Proprietary
-description: |
-    German IPv4 P2P Client
 
 grade: stable
 confinement: strict
@@ -13,47 +12,66 @@ base: core18
 
 architectures:
     -   build-on: amd64
-#    -   build-on: i386
-#    -   build-on: armhf
-#    -   build-on: arm64
+    -   build-on: i386
+    -   build-on: armhf
+    -   build-on: arm64
+
+layout:
+    /usr/bin/xprop:
+        bind-file: $SNAP/usr/bin/xprop
+
+hooks:
+    configure:
+        plugs: [home]
 
 apps:
     ajcore:
-        command: ajcore
+        command: $SNAP/app/launcher --withgui
+        extensions:
+            - gnome-3-28
         environment:
             JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64/
             PATH: $JAVA_HOME/jre/bin:$PATH
         plugs:
             - home
+            - removable-media
             - desktop
             - network
+            - network-bind
+            - x11
 
 parts:
     ajcore:
         plugin: nil
-        override-pull: |
-            wget https://github.com/applejuicenet/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+        override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenet/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
         build-packages:
             - wget
-            - ca-certificates
-            - ca-certificates-java
-            - openjdk-8-jre
-        stage-packages:
-            - openjdk-8-jre
-
-    launcher:
-        plugin: dump
-        source: wrapper
         organize:
-            'ajcore': usr/bin/
+            'ajcore.jar': app/
 
     ajnetmask:
         plugin: dump
         organize:
-            'libajnetmask-*.so': 'libajnetmask.so'
+            'libajnetmask-*.so': 'app/libajnetmask.so'
         source:
             -   on amd64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
             -   on i386:  https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
             -   on armhf: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
             -   on arm64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
+
+    jre:
+        plugin: nil
+        build-packages:
+            - ca-certificates
+            - ca-certificates-java
+            - openjdk-8-jre
+        stage-packages:
+            - openjdk-8-jre
+            - x11-utils
+
+    launcher:
+        plugin: dump
+        source: ./snap/local/
+        organize:
+            '*': app/
 
