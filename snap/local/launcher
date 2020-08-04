@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd $SNAP/app/
+
+RAM="$(snapctl get ram)"
+
+set -x
+
+java -splash:splash.png -jar -Xmx${RAM:-1024}m ajcore.jar "$@"
+
