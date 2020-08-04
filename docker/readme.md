@@ -1,4 +1,4 @@
-# appleJuice Core
+# appleJuice Core Docker Container
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/applejuicenet/core.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/applejuicenet/core.svg)

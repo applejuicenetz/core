@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd $SNAP/
+
+java -jar AJCoreGUI.jar "${@:1}"

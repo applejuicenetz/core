@@ -1,3 +1,6 @@
-# appleJuice Client für Linux
+# appleJuice Client unter Linux
 
-es wird dringend empfohlen, den appleJuice Client unter Linux via [Docker](../docker/) zu betreiben!
+Unter Linux kann der appleJuice Client betrieben werden via:
+
+- [Docker](https://hub.docker.com/r/applejuicenet/core/)
+- [Snapcraft](https://snapcraft.io/applejuice-core/)
