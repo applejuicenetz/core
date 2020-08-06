@@ -15,11 +15,11 @@
   <manifest></manifest>
   <icon>Core\ajicon.ico</icon>
   <jre>
-    <path></path>
-    <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <path>..\Java</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>true</bundledJreAsFallback>
     <minVersion>1.7</minVersion>
-    <maxVersion>1.8</maxVersion>
+    <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64</runtimeBits>
     <maxHeapPercent>50</maxHeapPercent>

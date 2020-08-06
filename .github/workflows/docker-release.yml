@@ -1,9 +1,11 @@
 name: '[docker] CI for releases'
 
 on:
+    workflow_dispatch:
     release:
         types: [created]
-
+    schedule:
+        -   cron:  '0 7 * * MON'
 jobs:
     release:
         runs-on: ubuntu-latest
@@ -30,7 +32,7 @@ jobs:
 
             -   name: Build docker multiarch images and push to Dockerhub
                 env:
-                    AJCORE_VERSION: "0.31.149.110"
+                    AJCORE_VERSION: "0.31.149.111"
                 run: |
                     docker buildx build \
                     --platform=linux/386,linux/amd64,linux/arm,linux/arm64 \
