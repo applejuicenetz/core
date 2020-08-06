@@ -2,7 +2,7 @@
 <launch4jConfig>
   <dontWrapJar>true</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>.\..\ajcore.jar</jar>
+  <jar>..\ajcore.jar</jar>
   <outfile>Core\x86\ajcore.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
@@ -15,19 +15,19 @@
   <manifest></manifest>
   <icon>Core\ajicon.ico</icon>
   <jre>
-    <path></path>
+    <path>..\Java</path>
     <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <bundledJreAsFallback>true</bundledJreAsFallback>
     <minVersion>1.7</minVersion>
-    <maxVersion>1.8</maxVersion>
+    <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>32</runtimeBits>
-    <maxHeapSize>2048</maxHeapSize>
+    <maxHeapPercent>50</maxHeapPercent>
   </jre>
   <splash>
     <file>splash.bmp</file>
     <waitForWindow>true</waitForWindow>
-    <timeout>5</timeout>
+    <timeout>10</timeout>
     <timeoutErr>true</timeoutErr>
   </splash>
   <versionInfo>

@@ -24,6 +24,13 @@ Das setup löscht eine etwaig vorhandene `ajnetmask.dll` im `?:\Windows\system32
 
 # Changelog
 
+### 1.6
+- Update des Core auf Version `0.31.149.111`
+- Update des JavaGUI auf Version `0.82.0`
+- Java Max Version von `1.8` in den Wrappern entfernt
+- Wrapper mit [UPX](https://upx.github.io/) komprimiert
+
+
 ### 1.5
 - Registry Werte für das `ajfsp://` Protocol werden geschrieben und direkt mit dem JavaGUI verknüpft
 - Update des JavaGUI auf Version `0.81.0`  
