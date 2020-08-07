@@ -7,7 +7,10 @@
 - Pflege einer Whitelist für Clienten.
 - Gültigkeitsprüfung für Java-Version ab JRE 1.7.x.
  
-### 0.30.147.xxx
+### 0.31.148.103
+- ??? 
+ 
+### 0.30.147.1227
 - MaxDownload von 0 Blockt nicht mehr.
 - processLink prüft besser auf Ungültigkeit und gibt incorrect Link als Fehlermeldung zurück.
  
