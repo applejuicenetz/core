@@ -1,13 +1,26 @@
-# appleJuice Client (Core)
+# appleJuice Core (Client)
 
-Meta Repository für die appleJuice Core Releases und dazugehörige Setups
+Meta Repository für die appleJuice Core Releases.
 
-## Anleitungen
+## Installation
 
-Anleitung für `Windows` befindet sich [hier](./windows/)
+### Windows
 
-Anleitung für `macOS` befindet sich [hier](./darwin/)
+Bitte das Setup von [hier](https://github.com/applejuicenet/setup/releases) nehmen.
 
-Anleitung für `Linux` befindet sich [hier](./linux/)
+### macOS
 
-Anleitung für `Docker` befindet sich [hier](./docker/)
+- per [Homebrew](https://brew.sh) installieren `brew cask install applejuicenet/packages/applejuice-core`
+- oder die `AJCore.masOS.zip` von [hier](https://github.com/applejuicenet/core/releases) nehmen
+
+### Linux
+
+Für Linux wurde eine `snap` Paket zusammengestellt.
+
+[![Installieren vom Snap Store](https://snapcraft.io/static/images/badges/de/snap-store-white.svg)](https://snapcraft.io/applejuice-core)
+
+
+### Docker
+
+Ein Docker Anleitung befindet sich [hier](./docker/)
+
