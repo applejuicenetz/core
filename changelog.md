@@ -1,28 +1,61 @@
 # Changelog
 
 ### 0.31.149.111
- - prüfung der eingesetzten JRE Version deaktiviert, so kann der Core auch mit Java Version > 1.8 gestartet werden
+- prüfung der eingesetzten JRE Version deaktiviert, so kann der Core auch mit Java Version > 1.8 gestartet werden
  
 ### 0.31.149.110
- - Pflege einer Whitelist für Clienten. - Gültigkeitsprüfung für Java-Version ab JRE 1.7.x.
+- Pflege einer Whitelist für Clienten.
+- Gültigkeitsprüfung für Java-Version ab JRE 1.7.x.
  
 ### 0.30.147.xxx
- - MaxDownload von 0 Blockt nicht mehr. - processLink prüft besser auf Ungültigkeit und gibt incorrect Link als Fehlermeldung zurück.
+- MaxDownload von 0 Blockt nicht mehr.
+- processLink prüft besser auf Ungültigkeit und gibt incorrect Link als Fehlermeldung zurück.
  
 ### 0.30.146.1203
-- LogDateien werden nicht mehr erstellt. Der Fehler wurde gefunden und beseitigt. - Problem beim Laden von nichtgrünen Teilen behoben (Bug #245, #408) - Statt des vollen Stacktraces wird nur ein Fehler ausgegeben. (Bug #341) - Nachladen von Servern über die Serverliste von applejuicenet.de maximal aller 2 minuten. - Beim Starten eines Downloades werden vorhande Quellen aus aktuellen Suchen mit übernommen (Bug#466) - es wird nun auf bis zu 5 Servern gleichzeitig gesucht und die Server teilen weitere Server zur weiteren Suche mit. - Gefundene Quellen über die Textsuche werden bei aktiven Downloads hinzugefügt - Wenn 100 reelle oder 200 versprochene (vom Server) Ergebnisse vorhanden sind, werden keine neuen Server abgesucht, sondern nur noch die aktuellen fertig abgesucht. - Ausgabe von Gesamtnachfragen sowie letzte Nachfrage (Zeitpunkt) jeder freigegebenen Datei - Die Zeichen .. und : dürfen beim Setzen des Targetdirs nicht vorkommen. (Bug #486) - Informationen zur Lösung von Bug #470 eingebaut.
+- LogDateien werden nicht mehr erstellt. Der Fehler wurde gefunden und beseitigt.
+- Problem beim Laden von nichtgrünen Teilen behoben (Bug #245, #408)
+- Statt des vollen Stacktraces wird nur ein Fehler ausgegeben. (Bug #341)
+- Nachladen von Servern über die Serverliste von applejuicenet.de maximal aller 2 minuten.
+- Beim Starten eines Downloades werden vorhande Quellen aus aktuellen Suchen mit übernommen (Bug#466)
+- es wird nun auf bis zu 5 Servern gleichzeitig gesucht und die Server teilen weitere Server zur weiteren Suche mit.
+- Gefundene Quellen über die Textsuche werden bei aktiven Downloads hinzugefügt
+- Wenn 100 reelle oder 200 versprochene (vom Server) Ergebnisse vorhanden sind, werden keine neuen Server abgesucht, sondern nur noch die aktuellen fertig abgesucht.
+- Ausgabe von Gesamtnachfragen sowie letzte Nachfrage (Zeitpunkt) jeder freigegebenen Datei
+- Die Zeichen `..` und `:` dürfen beim Setzen des Targetdirs nicht vorkommen. (Bug #486)
+- Informationen zur Lösung von Bug #470 eingebaut.
 
 ### 0.30.145.610
-- OutOfMemoryBug behoben (Bug #388) - Anzeige, wieviel der Gegenüber geladen hat. (Bug #124)
-- Anzeige seit wann man mit einem Server verbunden ist. (Bug #346) - Prozessorlastigkeit für Upload und Download um ca. 30 % gesenkt
- ajfsp:
--Links mit Quellenangabe in Form von Domains nun möglich - Sonderzeichen in Welcomemessage werden korrekt codiert. (Bug #398) - Bug im HTTP-Server beim Abfragen von mehreren Anfragen pro Verbindung behoben. - Es werden evtl. logdateien im AJCore-Home-Verzeichnis erstellt (C:\Dokumente und Einstellungen\username\appleJuice oder ~/appleJuice unter Linux) Das ist das Verzeichnis wo die settings.xml liegt. Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt. Die Nummer kann sich ändern.
+- OutOfMemoryBug behoben (Bug #388)
+- Anzeige, wieviel der Gegenüber geladen hat. (Bug #124)
+- Anzeige seit wann man mit einem Server verbunden ist. (Bug #346)
+- Prozessorlastigkeit für Upload und Download um ca. 30 % gesenkt
+- `ajfsp://` Links mit Quellenangabe in Form von Domains nun möglich
+- Sonderzeichen in Welcomemessage werden korrekt codiert. (Bug #398)
+- Bug im HTTP-Server beim Abfragen von mehreren Anfragen pro Verbindung behoben.
+
+Es werden evtl. logdateien im AJCore-Home-Verzeichnis erstellt (`C:\Dokumente und Einstellungen\username\appleJuice` bzw `~/appleJuice`) Das ist das Verzeichnis wo die settings.xml liegt. 
+
+Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt. Die Nummer kann sich ändern.
 
 ### 0.30.144.522
-IP wird schneller an GUI gesendet (Bug #302) - Textsuche verbessert - Exception behoben (Bug #290, #236, #232) - Beim Exit-Klick aufs Trayicon wird nun nochmals nachgefragt (Bug #280) - maximale Anzahl an Leuten in der Uploadliste wird den GUIs angeboten - 100% CPU-Bug beim Verbinden von Sockets behoben (Bug #340) - Wenn beim Schreiben von Download Fehler auftreten, wird der Download nun angehalten (Bug #335) - Partsuche verbessert (Bug #106) - neue Optionen für Core: - "--configinjardir" bzw. "-c": Speicherort für Settings etc. liegt nicht im Homedir sondern im Verzeichnis wo die Jar liegt. - Fehler beim Laden von Partfiles behoben, wenn diese Defekt sind. - Core versucht sich selbst Server nach zu laden über die Webseite, wenn er keinen findet wo er drauf kann. (Bug #133) - Bug beim Löschen von Quellen wenn Datei fertig oder abgebrochen ist behoben. (Bug #316) - Maximale Anzahl an Leuten in der Uploadliste wird angezeigt. - Welcomemessage wird mit angezeigt. (Bug #35) - Uploadsystem verbessert. Wenn man auf eine Quelle warten muß, wird derweil nun eine andere vorgezogen und zu der geuploaded.
+- IP wird schneller an GUI gesendet (Bug #302) 
+- Textsuche verbessert 
+- Exception behoben (Bug #290, #236, #232) 
+- Beim Exit-Klick aufs Trayicon wird nun nochmals nachgefragt (Bug #280) 
+- maximale Anzahl an Leuten in der Uploadliste wird den GUIs angeboten
+- 100% CPU-Bug beim Verbinden von Sockets behoben (Bug #340)
+- Wenn beim Schreiben von Download Fehler auftreten, wird der Download nun angehalten (Bug #335)
+- Partsuche verbessert (Bug #106)
+- neue Optionen für Core: `--configinjardir` bzw. `-c`: Speicherort für Settings etc. liegt nicht im Homedir sondern im Verzeichnis wo die Jar liegt.
+- Fehler beim Laden von Partfiles behoben, wenn diese Defekt sind.
+- Core versucht sich selbst Server nach zu laden über die Webseite, wenn er keinen findet wo er drauf kann. (Bug #133)
+- Bug beim Löschen von Quellen wenn Datei fertig oder abgebrochen ist behoben. (Bug #316)
+- Maximale Anzahl an Leuten in der Uploadliste wird angezeigt.
+- Welcomemessage wird mit angezeigt. (Bug #35)
+- Uploadsystem verbessert. Wenn man auf eine Quelle warten muß, wird derweil nun eine andere vorgezogen und zu der geuploaded.
 
 ### 0.30.143.313
-- graphische Fehlermeldung wenn Start vom Core schief geht und man mit --withgui oder unter Windows ohne Parameter startet
+- graphische Fehlermeldung wenn Start vom Core schief geht und man mit `--withgui` oder unter Windows ohne Parameter startet
 
 ### 0.29.142.229
 - Nach Portwechsel keine 30 Minuten Warten mehr bis neuem Serverlogin
@@ -31,6 +64,7 @@ IP wird schneller an GUI gesendet (Bug #302) - Textsuche verbessert - Exception 
 - Icon fehlte, somit ging unter Windows der GUI-Modus nicht.
 
 ### 0.29.140.219
+- 100 % CPU Bug gefixt (Danke an UP^), war ein fehler in der Uploadlimitierung (Bug #216)
 - Exception versucht zu beheben. Bitte um Rückmeldung:
 java.lang.NullPointerException
 at sun.nio.ch.ServerSocketAdaptor.accept (Unknow Source)
@@ -38,7 +72,6 @@ at N.C.allocate.Direct(TRUX)
 at N.C.run(TRUX)
 
 Code verändert nach Angaben von JRE Bug 4801882
-- 100 % CPU Bug gefixt (Danke an UP^) - war ein fehler in der Uploadlimitierung (Bug #216)
 
 ### 0.29.139.215
 - Fixed: Probleme mit nicht konfigurierten ISDN-Treibern behoben
@@ -92,7 +125,7 @@ Code verändert nach Angaben von JRE Bug 4801882
 - alte Suchergebnisse / indirekte Anfragen an neuen Server unterbunden
 
 ### 0.29.131.122
-- Schreiben auf die Festplatte sicherer gemacht. (Daten werden er ist .new geschrieben, dann alte Datei gelöscht und neue umbenannt) - bei Parts, Settings, Serverliste, Shareidx, Shareinfo. (Bug #120, Bug #75)
+- Schreiben auf die Festplatte sicherer gemacht. (Daten werden er ist .new geschrieben, dann alte Datei gelöscht und neue umbenannt), bei Parts, Settings, Serverliste, Shareidx, Shareinfo. (Bug #120, Bug #75)
 - 2 Exceptions behoben (Bug #34, Bug #89, Bug #25)
 - Fehler mit Sonderzeichen & im Incomingdir. (Bug #39)
 - Deadlock behoben (Bug #96)
@@ -120,7 +153,7 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Prüfen das mind. JRE 1.4.2 vorhanden ist. Sonst startet der Core nicht
 - Fehler bei der Linkverarbeitung werden ausgegeben
 - Suchen wenn man nicht Verbunden ist wird nun geblockt
-- Dateinamen werden gefiltert. Zulässige Zeichen sind: A-z 0-9 . - _
+- Dateinamen werden gefiltert. Zulässige Zeichen sind: `A-z 0-9 . - _`
 nicht zulässige Zeichen werden entfernt
 - GUI kann nun Core beenden, Downloads umbenennen sowie Zielverzeichnisse ändern
 - Wenn kein TCP Port gewählt ist, ist der Zufallsport nun mind. 1024 groß. (nicht root leute können unter Linux keine Ports öffnen, die kleiner 1024 sind) (Bug #6, Danke an Maj0r)
