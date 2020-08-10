@@ -5,11 +5,11 @@
 ![Docker Build](https://github.com/applejuicenet/core/workflows/%5Bdocker%5D%20CI%20for%20releases/badge.svg)
 ![MicroBadger Size](https://img.shields.io/microbadger/image-size/applejuicenet/core.svg)
 
-initial core password: `applejuice`
+Das initial Passwort lautet: `applejuice`
 
 ### Environment Variables
 
-| Variable    | Value           | Description |
+| Variable    | Value (default) | Description |
 |-------------|-----------------|-------------|
 | `PUID`      | `1000`          | UserID      |
 | `PGID`      | `1000`          | GroupID     |
@@ -19,18 +19,18 @@ initial core password: `applejuice`
 
 ## Exposed Ports
 
-- exposed ports are base on `CORE_PORT` and `XML_PORT`, by default:
+- Die Ports welche veröffentlicht werden basieren auf `CORE_PORT` und `XML_PORT`, Standardmäßig:
 
 - `9850` - P2P Port
 - `9851` - XML Port
 
 ## Volumes
 
-`/config/appleJuice/` contains all important `appleJuice` XML files
+Das Volume mit den Konfigurationsdateien befinden sich unter `/config/appleJuice/` und beinhaltet die XML files
 
-## getting started
+## loslegen
 
-create and run `ajcore` container with the following command:
+erstelle und starte eine Docker Container mit dem Namen `ajcore` mit dem nachfolgenden Bash Befehl:
 
 ```bash
 docker run -d -it \
@@ -41,12 +41,12 @@ docker run -d -it \
         applejuicenet/core:latest
 ```
 
-on first start the [settings.xml](rootfs/app/settings.xml) will be copied to the appleJuice Directory (if not exists from previous or mounted setup)
+Beim ersten start wird die [settings.xml](rootfs/app/settings.xml) das `appleJuice` Verzeichnis kopiert, sofern diese noch nicht existiert.
 
 ## java memory limit
 
-the java process takes `98%` resources from the container by default (new java feature since version 8),
-so you can easily change the memory limits within docker
+Der Java Prozess im Container bekommt `98%` des Speichers, welcher der Container selber bekommen hat (neues Feature seit Java8).
+Daher ist es sinnvoll, dem Container einen festen Ram Wert zuzuteilen:
 
 ```bash
 docker update --memory "4GB" ajcore
@@ -54,14 +54,12 @@ docker update --memory "4GB" ajcore
 
 ## shared volumes
 
-you can mount every folder on your host system to some place in this container, 
+Um weitere Ordner oder Laufwerk zu sharen, kann man diese beliebig in den Docker Container wie folgt `mounten`, und dann via appleJuice GUI als Freigabe hinzufügen.
 
-eg. `-v /mnt/data/movies/:/mnt/data/movies/`
+z.B.: `-v /mnt/data/movies/:/mnt/data/movies/`
 
-and add the now mounted path inside the container as new share with any appleJuice GUI, eg. [applejuicenet/phpgui](https://hub.docker.com/r/applejuicenet/phpgui)
+## passwort ändern
 
-## change password
-
-- attach to running container with `docker attach ajcore` or your docker management UI 
-- enter `chpw` and change your password
-- finally press `Ctrl`+`p` followed by `Ctrl`+`q` to dettach from container
+- `attach` auf den laufenden `ajcore` Container durchführen: `docker attach ajcore`
+- danach `chpw` eingeben, enter drücken, das neue Passwort eingeben, und wieder enter drücken
+- `detach` vom `ajcore` Container mittels `Strg`+`p` gefolgt von `Strg`+`q`
