@@ -1,5 +1,9 @@
 # appleJuice Core (Client)
 
+![](https://img.shields.io/docker/pulls/applejuicenet/core)
+![](https://github.com/applejuicenet/core/workflows/release/badge.svg)
+![](https://img.shields.io/docker/image-size/applejuicenet/core)
+
 Meta Repository für die appleJuice Core Releases.
 
 ## Installation

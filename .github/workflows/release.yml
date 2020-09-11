@@ -1,4 +1,4 @@
-name: '[docker] CI for releases'
+name: 'release'
 
 on:
     workflow_dispatch:
@@ -6,8 +6,9 @@ on:
         types: [created]
     schedule:
         -   cron:  '0 7 * * MON'
+
 jobs:
-    release:
+    docker:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
