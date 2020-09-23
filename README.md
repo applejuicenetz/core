@@ -2,9 +2,7 @@
 
 ![](https://img.shields.io/github/v/release/applejuicenet/core)
 ![](https://img.shields.io/github/downloads/applejuicenet/core/total)
-![](https://img.shields.io/docker/pulls/applejuicenet/core)
-![](https://img.shields.io/docker/image-size/applejuicenet/core)
-![](https://github.com/applejuicenet/core/workflows/release/badge.svg)
+![](https://github.com/applejuicenet/core/workflows/docker/badge.svg)
 
 Meta Repository für die appleJuice Core Releases.
 

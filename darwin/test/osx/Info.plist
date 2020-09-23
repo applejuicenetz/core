@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>German</string>
+
+        <key>CFBundleExecutable</key>
+        <string>universalJavaApplicationStub</string>
+
+        <key>CFBundleIconFile</key>
+        <string>application.icns</string>
+
+        <key>JVMSplashFile</key>
+        <string>splash.png</string>
+
+        <key>CFBundleIdentifier</key>
+        <string>de.applejuicenet.core.Core</string>
+
+        <key>CFBundleDisplayName</key>
+        <string>AJCore</string>
+
+        <key>CFBundleName</key>
+        <string>AJCore</string>
+
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+
+        <key>NSHighResolutionCapable</key>
+        <string>True</string>
+
+        <key>CFBundleShortVersionString</key>
+        <string>1.0.1</string>
+
+        <key>CFBundleSignature</key>
+        <string>acre</string>
+
+        <key>CFBundleVersion</key>
+        <string>1.0.1</string>
+
+        <key>JVMMainClassName</key>
+        <string>de.applejuicenet.client.core.Core</string>
+
+        <key>JVMArguments</key>
+        <string>--withgui</string>
+    </dict>
+</plist>
