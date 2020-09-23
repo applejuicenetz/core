@@ -1,9 +1,7 @@
-name: 'release'
+name: 'docker'
 
 on:
     workflow_dispatch:
-    release:
-        types: [created]
     schedule:
         -   cron:  '0 7 * * MON'
 

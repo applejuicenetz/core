@@ -1,9 +1,10 @@
 # appleJuice Core Docker Container
 
-![Docker Pulls](https://img.shields.io/docker/pulls/applejuicenet/core.svg)
-![Docker Stars](https://img.shields.io/docker/stars/applejuicenet/core.svg)
-![Docker Build](https://github.com/applejuicenet/core/workflows/%5Bdocker%5D%20CI%20for%20releases/badge.svg)
-![MicroBadger Size](https://img.shields.io/microbadger/image-size/applejuicenet/core.svg)
+![](https://img.shields.io/docker/v/applejuicenet/core?color=blue)
+![](https://img.shields.io/docker/pulls/applejuicenet/core.svg)
+![](https://img.shields.io/docker/stars/applejuicenet/core.svg)
+![](https://img.shields.io/docker/image-size/applejuicenet/core)
+![](https://github.com/applejuicenet/core/workflows/docker/badge.svg)
 
 Das initial Passwort lautet: `applejuice`
 
