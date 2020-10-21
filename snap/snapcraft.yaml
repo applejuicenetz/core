@@ -30,7 +30,7 @@ apps:
         extensions:
             - gnome-3-28
         environment:
-            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64/
+            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH/
             PATH: $JAVA_HOME/jre/bin:$PATH
         plugs:
             - home
@@ -39,6 +39,17 @@ apps:
             - network
             - network-bind
             - x11
+
+    cli:
+        command: $SNAP/app/launcher --nogui
+        environment:
+            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH/
+            PATH: $JAVA_HOME/jre/bin:$PATH
+        plugs:
+            - home
+            - removable-media
+            - network
+            - network-bind
 
 parts:
     ajcore:
