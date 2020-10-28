@@ -13,10 +13,10 @@ Platypus installieren https://sveinbjorn.org/platypus und über die Einstellunge
             --interface-type 'Text Window' \
             --interpreter '/bin/sh' \
             --author 'appleJuiceNET' \
-            --app-version '0.31.149.111' \
+            --app-version '0.31.149.112' \
             --bundle-identifier 'de.applejuicenet.core' \
-            --bundled-file '/Volumes/Development/Privat/appleJuiceNET/_stuff/ajnetmask/libajnetmask.jnilib' \
-            --bundled-file '/Volumes/Development/Privat/appleJuiceNET/_stuff/ajcore/ajcore-0.31.149.111.jar' \
+            --bundled-file '/Volumes/Privat/appleJuiceNET/_stuff/ajnetmask/libajnetmask.jnilib' \
+            --bundled-file '/Volumes/Privat/appleJuiceNET/_stuff/ajcore/ajcore-0.31.149.112.jar' \
             --text-foreground-color '#ffffff' \
             --text-background-color '#000000' \
             './starter'

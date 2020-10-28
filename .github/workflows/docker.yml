@@ -31,7 +31,7 @@ jobs:
 
             -   name: Build docker multiarch images and push to Dockerhub
                 env:
-                    AJCORE_VERSION: "0.31.149.111"
+                    AJCORE_VERSION: "0.31.149.112"
                 run: |
                     docker buildx build \
                     --platform=linux/386,linux/amd64,linux/arm,linux/arm64 \
