@@ -1,10 +1,6 @@
 # appleJuice Core Docker Container
 
-![](https://img.shields.io/docker/v/applejuicenet/core?color=blue)
-![](https://img.shields.io/docker/pulls/applejuicenet/core.svg)
-![](https://img.shields.io/docker/stars/applejuicenet/core.svg)
-![](https://img.shields.io/docker/image-size/applejuicenet/core)
-![](https://github.com/applejuicenet/core/workflows/docker/badge.svg)
+![](https://github.com/applejuicenetz/core/workflows/docker/badge.svg)
 
 Das initial Passwort lautet: `applejuice`
 
@@ -39,7 +35,7 @@ docker run -d -it \
         -v ~/appleJuice/:/config/appleJuice/ \
         --memory="2GB" \
         --name ajcore \
-        applejuicenet/core:latest
+        ghcr.io/applejuicenetz/core:latest
 ```
 
 Beim ersten start wird die [settings.xml](rootfs/app/settings.xml) das `appleJuice` Verzeichnis kopiert, sofern diese noch nicht existiert.

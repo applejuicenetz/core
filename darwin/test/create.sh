@@ -17,6 +17,6 @@ cp osx/application.icns AJCore.app/Contents/Resources
 cp osx/splash.png AJCore.app/Contents/Resources
 cp osx/universalJavaApplicationStub AJCore.app/Contents/MacOS
 
-curl --fail --silent --location https://github.com/applejuicenet/core/releases/download/${CORE_VERSION}/ajcore.jar -o AJCore.app/Contents/Java/ajcore.jar
-curl --fail --silent --location https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask.jnilib -o AJCore.app/Contents/Java/libajnetmask.jnilib
+curl --fail --silent --location https://github.com/applejuicenetz/core/releases/download/${CORE_VERSION}/ajcore.jar -o AJCore.app/Contents/Java/ajcore.jar
+curl --fail --silent --location https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask.jnilib -o AJCore.app/Contents/Java/libajnetmask.jnilib
 
