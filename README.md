@@ -1,8 +1,8 @@
 # appleJuice Core (Client)
 
-![](https://img.shields.io/github/v/release/applejuicenet/core)
-![](https://img.shields.io/github/downloads/applejuicenet/core/total)
-![](https://github.com/applejuicenet/core/workflows/docker/badge.svg)
+![](https://img.shields.io/github/v/release/applejuicenetz/core)
+![](https://img.shields.io/github/downloads/applejuicenetz/core/total)
+![](https://github.com/applejuicenetz/core/workflows/docker/badge.svg)
 
 Meta Repository für die appleJuice Core Releases.
 
@@ -10,12 +10,13 @@ Meta Repository für die appleJuice Core Releases.
 
 ### Windows
 
-Bitte das Setup von [hier](https://github.com/applejuicenet/setup/releases) nehmen.
+Bitte das Setup von [hier](https://github.com/applejuicenetz/setup/releases) nehmen.
 
 ### macOS
 
-- per [Homebrew](https://brew.sh) installieren `brew cask install applejuicenet/packages/applejuice-core`
-- oder die `AJCore.masOS.zip` von [hier](https://github.com/applejuicenet/core/releases) nehmen
+- per [Homebrew](https://brew.sh) installieren `brew cask install applejuicenetz/packages/applejuice-core`
+- oder die `AJCore.masOS.zip` von [hier](https://github.com/applejuicenetz/core/releases) nehmen
+
 
 ### Linux
 
