@@ -54,7 +54,7 @@ apps:
 parts:
     ajcore:
         plugin: nil
-        override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenet/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+        override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
         build-packages:
             - wget
         organize:
@@ -65,10 +65,10 @@ parts:
         organize:
             'libajnetmask-*.so': 'app/libajnetmask.so'
         source:
-            -   on amd64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
-            -   on i386:  https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
-            -   on armhf: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
-            -   on arm64: https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
+            -   on amd64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
+            -   on i386:  https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
+            -   on armhf: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
+            -   on arm64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
 
     jre:
         plugin: nil

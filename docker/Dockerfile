@@ -11,8 +11,8 @@ ENV PGID=1000
 ENV CORE_PORT=9850
 ENV XML_PORT=9851
 
-ADD https://github.com/applejuicenet/ajnetmask/releases/download/1.0.0/libajnetmask-${TARGETARCH}.so /usr/lib/libajnetmask.so
-ADD https://github.com/applejuicenet/core/releases/download/${VERSION}/ajcore.jar /ajcore.jar
+ADD https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-${TARGETARCH}.so /usr/lib/libajnetmask.so
+ADD https://github.com/applejuicenetz/core/releases/download/${VERSION}/ajcore.jar /ajcore.jar
 
 RUN apk add --no-cache curl shadow sudo && \
     chmod +r /usr/lib/libajnetmask.so && \
@@ -37,11 +37,9 @@ CMD ["java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
 
 SHELL ["/bin/ash"]
 
-LABEL org.label-schema.name="appleJuice Core" \
-      org.label-schema.version=${VERSION} \
-      org.label-schema.vendor="appleJuiceNET" \
-      org.label-schema.url="https://applejuicenet.de" \
-      org.label-schema.build-date=${BUILD_DATE} \
-      org.label-schema.vcs-ref=${VCS_REF} \
-      org.label-schema.vcs-url="https://github.com/applejuicenet/core" \
-      org.label-schema.schema-version="1.0"
+LABEL org.opencontainers.image.version=${VERSION} \
+      org.opencontainers.image.vendor="appleJuiceNET" \
+      org.opencontainers.image.url="https://applejuicenet.cc" \
+      org.opencontainers.image.created=${BUILD_DATE} \
+      org.opencontainers.image.revision=${VCS_REF} \
+      org.opencontainers.image.source="https://github.com/applejuicenetz/core"

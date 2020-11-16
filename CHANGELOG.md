@@ -1,8 +1,8 @@
 # Changelog
 
 ### 0.31.149.112
-- default server gefixt
-- serverliste aktualisiert sich selber
+- default server auf .CC Domain umgestellt
+- aktuelle Server werden ebenfalls .CC Domain abgerufen 
 
 ### 0.31.149.111
 - prüfung der eingesetzten JRE Version deaktiviert, so kann der Core auch mit Java Version > 1.8 gestartet werden
