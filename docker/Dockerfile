@@ -38,7 +38,7 @@ CMD ["java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
 SHELL ["/bin/ash"]
 
 LABEL org.opencontainers.image.version=${VERSION} \
-      org.opencontainers.image.vendor="appleJuiceNET" \
+      org.opencontainers.image.vendor="appleJuiceNETZ" \
       org.opencontainers.image.url="https://applejuicenet.cc" \
       org.opencontainers.image.created=${BUILD_DATE} \
       org.opencontainers.image.revision=${VCS_REF} \

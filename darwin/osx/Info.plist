@@ -41,6 +41,9 @@
         <key>JVMMainClassName</key>
         <string>de.applejuicenet.client.core.Core</string>
 
+        <key>JVMVersion</key>
+        <string>1.8+</string>
+
         <key>JVMArguments</key>
         <string>--withgui</string>
     </dict>

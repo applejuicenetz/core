@@ -15,7 +15,7 @@ Bitte das Setup von [hier](https://github.com/applejuicenetz/setup/releases) neh
 ### macOS
 
 - per [Homebrew](https://brew.sh) installieren `brew cask install applejuicenetz/packages/applejuice-core`
-- oder die `AJCore.masOS.zip` von [hier](https://github.com/applejuicenetz/core/releases) nehmen
+- oder die `AJCore*.dmg` von [hier](https://github.com/applejuicenetz/core/releases) nehmen
 
 
 ### Linux

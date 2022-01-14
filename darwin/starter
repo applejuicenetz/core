@@ -1,7 +1,0 @@
-#!/bin/sh
-
-RAM=$(defaults read de.applejuicenet.core ram 2>/dev/null)
-
-set -x
-
-java -jar -Xmx${RAM:-1024}m ajcore-0.31.149.112.jar "$@"
