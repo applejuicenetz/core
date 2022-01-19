@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=appleJuice Core
 GenericName=appleJuice Core
-Comment=appleJuice Core
+Comment=appleJuice P2P Client
 Exec=applejuice-core.ajcore
 Icon=${SNAP}/meta/gui/applejuice-core.png
 Terminal=false
 Type=Application
 Categories=Network;
 StartupWMClass=de-applejuicenet-client-core-Core
+SingleMainWindow=true

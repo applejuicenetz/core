@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# brew install create-dmg
+
 set -e
 
 CORE_VERSION="0.31.149.112"
@@ -30,7 +32,20 @@ function createRelease() {
   curl --fail --silent --location "https://github.com/applejuicenetz/core/releases/download/${CORE_VERSION}/ajcore.jar" -o "${BUILD_FOLDER}/AJCore.app/Contents/Java/ajcore.jar"
   curl --fail --silent --location "https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-${ARCH}.jnilib" -o "${BUILD_FOLDER}/AJCore.app/Contents/Java/libajnetmask.jnilib"
 
-  hdiutil create -fs HFS+ -volname "AJCore ${ARCH}" -srcfolder "${BUILD_FOLDER}" -ov -format UDZO "${DMG_FILE_NAME}"
+  rm -f ${DMG_FILE_NAME}
+
+  create-dmg \
+    --volname "AJCore ${ARCH}" \
+    --volicon "osx/application.icns" \
+    --background "osx/.background/background.png" \
+    --window-pos 200 120 \
+    --window-size 540 350 \
+    --icon-size 100 \
+    --icon "AJCore.app" 100 190 \
+    --hide-extension "AJCore.app" \
+    --app-drop-link 400 185 \
+    "${DMG_FILE_NAME}" \
+    "${BUILD_FOLDER}"
 }
 
 createRelease "arm64"

@@ -2,6 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
+        <key>com.apple.security.app-sandbox</key>
+        <false/>
+
+        <key>NSAppleEventsUsageDescription</key>
+        <string>There was an error while launching the application. Please click OK to display a dialog with more information or cancel and view the syslog for details.</string>
+
+        <key>NSNetworkVolumesUsageDescription</key>
+        <string>AJCore benötigt Zugriff auf ein Netzwerkvolume.</string>
+
+        <key>NSRemovableVolumesUsageDescription</key>
+        <string>AJCore benötigt Zugriff Wechselmedien.</string>
+
+        <key>NSDownloadsFolderUsageDescription</key>
+        <string>AJCore benötigt Zugriff auf die Downloads.</string>
+
+        <key>NSDesktopFolderUsageDescription</key>
+        <string>AJCore benötigt Zugriff auf den Desktop.</string>
+
+        <key>NSDocumentsFolderUsageDescription</key>
+        <string>AJCore benötigt Zugriff auf die Dokumente.</string>
+
         <key>CFBundleDevelopmentRegion</key>
         <string>German</string>
 
@@ -30,13 +51,13 @@
         <string>True</string>
 
         <key>CFBundleShortVersionString</key>
-        <string>1.0.1</string>
+        <string>0.31.149.112</string>
 
         <key>CFBundleSignature</key>
         <string>acre</string>
 
         <key>CFBundleVersion</key>
-        <string>1.0.1</string>
+        <string>0.31.149.112</string>
 
         <key>JVMMainClassName</key>
         <string>de.applejuicenet.client.core.Core</string>
