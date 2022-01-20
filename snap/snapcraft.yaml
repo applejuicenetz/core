@@ -11,78 +11,78 @@ confinement: strict
 base: core18
 
 architectures:
-    -   build-on: amd64
-    -   build-on: i386
-    -   build-on: armhf
-    -   build-on: arm64
+  - build-on: amd64
+  - build-on: i386
+  - build-on: armhf
+  - build-on: arm64
 
 layout:
-    /usr/bin/xprop:
-        bind-file: $SNAP/usr/bin/xprop
+  /usr/bin/xprop:
+    bind-file: $SNAP/usr/bin/xprop
 
 hooks:
-    configure:
-        plugs: [home]
+  configure:
+    plugs: [ home ]
 
 apps:
-    ajcore:
-        command: $SNAP/app/launcher --withgui
-        extensions:
-            - gnome-3-28
-        environment:
-            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
-            PATH: $JAVA_HOME/jre/bin:$PATH
-        plugs:
-            - home
-            - removable-media
-            - desktop
-            - network
-            - network-bind
-            - x11
+  ajcore:
+    command: $SNAP/app/launcher --withgui
+    extensions:
+      - gnome-3-28
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      PATH: $JAVA_HOME/bin:$PATH
+    plugs:
+      - home
+      - removable-media
+      - desktop
+      - network
+      - network-bind
+      - x11
 
-    cli:
-        command: $SNAP/app/launcher --nogui
-        environment:
-            JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH/
-            PATH: $JAVA_HOME/jre/bin:$PATH
-        plugs:
-            - home
-            - removable-media
-            - network
-            - network-bind
+  cli:
+    command: $SNAP/app/launcher --nogui
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      PATH: $JAVA_HOME/bin:$PATH
+    plugs:
+      - home
+      - removable-media
+      - network
+      - network-bind
 
 parts:
-    ajcore:
-        plugin: nil
-        override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
-        build-packages:
-            - wget
-        organize:
-            'ajcore.jar': app/
+  ajcore:
+    plugin: nil
+    override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+    build-packages:
+      - wget
+    organize:
+      'ajcore.jar': app/
 
-    ajnetmask:
-        plugin: dump
-        organize:
-            'libajnetmask-*.so': 'app/libajnetmask.so'
-        source:
-            -   on amd64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
-            -   on i386:  https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
-            -   on armhf: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
-            -   on arm64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
+  ajnetmask:
+    plugin: dump
+    organize:
+      'libajnetmask-*.so': 'usr/lib/libajnetmask.so'
+    source:
+      - on amd64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
+      - on i386: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
+      - on armhf: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
+      - on arm64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
 
-    jre:
-        plugin: nil
-        build-packages:
-            - ca-certificates
-            - ca-certificates-java
-            - openjdk-8-jre
-        stage-packages:
-            - openjdk-8-jre
-            - x11-utils
+  jre:
+    plugin: nil
+    build-packages:
+      - ca-certificates
+      - ca-certificates-java
+      - openjdk-11-jre
+    stage-packages:
+      - openjdk-11-jre
+      - x11-utils
 
-    launcher:
-        plugin: dump
-        source: ./snap/local/
-        organize:
-            '*': app/
+  launcher:
+    plugin: dump
+    source: ./snap/local/
+    organize:
+      '*': app/
 
