@@ -30,6 +30,7 @@ apps:
     extensions:
       - gnome-3-28
     environment:
+      JVM_ARGS: -splash:splash.png
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
@@ -42,6 +43,19 @@ apps:
 
   cli:
     command: $SNAP/app/launcher --nogui
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      PATH: $JAVA_HOME/bin:$PATH
+    plugs:
+      - home
+      - removable-media
+      - network
+      - network-bind
+
+  service:
+    command: $SNAP/app/launcher --nogui
+    daemon: simple
+    install-mode: disable
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH

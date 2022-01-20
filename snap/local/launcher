@@ -4,7 +4,17 @@ cd $SNAP/app/
 
 RAM="$(snapctl get ram)"
 
+ARGS="-Xms256m"
+
+if [ -n "${RAM}" ]; then
+  ARGS="${ARGS} -Xmx${RAM}m"
+fi
+
+if [ -n "${JVM_ARGS}" ]; then
+  ARGS="${JVM_ARGS} ${ARGS}"
+fi
+
 set -x
 
-java -splash:splash.png -jar -Xmx${RAM:-1024}m ajcore.jar "$@"
+java ${ARGS} -jar ajcore.jar "$@"
 
