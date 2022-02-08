@@ -31,11 +31,15 @@ Das Volume mit den Konfigurationsdateien befinden sich unter `/config/appleJuice
 ## loslegen
 
 erstelle und starte eine Docker Container mit dem Namen `ajcore` mit dem nachfolgenden Bash Befehl:
+(Volumes Pfade sowie UID/GID sind zwingend anzupassen)
 
 ```bash
 docker run -d -it \
         -p 9850-9851:9850-9851 \
-        -v ~/appleJuice/:/config/appleJuice/ \
+        --volume ~/appleJuice/:/config/appleJuice/ \
+        --volume /Volumes/Volume1/Video/:/mnt/Video/ \
+        --env UID=1000 \
+        --env GID=1000 \
         --memory="2GB" \
         --name ajcore \
         ghcr.io/applejuicenetz/core:latest
