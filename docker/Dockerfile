@@ -18,10 +18,9 @@ RUN apt update && \
     apt install -y curl sudo && \
     apt clean && \
     chmod +r /usr/lib/libajnetmask.so && \
-    chmod +r /ajcore.jar
-
-RUN groupadd -g ${PGID} abc
-RUN useradd -u ${PUID} -g ${PGID} -d ${HOME} abc
+    chmod +r /ajcore.jar && \
+    groupadd -g ${PGID} abc && \
+    useradd -u ${PUID} -g ${PGID} -d ${HOME} abc
 
 COPY rootfs/ /
 
