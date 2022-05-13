@@ -1,27 +1,28 @@
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:11-jre-focal
 
-ARG BUILD_DATE
-ARG VERSION
-ARG VCS_REF
-ARG TARGETARCH
+ARG BUILD_DATE \
+    VERSION \
+    VCS_REF \
+    TARGETARCH
 
-ENV PUID=1000
-ENV PGID=1000
-
-ENV CORE_PORT=9850
-ENV XML_PORT=9851
+ENV PUID=1000 \
+    PGID=1000 \
+    CORE_PORT=9850 \
+    XML_PORT=9851 \
+    HOME="/config"
 
 ADD https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-${TARGETARCH}.so /usr/lib/libajnetmask.so
 ADD https://github.com/applejuicenetz/core/releases/download/${VERSION}/ajcore.jar /ajcore.jar
 
-RUN apk add --no-cache curl shadow sudo && \
+RUN apt update && \
+    apt install -y curl sudo && \
+    apt clean && \
     chmod +r /usr/lib/libajnetmask.so && \
     chmod +r /ajcore.jar && \
-    addgroup -g $PGID abc &&\
-    adduser -u $PUID -G abc -s /bin/ash -D abc --home "/config"
+    groupadd -g ${PGID} abc && \
+    useradd -u ${PUID} -g ${PGID} -d ${HOME} abc
 
 COPY rootfs/ /
-
 
 EXPOSE ${CORE_PORT} ${XML_PORT}
 
@@ -33,9 +34,9 @@ HEALTHCHECK --interval=30s --start-period=10s CMD curl --fail http://localhost:$
 
 ENTRYPOINT ["/init"]
 
-CMD ["java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
+CMD ["/opt/java/openjdk/bin/java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
 
-SHELL ["/bin/ash"]
+SHELL ["/bin/bash"]
 
 LABEL org.opencontainers.image.version=${VERSION} \
       org.opencontainers.image.vendor="appleJuiceNETZ" \
