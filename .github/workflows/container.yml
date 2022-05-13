@@ -56,4 +56,9 @@ jobs:
             BUILD_DATE=${{ steps.current-time.outputs.time }}
             VCS_REF=${{ env.GITHUB_SHA_SHORT }}
             VERSION=${{ env.AJCORE_VERSION }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ env.AJCORE_VERSION }}
+            ${{ github.repository }}:latest
+            ${{ github.repository }}:${{ env.AJCORE_VERSION }}
+
