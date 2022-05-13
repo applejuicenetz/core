@@ -19,12 +19,6 @@ jobs:
         uses: 1466587594/get-current-time@v1
         id: current-time
 
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ github.repository }},ghcr.io/${{ github.repository }}
-
       - name: Login to ghcr.io
         uses: docker/login-action@v1
         with:
