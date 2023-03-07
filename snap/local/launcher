@@ -16,5 +16,5 @@ fi
 
 set -x
 
-java ${ARGS} -jar ajcore.jar "$@"
+java  -Djava.net.preferIPv4Stack=true ${ARGS} -jar ajcore.jar "$@"
 
