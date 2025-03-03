@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-focal
+FROM eclipse-temurin:17-jre-noble
 
 ARG TARGETARCH VERSION
 
@@ -15,9 +15,7 @@ RUN apt update && \
     apt install -y curl sudo && \
     apt clean && \
     chmod +r /usr/lib/libajnetmask.so && \
-    chmod +r /ajcore.jar && \
-    groupadd -g ${PGID} abc && \
-    useradd -u ${PUID} -g ${PGID} -d ${HOME} abc
+    chmod +r /ajcore.jar
 
 COPY rootfs/ /
 
@@ -27,10 +25,10 @@ WORKDIR /config/appleJuice
 
 VOLUME /config/appleJuice
 
-HEALTHCHECK --interval=30s --start-period=10s CMD curl --fail http://localhost:${XML_PORT} || exit 1
+HEALTHCHECK --interval=30s --start-period=10s CMD curl --fail http://127.0.0.1:${XML_PORT} || exit 1
 
 ENTRYPOINT ["/init"]
 
-CMD ["/opt/java/openjdk/bin/java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
+CMD ["/opt/java/openjdk/bin/java", "-Duser.home=/config", "-XX:MaxRAMPercentage=95.0", "-jar", "/ajcore.jar"]
 
 SHELL ["/bin/bash"]

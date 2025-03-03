@@ -5,10 +5,10 @@ set -e
 PUID=${PUID:-1000}
 PGID=${PGID:-1000}
 
-groupmod -o -g "$PGID" abc
-usermod -o -u "$PUID" abc
+groupmod -o -g "$PGID" ubuntu
+usermod -o -u "$PUID" ubuntu
 
-chown abc:abc -R /config/
+chown ubuntu:ubuntu -R /config/
 
 if [ ! -f /config/appleJuice/settings.xml ]; then
   mkdir -p /config/appleJuice/
@@ -16,4 +16,4 @@ if [ ! -f /config/appleJuice/settings.xml ]; then
   sed -i "s/dockerianer/dockerianer${RANDOM}/" /config/appleJuice/settings.xml
 fi
 
-sudo -Hu abc "$@"
+sudo -Hu ubuntu "$@"
