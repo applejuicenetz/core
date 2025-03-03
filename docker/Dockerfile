@@ -1,9 +1,6 @@
 FROM eclipse-temurin:17-jre-focal
 
-ARG BUILD_DATE \
-    VERSION \
-    VCS_REF \
-    TARGETARCH
+ARG TARGETARCH VERSION
 
 ENV PUID=1000 \
     PGID=1000 \
@@ -37,10 +34,3 @@ ENTRYPOINT ["/init"]
 CMD ["/opt/java/openjdk/bin/java", "-XX:MaxRAMPercentage=98.0", "-jar", "/ajcore.jar"]
 
 SHELL ["/bin/bash"]
-
-LABEL org.opencontainers.image.version=${VERSION} \
-      org.opencontainers.image.vendor="appleJuiceNETZ" \
-      org.opencontainers.image.url="https://applejuicenet.cc" \
-      org.opencontainers.image.created=${BUILD_DATE} \
-      org.opencontainers.image.revision=${VCS_REF} \
-      org.opencontainers.image.source="https://github.com/applejuicenetz/core"

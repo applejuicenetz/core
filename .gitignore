@@ -1,2 +1,4 @@
 *.jar
 .idea
+target/
+build/
