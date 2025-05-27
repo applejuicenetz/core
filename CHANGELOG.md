@@ -1,24 +1,35 @@
 # Changelog
 
+### [0.31.149.113](https://downloads.applejuicenet.cc)
+
+- Download Limit von `15kb/s` auf `256kb/s` erhöht
+- Core Fenster Standardgröße von `400x300` auf `800x600` erhöht
+
 ### 0.31.149.112
+
 - default server auf die .CC Domain umgestellt
-- aktuelle Server werden ebenfalls auf die .CC Domain abgerufen 
+- neue Server werden ebenfalls von der .CC Domain abgerufen
 
 ### 0.31.149.111
+
 - prüfung der eingesetzten JRE Version deaktiviert, so kann der Core auch mit Java Version > 1.8 gestartet werden
- 
+
 ### 0.31.149.110
-- Pflege einer Whitelist für Clienten.
-- Gültigkeitsprüfung für Java-Version ab JRE 1.7.x.
- 
+
+- Pflege einer Whitelist für Clients
+- Gültigkeitsprüfung für Java-Version ab JRE 1.7.x
+
 ### 0.31.148.103
-- ??? 
- 
+
+- ???
+
 ### 0.30.147.1227
+
 - MaxDownload von 0 Blockt nicht mehr.
 - processLink prüft besser auf Ungültigkeit und gibt incorrect Link als Fehlermeldung zurück.
- 
+
 ### 0.30.146.1203
+
 - LogDateien werden nicht mehr erstellt. Der Fehler wurde gefunden und beseitigt.
 - Problem beim Laden von nichtgrünen Teilen behoben (Bug #245, #408)
 - Statt des vollen Stacktraces wird nur ein Fehler ausgegeben. (Bug #341)
@@ -32,6 +43,7 @@
 - Informationen zur Lösung von Bug #470 eingebaut.
 
 ### 0.30.145.610
+
 - OutOfMemoryBug behoben (Bug #388)
 - Anzeige, wieviel der Gegenüber geladen hat. (Bug #124)
 - Anzeige seit wann man mit einem Server verbunden ist. (Bug #346)
@@ -40,15 +52,16 @@
 - Sonderzeichen in Welcomemessage werden korrekt codiert. (Bug #398)
 - Bug im HTTP-Server beim Abfragen von mehreren Anfragen pro Verbindung behoben.
 
-Es werden evtl. logdateien im AJCore-Home-Verzeichnis erstellt (`C:\Dokumente und Einstellungen\username\appleJuice` bzw `~/appleJuice`) Das ist das Verzeichnis wo die settings.xml liegt. 
+Es werden evtl. logdateien im AJCore-Home-Verzeichnis erstellt (`C:\Dokumente und Einstellungen\username\appleJuice` bzw `~/appleJuice`) Das ist das Verzeichnis wo die settings.xml liegt.
 
 Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt. Die Nummer kann sich ändern.
 
 ### 0.30.144.522
-- IP wird schneller an GUI gesendet (Bug #302) 
-- Textsuche verbessert 
-- Exception behoben (Bug #290, #236, #232) 
-- Beim Exit-Klick aufs Trayicon wird nun nochmals nachgefragt (Bug #280) 
+
+- IP wird schneller an GUI gesendet (Bug #302)
+- Textsuche verbessert
+- Exception behoben (Bug #290, #236, #232)
+- Beim Exit-Klick aufs Trayicon wird nun nochmals nachgefragt (Bug #280)
 - maximale Anzahl an Leuten in der Uploadliste wird den GUIs angeboten
 - 100% CPU-Bug beim Verbinden von Sockets behoben (Bug #340)
 - Wenn beim Schreiben von Download Fehler auftreten, wird der Download nun angehalten (Bug #335)
@@ -62,38 +75,46 @@ Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt
 - Uploadsystem verbessert. Wenn man auf eine Quelle warten muß, wird derweil nun eine andere vorgezogen und zu der geuploaded.
 
 ### 0.30.143.313
+
 - graphische Fehlermeldung wenn Start vom Core schief geht und man mit `--withgui` oder unter Windows ohne Parameter startet
 
 ### 0.29.142.229
+
 - Nach Portwechsel keine 30 Minuten Warten mehr bis neuem Serverlogin
 
 ### 0.29.141.220
+
 - Icon fehlte, somit ging unter Windows der GUI-Modus nicht.
 
 ### 0.29.140.219
+
 - 100 % CPU Bug gefixt (Danke an UP^), war ein fehler in der Uploadlimitierung (Bug #216)
 - Exception versucht zu beheben. Bitte um Rückmeldung:
-java.lang.NullPointerException
-at sun.nio.ch.ServerSocketAdaptor.accept (Unknow Source)
-at N.C.allocate.Direct(TRUX)
-at N.C.run(TRUX)
+  java.lang.NullPointerException
+  at sun.nio.ch.ServerSocketAdaptor.accept (Unknow Source)
+  at N.C.allocate.Direct(TRUX)
+  at N.C.run(TRUX)
 
 Code verändert nach Angaben von JRE Bug 4801882
 
 ### 0.29.139.215
+
 - Fixed: Probleme mit nicht konfigurierten ISDN-Treibern behoben
 - Improved: Core shared sich selbst
 - Improved. Verteilung Quellen unter Clients verbessert
 
 ### 0.29.138.213
+
 - Fixed: Vorbelegung von Einstellungen stimmen nicht zu 100% wenn keine settings.xml vorhanden ist
 - Fixed: 2 Exception behoben (Bug #205)
 - Improved. Verteilung Quellen unter Clients verbessert
 
 ### 0.29.137.209
+
 - Fixed: noch Fehler bei 136 <-> 136 Kommunikation
 
 ### 0.29.136.209
+
 - Fixed: Handling von indirekten Verbindungen verbessert
 - Removed: unnötige Option allowBrowse
 - Fixed: verbesserte Auswahl der Parts
@@ -103,6 +124,7 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Fixed: Problem beim Abbrechen einer Datei bei nicht genügend Plattenplatz (Bug #61)
 
 ### 0.29.135.208
+
 - Fixed: evtl. zu frühes Löschen von angeforderten indirekten Verbindungen
 - Fixed: Nachrichten an Server wurden teilweise falsch geschickt
 - Fixed: Suchanfragen werden nun korrekt beantwortet
@@ -116,9 +138,11 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Fixed: Part speichern und checken ist nun ein synchronisierter Prozess. Dadurch kann nicht eine andere Quelle die Datei fertigstellen, wenn nicht alle Quellen ihre Parts , die sie geadded haben auch gecheckt haben
 
 ### 0.29.134.202
+
 - Bug im Upload behoben
 
 ### 0.29.133.201
+
 - Core schließt in GUIModus nun richtig. (Bug #144)
 - Wenn genug aktive Quellen vorhanden sind, wird an den serverbelastenden indirekten Verbindungen gespart
 - Bug: Wenn man eigenes Limit hatte wurden diese Quellen aller 10 Sekunden als modifiziert marktiert und zur GUI geschickt, obwohl sich am Status evtl. gar nichts geändert hatte.
@@ -126,12 +150,14 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Daten werden optional auch gepackt übermittelt
 
 ### 0.29.132.126
+
 - Bug bei Textausgabe behoben (hat im GUI-Modus gehangen)
 - Indirekte Verbindungsanfrage verbessert
 - doppelte Quellenanfrage beim Server unterbunden
 - alte Suchergebnisse / indirekte Anfragen an neuen Server unterbunden
 
 ### 0.29.131.122
+
 - Schreiben auf die Festplatte sicherer gemacht. (Daten werden er ist .new geschrieben, dann alte Datei gelöscht und neue umbenannt), bei Parts, Settings, Serverliste, Shareidx, Shareinfo. (Bug #120, Bug #75)
 - 2 Exceptions behoben (Bug #34, Bug #89, Bug #25)
 - Fehler mit Sonderzeichen & im Incomingdir. (Bug #39)
@@ -149,9 +175,11 @@ Code verändert nach Angaben von JRE Bug 4801882
 - NullPointerExceptions: neue Logzeile: "socket closed: true / false". Bitte Melden.
 
 ### 0.29.130.1231
+
 - Blackdown 1.4.1 + Sun 1.5.0 wird erlaubt
 
 ### 0.29.129.1230
+
 - Einstellungsüberprüfung verbessert.
 - wenn Nickname mit "nonick" los geht wird der Serverlogin verweigert
 - Liegt Temp-Dir unterhalb vom Incoming-Dir oder umgekehrt oder sind beide das gleiche wird der Serverlogin verweigert
@@ -161,13 +189,14 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Fehler bei der Linkverarbeitung werden ausgegeben
 - Suchen wenn man nicht Verbunden ist wird nun geblockt
 - Dateinamen werden gefiltert. Zulässige Zeichen sind: `A-z 0-9 . - _`
-nicht zulässige Zeichen werden entfernt
+  nicht zulässige Zeichen werden entfernt
 - GUI kann nun Core beenden, Downloads umbenennen sowie Zielverzeichnisse ändern
 - Wenn kein TCP Port gewählt ist, ist der Zufallsport nun mind. 1024 groß. (nicht root leute können unter Linux keine Ports öffnen, die kleiner 1024 sind) (Bug #6, Danke an Maj0r)
 - Probleme beim Suchen gefixt (Bug #12)
 - Subhashs herunterladen verbessert
 
 ### 0.29.128.1227
+
 - Hashing-Thread hat nun minimale Priorität
 - Deadlock behoben (Danke an garnichda)
 - eigenes Konsolefenster; abschaltbar mit --nogui bzw. erzwingen mit --withgui als Parameter beim Start (unter Windows standardmäßig aktiv, andere BS inaktiv)
@@ -178,18 +207,21 @@ nicht zulässige Zeichen werden entfernt
 - neue PDF für Dokumentation Core <--> GUI
 
 ### 0.29.127.1223
+
 - 2 Deadlocks behoben
 - 1 Exception behoben beim Suchen (Danke an Desmo)
 - 1 Exception behoben (Danke an Netgrabber)
 - Wenn man mehr als 500 Quellen hat (bei einer Datei) wird beim Server nicht mehr nach 30 minuten nochmals neu nachgefragt
 
 ### 0.29.126.1220
+
 - Indirekte Verbindungen gefixt. (Upload + Download)
 - Search als Filter hinzugefügt. Suchergebnisse und Suchen selbst sind dadurch nicht mehr der Kategorie Informationen zugeordnet
 - Fehler beim Limitieren der Downloads behoben  (Danke an Fumpi + Akku)
 - Socketoperationen (register) nun neben close und select auch mit synchronisiert
 
 ### 0.29.125.1217
+
 - Verbesserung der Erkennung für ungültige Quellen (z.b. sich selbst)
 - 1 Deadlock behoben (Danke an Tuxhomer)
 - mehr logausgaben für den OutOfMemory-Bug
@@ -197,28 +229,34 @@ nicht zulässige Zeichen werden entfernt
 - neue PDF für Dokumentation Core <--> GUI
 
 ### 0.29.124.1215
+
 - Deadlock behoben (Danke an fumpi)
 - Exception behoben (Danke an whitewindow)
 
 ### 0.29.123.1214
+
 - mehr logausgaben für den OutOfMemory-Bug
 - Too Many Open Files behoben. (ist nicht auf Linux bezogen, war auch unter Windows möglich)
 - Suche stabiler gemacht (bitte beachten: Suche geht nur Java <--> Java)
 - Suchen können nun abgebrochen werden
 
 ### 0.29.122.1211
+
 - mehr logausgaben für den OutOfMemory-Bug
 
 ### 0.29.121.1205
+
 - vorrübergehende Ausgabe des verbrauchten RAMs und Anzahl Downloadverbindungen. (aller 10 Sekunden)
 - blaue Teile werden wieder angezeigt in der GUI
 - Exception behoben (Danke an Meiner, Fumpi & Co.)
 
 ### 0.29.120.1203
+
 - Optimierung des Speicherverhaltens
 - Limitierung der Downloadverbindungen. Empfehlung: Maxdownload wahrheitsgemäß angeben
 
 ### 0.29.119.1115
+
 - Exception behoben beim Schließen von Sockets (Danke an Paderborner)
 - Wenn Fehler beim Fertigstellen der Datei auftritt wird die fehlerhafte File ausm Incoming gelöscht (Danke an Fumpi)
 - Dieser Fehler beim Fertigstellen wird auch zur GUI übermittelt. Die fertige Datei muß dann per Hand aus dem Tempverzeichnis (richtiger Dateiname shcon vorhanden) kopiert oder verschoben werden.
@@ -227,10 +265,12 @@ nicht zulässige Zeichen werden entfernt
 - Speicherverwaltung optimiert (evtl. war das der 0ul0dl; WORKTHREAD DIED = java.lang.outofmemory)
 
 ### 0.29.118.1108
+
 - Problem beim Verbinden als Firewalled user behoben.
 - Eingebaut bestimmte Exceptions anzuzeigen wegen 0ul0dl. Beim beenden kommt deswegen InterruptedException (beim Shutdown uninteressant)
 
 ### 0.29.117.1104
+
 - Fehler beim "alte Verbindungen wegräumen" behoben
 - RAM anzeigen verbessert
 - ArrayIndexOutOfBoundsException behoben (Danke an Paderborner und Akku)
