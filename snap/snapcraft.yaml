@@ -65,9 +65,9 @@ apps:
 
 parts:
   ajcore:
-    plugin: dump
+    plugin: nil
     override-pull: |
-      wget -O $SNAPCRAFT_PART_INSTALL/app/ajcore.jar https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+      wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
     build-packages:
       - wget
     organize:
@@ -86,18 +86,10 @@ parts:
   jre:
     plugin: nil
     build-packages:
-      - ca-certificates
-      - ca-certificates-java
       - openjdk-17-jre
-    stage-packages:
-      - openjdk-11-jre
-      - x11-utils
-    override-prime: |
-      snapcraftctl prime
-      rm -vf usr/lib/jvm/java-17-openjdk-*/lib/security/blacklisted.certs
 
   launcher:
     plugin: dump
     source: ./snap/local/
     organize:
-      '*': app/
+      '*': $SNAP/app/
