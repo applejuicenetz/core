@@ -8,7 +8,7 @@ license: Proprietary
 
 grade: stable
 confinement: strict
-base: core18
+base: core22
 
 architectures:
   - build-on: amd64
@@ -27,11 +27,9 @@ hooks:
 apps:
   ajcore:
     command: $SNAP/app/launcher --withgui
-    extensions:
-      - gnome-3-28
     environment:
       JVM_ARGS: -splash:splash.png
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -44,7 +42,7 @@ apps:
   cli:
     command: $SNAP/app/launcher --nogui
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -57,7 +55,7 @@ apps:
     daemon: simple
     install-mode: disable
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -67,8 +65,9 @@ apps:
 
 parts:
   ajcore:
-    plugin: nil
-    override-pull: wget -P $SNAPCRAFT_PART_INSTALL https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
+    plugin: dump
+    override-pull: |
+      wget -O $SNAPCRAFT_PART_INSTALL/app/ajcore.jar https://github.com/applejuicenetz/core/releases/download/$SNAPCRAFT_PROJECT_VERSION/ajcore.jar
     build-packages:
       - wget
     organize:
@@ -89,17 +88,16 @@ parts:
     build-packages:
       - ca-certificates
       - ca-certificates-java
-      - openjdk-11-jre
+      - openjdk-17-jre
     stage-packages:
       - openjdk-11-jre
       - x11-utils
     override-prime: |
       snapcraftctl prime
-      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
+      rm -vf usr/lib/jvm/java-17-openjdk-*/lib/security/blacklisted.certs
 
   launcher:
     plugin: dump
     source: ./snap/local/
     organize:
       '*': app/
-
