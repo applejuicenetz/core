@@ -9,7 +9,7 @@ jobs:
   container:
     runs-on: ubuntu-latest
     env:
-      AJCORE_VERSION: "0.31.149.112"
+      AJCORE_VERSION: "0.31.149.113"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
