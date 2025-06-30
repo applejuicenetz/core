@@ -51,7 +51,7 @@
         <string>True</string>
 
         <key>CFBundleShortVersionString</key>
-        <string>0.31.149.112</string>
+        <string>0.31.149.113</string>
 
         <key>CFBundleSignature</key>
         <string>acre</string>
@@ -67,5 +67,10 @@
 
         <key>JVMArguments</key>
         <string>--withgui</string>
+
+        <key>JVMOptions</key>
+        <array>
+            <string></string>
+        </array>
     </dict>
 </plist>
