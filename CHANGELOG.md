@@ -1,6 +1,8 @@
 # Changelog
 
-### [0.31.149.113](https://downloads.applejuicenet.cc)
+älter Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
+
+### 0.31.149.113
 
 - Download Limit von `15kb/s` auf `256kb/s` erhöht
 - Core Fenster Standardgröße von `400x300` auf `800x600` erhöht

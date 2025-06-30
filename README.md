@@ -8,8 +8,7 @@
 ![](https://img.shields.io/docker/pulls/applejuicenetz/core)
 ![](https://img.shields.io/docker/image-size/applejuicenetz/core)
 
-![](https://github.com/applejuicenetz/core/actions/workflows/snapcraft.yml/badge.svg)
-![](https://snapcraft.io/applejuice-collector/badge.svg)
+![](https://snapcraft.io/applejuice-core/badge.svg)
 
 
 Meta Repository für die appleJuice Core Releases.

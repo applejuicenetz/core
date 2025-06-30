@@ -4,7 +4,7 @@
 
 set -e
 
-CORE_VERSION="0.31.149.112"
+CORE_VERSION="0.31.149.113"
 
 cd $(dirname "$0")
 
