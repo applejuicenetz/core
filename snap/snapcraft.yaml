@@ -27,6 +27,8 @@ hooks:
 apps:
   ajcore:
     command: $SNAP/app/launcher --withgui
+    extensions:
+      - gnome
     environment:
       JVM_ARGS: -splash:splash.png
       JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
