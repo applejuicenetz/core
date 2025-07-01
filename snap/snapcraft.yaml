@@ -31,7 +31,7 @@ apps:
       - gnome
     environment:
       JVM_ARGS: -splash:splash.png
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -44,7 +44,7 @@ apps:
   cli:
     command: $SNAP/app/launcher --nogui
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -57,7 +57,7 @@ apps:
     daemon: simple
     install-mode: disable
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -88,7 +88,15 @@ parts:
   jre:
     plugin: nil
     build-packages:
-      - openjdk-17-jre
+      - ca-certificates
+      - ca-certificates-java
+      - openjdk-11-jre
+    stage-packages:
+      - openjdk-11-jre
+      - x11-utils
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
 
   launcher:
     plugin: dump
