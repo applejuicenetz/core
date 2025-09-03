@@ -2,9 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
-        <key>com.apple.security.app-sandbox</key>
-        <false/>
-
         <key>NSAppleEventsUsageDescription</key>
         <string>There was an error while launching the application. Please click OK to display a dialog with more information or cancel and view the syslog for details.</string>
 
@@ -26,11 +23,14 @@
         <key>CFBundleDevelopmentRegion</key>
         <string>German</string>
 
+        <key>CFBundleAllowMixedLocalizations</key>
+        <true/>
+
         <key>CFBundleExecutable</key>
-        <string>universalJavaApplicationStub</string>
+        <string>AJCore</string>
 
         <key>CFBundleIconFile</key>
-        <string>application.icns</string>
+        <string>AJCore.icns</string>
 
         <key>JVMSplashFile</key>
         <string>splash.png</string>
@@ -39,7 +39,7 @@
         <string>de.applejuicenet.core.Core</string>
 
         <key>CFBundleDisplayName</key>
-        <string>AJCore</string>
+        <string>appleJuice Client</string>
 
         <key>CFBundleName</key>
         <string>AJCore</string>
@@ -59,18 +59,7 @@
         <key>CFBundleVersion</key>
         <string>0.31.149.112</string>
 
-        <key>JVMMainClassName</key>
-        <string>de.applejuicenet.client.core.Core</string>
-
-        <key>JVMVersion</key>
-        <string>1.8+</string>
-
-        <key>JVMArguments</key>
-        <string>--withgui</string>
-
-        <key>JVMOptions</key>
-        <array>
-            <string></string>
-        </array>
+        <key>LSApplicationCategoryType</key>
+        <string>public.app-category.utilities</string>
     </dict>
 </plist>

@@ -1,53 +1,93 @@
 #!/usr/bin/env bash
 
-# brew install create-dmg
-
-set -e
+set -euo pipefail
 
 CORE_VERSION="0.31.149.113"
+CORE_VERSION_SEMVER="031.149.113"
+AJNETMASK_VERSION="1.0.0"
+APP_NAME="AJCore"
 
-cd $(dirname "$0")
+cd "$(dirname "$0")"
 
 mkdir -p build
 
-function createRelease() {
+fetch_jdk() {
+  local url
 
-  rm -rf build/*
+  case $1 in
+    x86_64)
+      url="https://api.adoptium.net/v3/binary/latest/21/ga/mac/x64/jdk/hotspot/normal/eclipse?project=jdk"
+    ;;
+    arm64)
+      url="https://api.adoptium.net/v3/binary/latest/21/ga/mac/aarch64/jdk/hotspot/normal/eclipse?project=jdk"
+    ;;
+    *)
+      echo "Unsupported architecture: $1" >&2
+      return 1
+    ;;
+  esac
 
-  ARCH="$1"
-  BUILD_FOLDER="build/${ARCH}"
-  DMG_FILE_NAME="AJCore_${ARCH}.dmg"
+  mkdir -p "$2"
 
-  mkdir "${BUILD_FOLDER}"
+  if [ ! -f "$2/jdk.tar.gz" ]; then
+    curl -fsSL "$url" -o "$2/jdk.tar.gz"
+  fi
 
-  mkdir -p "${BUILD_FOLDER}/AJCore.app/Contents/Java"
-  mkdir -p "${BUILD_FOLDER}/AJCore.app/Contents/MacOS"
-  mkdir -p "${BUILD_FOLDER}/AJCore.app/Contents/Resources"
-
-  cp osx/Info.plist "${BUILD_FOLDER}/AJCore.app/Contents/"
-  cp osx/application.icns "${BUILD_FOLDER}/AJCore.app/Contents/Resources"
-  cp osx/splash.png "${BUILD_FOLDER}/AJCore.app/Contents/Resources"
-  cp osx/universalJavaApplicationStub "${BUILD_FOLDER}/AJCore.app/Contents/MacOS"
-
-  curl --fail --silent --location "https://github.com/applejuicenetz/core/releases/download/${CORE_VERSION}/ajcore.jar" -o "${BUILD_FOLDER}/AJCore.app/Contents/Java/ajcore.jar"
-  curl --fail --silent --location "https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-${ARCH}.jnilib" -o "${BUILD_FOLDER}/AJCore.app/Contents/Java/libajnetmask.jnilib"
-
-  rm -f ${DMG_FILE_NAME}
-
-  create-dmg \
-    --volname "AJCore ${ARCH}" \
-    --volicon "osx/application.icns" \
-    --background "osx/.background/background.png" \
-    --window-pos 200 120 \
-    --window-size 540 350 \
-    --icon-size 100 \
-    --icon "AJCore.app" 100 190 \
-    --hide-extension "AJCore.app" \
-    --app-drop-link 400 185 \
-    "${DMG_FILE_NAME}" \
-    "${BUILD_FOLDER}"
+  tar -xzf "$2/jdk.tar.gz" -C "$2"
+  JH="$(/usr/bin/find "$2" -maxdepth 1 -type d -name 'jdk-*' | head -n1)"
+  echo "$JH/Contents/Home"
 }
 
-createRelease "arm64"
+fetch_jnilib() {
+  local arch="$1"
+  local out_dir="$2"
+  mkdir -p "$out_dir"
+  echo "Fetching libajnetmask for $arch into $out_dir"
+  curl --fail --silent --location "https://github.com/applejuicenetz/ajnetmask/releases/download/${AJNETMASK_VERSION}/libajnetmask-${arch}.jnilib" --output "${out_dir}/libajnetmask.jnilib"
+}
 
-createRelease "x86_64"
+build_arch() {
+  local arch="$1"
+  local build_root="build/${arch}"
+  local stage_dir="${build_root}/stage"
+  local input_dir="${stage_dir}/input"
+  local app_dir="${stage_dir}/app"
+  local dmg_out="${APP_NAME}_${arch}.dmg"
+  rm -f "$dmg_out"
+  rm -rf "$build_root"
+  mkdir -p "$input_dir" "$app_dir"
+
+  # Download main jar
+  curl --fail --silent --location "https://github.com/applejuicenetz/core/releases/download/${CORE_VERSION}/ajcore.jar" -o "${input_dir}/ajcore.jar"
+
+  JH="$(fetch_jdk $arch "build/$arch/jdk")"
+
+  echo "Using JDK at $JH"
+
+  # Fetch arch-specific JNI lib
+  fetch_jnilib "$arch" "$app_dir"
+
+  cp -f "splash.png" "${stage_dir}/app/splash.png"
+  cp -f "Info.plist" "${stage_dir}/Info.plist"
+
+  "${JH}/bin/jpackage" \
+    --type dmg \
+    --add-modules "java.base,java.desktop,java.instrument" \
+    --jlink-options "--strip-native-commands --strip-debug --no-man-pages --no-header-files --compress=zip-9" \
+    --name "$APP_NAME" \
+    --app-version "$CORE_VERSION_SEMVER" \
+    --icon "application.icns" \
+    --input "$input_dir" \
+    --main-jar ajcore.jar \
+    --main-class "de.applejuicenet.client.core.Core" \
+    --resource-dir "$stage_dir" \
+    --app-content "${stage_dir}/app" \
+    --java-options "-splash:\$APPDIR/splash.png" \
+    --arguments "--withgui"
+
+  mv "${APP_NAME}-$CORE_VERSION_SEMVER.dmg" "$dmg_out"
+}
+
+build_arch "arm64"
+
+build_arch "x86_64"
