@@ -12,8 +12,6 @@ base: core22
 
 architectures:
   - build-on: amd64
-  - build-on: i386
-  - build-on: armhf
   - build-on: arm64
 
 layout:
@@ -31,7 +29,7 @@ apps:
       - gnome
     environment:
       JVM_ARGS: -splash:splash.png
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-21-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -44,7 +42,7 @@ apps:
   cli:
     command: $SNAP/app/launcher --nogui
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-21-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -57,7 +55,7 @@ apps:
     daemon: simple
     install-mode: disable
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-21-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -81,8 +79,6 @@ parts:
       'libajnetmask-*.so': 'usr/lib/libajnetmask.so'
     source:
       - on amd64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-amd64.so.zip
-      - on i386: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-386.so.zip
-      - on armhf: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm.so.zip
       - on arm64: https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-arm64.so.zip
 
   jre:
@@ -90,13 +86,13 @@ parts:
     build-packages:
       - ca-certificates
       - ca-certificates-java
-      - openjdk-11-jre
+      - openjdk-21-jre
     stage-packages:
-      - openjdk-11-jre
+      - openjdk-21-jre
       - x11-utils
     override-prime: |
       snapcraftctl prime
-      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
+      rm -vf usr/lib/jvm/java-21-openjdk-*/lib/security/blacklisted.certs
 
   launcher:
     plugin: dump
