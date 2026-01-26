@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-noble
+FROM docker.io/library/eclipse-temurin:21-jre-noble
 
 ARG TARGETARCH VERSION
 
