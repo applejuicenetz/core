@@ -2,6 +2,17 @@
 
 älter Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
 
+### 0.34.101.13 [BETA]
+
+- Quellcode wiederhergestellt
+- minimum JRE (Java) auf `21` erhöht (ältere Java Versionen werden vom Core nicht mehr unterstützt)
+- keine `ajnetmask` mehr benötigt
+- veränderte Dateien im Share werden nun korrekt referenziert
+
+### 0.32.101.02
+
+- nie veröffentlichte Beta von `muhviehstar` mit unbekannten Änderungen
+
 ### 0.31.149.113
 
 - Download Limit von `15kb/s` auf `256kb/s` erhöht
