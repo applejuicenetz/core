@@ -1,13 +1,15 @@
 # Changelog
 
-älter Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
+alle Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
 
-### 0.34.101.13 [BETA]
+### 0.34.101.XX [BETA](BETA.md)
 
 - Quellcode wiederhergestellt
 - minimum JRE (Java) auf `21` erhöht (ältere Java Versionen werden vom Core nicht mehr unterstützt)
-- keine `ajnetmask` mehr benötigt
-- veränderte Dateien im Share werden nun korrekt referenziert
+- keine `ajnetmask` Bibliothek mehr benötigt
+- keine `TrayIcon12` Bibliothek mehr benötigt
+- veränderte Dateien im Share werden nun korrekt referenziert bzw. aktualisiert/entfernt
+    - Download einer gleichen Datei somit auch möglich
 
 ### 0.32.101.02
 
