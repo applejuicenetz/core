@@ -72,7 +72,7 @@ build_arch() {
 
   "${JH}/bin/jpackage" \
     --type dmg \
-    --add-modules "java.base,java.desktop,java.instrument" \
+    --add-modules "java.base,java.desktop,java.instrument,java.logging" \
     --jlink-options "--strip-native-commands --strip-debug --no-man-pages --no-header-files --compress=zip-9" \
     --name "$APP_NAME" \
     --app-version "$CORE_VERSION_SEMVER" \
