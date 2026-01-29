@@ -3,19 +3,13 @@
 ## Voraussetzungen
 
 - 64bit Betriebssystem
-- Beta-Version (SNAPSHOT) von hier downloaden: https://downloads.applejuicenet.cc
+- Beta-Version (SNAPSHOT) bei den [releases](https://github.com/applejuicenetz/core/releases) downloaden (Assets aufklappen)
 
 ### Windows
 
-- deinstalliere etwaig installierte Java Versionen (älter als 21)
 - das reguläre appleJuice Core Setup muss nicht deinstalliert werden
-- downloade Java 21 von [hier](https://api.adoptium.net/v3/installer/latest/21/ga/windows/x64/jre/hotspot/normal/eclipse?project=jdk) und installiere es
-    - im Setup einfach "weiter, weiter, fertig" klicken, es muss nichts angepasst werden
-- starte die appleJuice Client Beta `ajcore-0.XX.XX.XX-SNAPSHOT.jar` mit einem einfachen Doppelklick
+- downloade die Datei `AJCore.beta.setup.exe`, installiere es und starte danach die `appleJuice Core (Beta)`
     - die reguläre appleJuice Core Installation darf nicht gleichzeitig laufen
-    - der Ort, von wo die `ajcore-*.jar` gestartet wird, ist egal
-    - die Beta `ajcore-*.jar` darf nicht in das alte appleJuice Verzeichnis kopiert werden
-    - die Beta `ajcore-*.jar` kann **noch** nicht mit der `ajcore.exe` gestartet werden (dafür aber per Doppelklick auf die `.jar` Datei)
 
 ### Windows Portable
 
