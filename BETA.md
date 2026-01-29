@@ -26,11 +26,9 @@ rechtsklick auf die `AJCore.app`, klicke `Paketinhalt zeigen`, navigiere zu `Con
 
 ### Container (Docker, Podman etc)
 
-Das jüngste Container-Image von 2026 benutzt bereits Java 21.
+Ändere das image von `:latest` zu `:beta` in deinem Container Setup, z.B.:
 
-Die Beta `ajcore-0.XX.XX.XX-SNAPSHOT.jar` muss als Volume nach `/ajcore.jar` eingebunden (überschrieben) werden, z.B.:
-
-`--volume ~/ajcore-0.XX.XX.XX-SNAPSHOT.jar:/ajcore.jar:ro`
+`ghcr.io/applejuicenetz/core:beta`
 
 ### Linux (Flatpak und Snap)
 
