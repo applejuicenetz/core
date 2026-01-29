@@ -13,7 +13,9 @@ ADD ${DOWNLOAD_URL} /ajcore.jar
 RUN apt update && \
     apt install -y curl sudo && \
     apt clean && \
-    chmod +r /ajcore.jar
+    chmod +r /ajcore.jar && \
+    mkdir -p /config && \
+    chmod 777 /config
 
 COPY rootfs/ /
 
