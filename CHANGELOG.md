@@ -1,14 +1,22 @@
 # Changelog
 
-alle Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
+veraltete Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
 
-### 0.34.101.XX [BETA](BETA.md)
+Informationen zur **Beta** findet ihr [hier](BETA.md)
+
+### 0.34.101.39 (closed beta)
+
+- fix `java.lang.ArrayIndexOutOfBoundsException: Array index out of range` (Core FAQ [2.22](https://applejuicenetz.github.io/faq/applejuice-core/#array_index_out_of_range))
+- Abruf der Serverliste von applejuicenet.cc nun per `https` möglich
+- Zoomen im Core Fenster im GUI Modus mittelst Strg +/- möglich (nur für die Session, wird nicht gespeichert)
+
+### 0.34.101.30 (public beta)
 
 - Quellcode wiederhergestellt
 - minimum JRE (Java) auf `21` erhöht (ältere Java Versionen werden vom Core nicht mehr unterstützt)
 - keine `ajnetmask` Bibliothek mehr benötigt
 - keine `TrayIcon12` Bibliothek mehr benötigt
-- veränderte Dateien im Share werden nun korrekt referenziert bzw. aktualisiert/entfernt
+- veränderte Dateien im Share werden nun korrekt referenziert bzw. aktualisiert/entfernt (Allgemeine FAQ [23](https://applejuicenetz.github.io/faq/#datei_doppelt_laden))
     - Download einer gleichen Datei somit auch möglich
 
 ### 0.32.101.02
