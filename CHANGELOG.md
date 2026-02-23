@@ -4,6 +4,11 @@ veraltete Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https:/
 
 Informationen zur **Beta** findet ihr [hier](BETA.md)
 
+### 0.34.101.42 (public beta)
+
+- fix für erkennung von bereits geladenen Files
+- fix für Nullpointer Exception im XML API Server
+
 ### 0.34.101.39 (closed beta)
 
 - fix `java.lang.ArrayIndexOutOfBoundsException: Array index out of range` (Core FAQ [2.22](https://applejuicenetz.github.io/faq/applejuice-core/#array_index_out_of_range))

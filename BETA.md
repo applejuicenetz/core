@@ -1,5 +1,7 @@
 # Beta Teilnahme
 
+Änderungen sind [CHANGELOG.md](CHANGELOG.md) zu finden.
+
 ## Voraussetzungen
 
 - Discord Teilnahme https://discord.gg/ZufekUQe7Z
