@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-RAM="$(snapctl get ram)"
-
-echo "RAM configured to ${RAM}"

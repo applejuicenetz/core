@@ -1,6 +1,6 @@
 # Beta Teilnahme
 
-Änderungen sind [CHANGELOG.md](CHANGELOG.md) zu finden.
+Änderungen sind im [CHANGELOG.md](CHANGELOG.md) zu finden.
 
 ## Voraussetzungen
 

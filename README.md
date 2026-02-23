@@ -10,15 +10,13 @@
 
 ![](https://snapcraft.io/applejuice-core/badge.svg)
 
-
 Meta Repository für die appleJuice Core Releases.
-
 
 ## Installation
 
-| Platform 	| Link          	                                            |
-|--------------|---------------------------------------------------------------|
-| Windows  	| [*setup.exe](https://github.com/applejuicenetz/core/releases) |
-| macOS    	| [AJCore.dmg](https://github.com/applejuicenetz/core/releases) |
-| Linux    	| [Snap Package](https://snapcraft.io/applejuice-core)	        |
-| Docker    	| [zur Anleitung](./docker/)	                                |
+| Platform 	  | Link          	                                               |
+|-------------|---------------------------------------------------------------|
+| Windows  	  | [*setup.exe](https://github.com/applejuicenetz/core/releases) |
+| macOS    	  | [AJCore.dmg](https://github.com/applejuicenetz/core/releases) |
+| Linux    	  | [Flatpak Package](https://github.com/applejuicenetz/flatpak)	 |
+| Docker    	 | [zur Anleitung](./docker/)	                                   |

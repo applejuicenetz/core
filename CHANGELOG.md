@@ -1,8 +1,8 @@
 # Changelog
 
-veraltete Core Versionen sind zu finden auf [downloads.applejuicenet.cc](https://downloads.applejuicenet.cc)
+alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https://github.com/applejuicenetz/core/packages/2873021/versions) zu finden
 
-Informationen zur **Beta** findet ihr [hier](BETA.md)
+Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.34.101.42 (public beta)
 
