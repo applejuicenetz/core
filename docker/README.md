@@ -4,15 +4,12 @@
 ![](https://img.shields.io/docker/pulls/applejuicenetz/core)
 ![](https://img.shields.io/docker/image-size/applejuicenetz/core)
 
-
 Das initial Passwort lautet: `applejuice`
 
 ### Environment Variables
 
 | Variable    | Value (default) | Description |
 |-------------|-----------------|-------------|
-| `PUID`      | `1000`          | UserID      |
-| `PGID`      | `1000`          | GroupID     |
 | `CORE_PORT` | `9850`          | P2P Port    |
 | `XML_PORT`  | `9851`          | XML Port    |
 | `TZ`        | `Europe/Berlin` | TimeZone    |
@@ -35,26 +32,48 @@ erstelle und starte eine Docker Container mit dem Namen `ajcore` mit dem nachfol
 
 ```bash
 docker run -d -it \
-        -p 9850-9851:9850-9851 \
+        -p 9850:9850 \
+        -p 9851:9851 \
         --volume ~/appleJuice/:/config/appleJuice/ \
         --volume /Volumes/Volume1/Video/:/mnt/Video/ \
-        --env UID=1000 \
-        --env GID=1000 \
+        --user 1000:1000 \
         --memory="2GB" \
         --name ajcore \
         ghcr.io/applejuicenetz/core:latest
 ```
 
-Beim ersten start wird die [settings.xml](rootfs/app/settings.xml) das `appleJuice` Verzeichnis kopiert, sofern diese noch nicht existiert.
+oder als `compose.yml`:
 
-## java memory limit
-
-Der Java Prozess im Container bekommt `98%` des Speichers, welcher der Container selber bekommen hat (neues Feature seit Java8).
-Daher ist es sinnvoll, dem Container einen festen Ram Wert zuzuteilen:
-
-```bash
-docker update --memory "4GB" ajcore
+```yaml
+service:
+  ajcore:
+    image: ghcr.io/applejuicenetz/core:latest # oder :beta
+    container_name: ajcore
+    pull_policy: always
+    restart: unless-stopped
+    user: 1000:1000 # UID:GID
+    tty: true
+    stdin_open: true
+    network_mode: bridge # oder host, wenn keine credits gutgeschrieben werden
+    deploy:
+      resources:
+        limits:
+          cpu: "0.5" # 50% von 1 CPU-Kern
+          memory: "2GB"
+    ports:
+      - "9850:9850/tcp" # tcp port, muss mit CORE_PORT übereinstimmen
+      - "9851:9851/tcp" # xml api port, muss mit XML_PORT übereinstimmen
+    volumes:
+      - /apps/appleJuice/:/config/appleJuice/
+      - /Volumes/Volume1/Video/:/mnt/Video/
+    environment:
+      - JAVA_TOOL_OPTIONS: "-Duser.language=de -Duser.country=DE" # Zeitstempel im 24h Format
+      - TZ: "Europe/Berlin"
+      - CORE_PORT: 9850
+      - XML_PORT: 9851
 ```
+
+Beim ersten start wird die [settings.xml](rootfs/app/settings.xml) das `appleJuice` Verzeichnis kopiert, sofern diese noch nicht existiert.
 
 ## shared volumes
 
