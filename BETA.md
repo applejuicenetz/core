@@ -35,6 +35,7 @@ rechtsklick auf die `AJCore.app`, klicke `Paketinhalt zeigen`, navigiere zu `Con
 
 `ghcr.io/applejuicenetz/core:beta`
 
-## Linux (Flatpak und Snap)
+## Linux (Flatpak)
 
-Aktuell nicht möglich da diese Container `readonly` sind und kein überschreiben der `ajcore.jar` erlauben.
+Die Beta-Version kann über Flatpak genutzt werden. Installation und Einrichtung sind in der
+[Flatpak-Anleitung](https://applejuicenetz.github.io/flatpak/) beschrieben.
