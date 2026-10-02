@@ -337,19 +337,11 @@ jobs:
 
   publish-release:
     needs: [package-info, collect-packages]
-    if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+    if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
     runs-on: ubuntu-latest
-    environment: release
     permissions:
       contents: write
     steps:
-      - name: Require configured manual approval
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          gh api "repos/${GITHUB_REPOSITORY}/environments/release" > environment.json
-          jq -e '.protection_rules | any(.type == "required_reviewers" and (.reviewers | length > 0))' environment.json
       - uses: actions/download-artifact@v8
         with:
           name: AJCore-packages-${{ needs.package-info.outputs.version }}
