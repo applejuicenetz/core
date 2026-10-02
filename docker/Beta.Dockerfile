@@ -1,4 +1,4 @@
-FROM docker.io/library/eclipse-temurin:21-jre-noble
+FROM docker.io/library/eclipse-temurin:25-jre-noble
 
 ARG TARGETARCH DOWNLOAD_URL
 

@@ -1,6 +1,6 @@
-FROM docker.io/library/eclipse-temurin:21-jre-noble
+FROM docker.io/library/eclipse-temurin:25-jre-noble
 
-ARG TARGETARCH VERSION
+ARG TARGETARCH DOWNLOAD_URL
 
 ENV PUID=1000 \
     PGID=1000 \
@@ -8,14 +8,14 @@ ENV PUID=1000 \
     XML_PORT=9851 \
     HOME="/config"
 
-ADD https://github.com/applejuicenetz/ajnetmask/releases/download/1.0.0/libajnetmask-${TARGETARCH}.so /usr/lib/libajnetmask.so
-ADD https://github.com/applejuicenetz/core/releases/download/${VERSION}/ajcore.jar /ajcore.jar
+ADD ${DOWNLOAD_URL} /ajcore.jar
 
 RUN apt update && \
     apt install -y curl sudo && \
     apt clean && \
-    chmod +r /usr/lib/libajnetmask.so && \
-    chmod +r /ajcore.jar
+    chmod +r /ajcore.jar && \
+    mkdir -p /config && \
+    chmod 777 /config
 
 COPY rootfs/ /
 
