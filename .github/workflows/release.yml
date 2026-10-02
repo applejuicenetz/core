@@ -95,7 +95,6 @@ jobs:
           name: appleJuice Core ${{ needs.package-info.outputs.version }}
           prerelease: ${{ inputs.prerelease }}
           make_latest: ${{ inputs.prerelease == false }}
-          generate_release_notes: true
           body: aktuelles Changelog befindet sich [hier](https://github.com/applejuicenetz/core/blob/main/CHANGELOG.md)
           fail_on_unmatched_files: true
           files: |
