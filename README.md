@@ -34,9 +34,10 @@ Manual runs default to `dry_run: true`: all packages are built and uploaded as
 Actions artifacts, but `publish-release` is skipped. Package events from Maven
 publication also never release. Set `dry_run: false` on a manual run to publish.
 
-Only `publish-release` creates the `v<version>` tag and GitHub release, and only
-on manual start with `dry_run: false`. It publishes all six packages and the
-original Maven JAR without rebuilding. The source repository needs the
+Only `publish-release` creates the `<version>` tag and GitHub release, and only
+on manual start with `dry_run: false`. `prerelease` defaults to `true`; set it to
+`false` for a stable release that becomes the latest release. It publishes all six
+packages and the original Maven JAR. The source repository needs the
 `PACKAGE_RW_TOKEN` secret in its `mvn-publish` environment.
 
 Native installer versions omit the leading `0.` from the four-part Maven version:
