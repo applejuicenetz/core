@@ -33,4 +33,10 @@
         <id>io.github.applejuicenetz.javagui</id>
         <id>io.github.applejuicenetz.collector</id>
     </suggests>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://applejuicenetz.github.io/assets/screenshots/applejuice_core.png</image>
+            <caption>Main Window</caption>
+        </screenshot>
+    </screenshots>
 </component>
