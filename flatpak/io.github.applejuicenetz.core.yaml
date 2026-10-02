@@ -1,0 +1,56 @@
+id: io.github.applejuicenetz.core
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: ajcore
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.openjdk25
+build-options:
+  no-debuginfo: true
+finish-args:
+  - --share=network
+  - --socket=x11
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --filesystem=~/appleJuice:create
+  - --env=PATH=/app/jre/bin:/app/bin:/usr/bin
+  - --env=JAVA_HOME=/app/jre
+modules:
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk25/install.sh
+  - name: binary
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 ajcore.jar /app/share/io.github.applejuicenetz.core/ajcore.jar
+    sources:
+      - type: file
+        path: ../target/ajcore.jar
+  - name: starter
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 io.github.applejuicenetz.core.sh /app/bin/ajcore
+    sources:
+      - type: file
+        path: core/io.github.applejuicenetz.core.sh
+  - name: icon
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 AJCore.png /app/share/icons/hicolor/256x256/apps/io.github.applejuicenetz.core.png
+    sources:
+      - type: file
+        path: ../assets/AJCore.png
+  - name: desktop-file
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.applejuicenetz.core.desktop /app/share/applications/io.github.applejuicenetz.core.desktop
+    sources:
+      - type: file
+        path: core/io.github.applejuicenetz.core.desktop
+  - name: metainfo
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 io.github.applejuicenetz.core.metainfo.xml /app/share/metainfo/io.github.applejuicenetz.core.metainfo.xml
+    sources:
+      - type: file
+        path: core/io.github.applejuicenetz.core.metainfo.xml

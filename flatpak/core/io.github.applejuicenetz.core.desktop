@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=appleJuice Core
+GenericName=appleJuice Client
+Comment=Client for the appleJuice P2P network
+Comment[de]=Client für das appleJuice-P2P-Netzwerk
+Exec=ajcore
+Icon=io.github.applejuicenetz.core
+Type=Application
+Terminal=false
+Categories=Network;FileTransfer;P2P;
+StartupWMClass=de-applejuicenet-client-core-Core

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>io.github.applejuicenetz.core</id>
+    <name>appleJuice Core</name>
+    <summary>appleJuice Core (Client)</summary>
+    <description>
+        <p>appleJuice Core, the client of the appleJuice network</p>
+    </description>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>LicenseRef-proprietary</project_license>
+    <developer_name>appleJuiceNETZ</developer_name>
+    <developer id="io.github.applejuicenetz">
+        <name>appleJuiceNETZ</name>
+    </developer>
+    <url type="homepage">https://applejuicenetz.github.io/</url>
+    <url type="faq">https://applejuicenetz.github.io/faq/</url>
+    <url type="bugtracker">https://github.com/applejuicenetz/core/issues</url>
+    <releases>
+        <release version="0.35.185" type="stable" date="2026-10-01"/>
+    </releases>
+    <categories>
+        <category>Network</category>
+        <category>FileTransfer</category>
+    </categories>
+    <recommends>
+        <internet>always</internet>
+    </recommends>
+    <keywords>
+        <keyword translate="no">appleJuice</keyword>
+        <keyword>p2p</keyword>
+    </keywords>
+    <suggests>
+        <id>io.github.applejuicenetz.javagui</id>
+        <id>io.github.applejuicenetz.collector</id>
+    </suggests>
+</component>
