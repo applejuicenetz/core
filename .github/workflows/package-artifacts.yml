@@ -1,0 +1,338 @@
+name: Build six core package artifacts
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      jar_artifact:
+        description: 'JAR artifact from this workflow run; empty downloads from Maven'
+        default: ''
+        type: string
+      packaging_ref:
+        description: 'Core commit containing packaging resources'
+        default: main
+        type: string
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  package-info:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      installer-version: ${{ steps.version.outputs.installer-version }}
+    steps:
+      - name: Validate package version
+        id: version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          python3 - <<'PYTHON'
+          import os
+          import re
+          version = os.environ['VERSION']
+          if not re.fullmatch(r'0\.[0-9]+\.[0-9]+\.[0-9]+', version):
+              raise SystemExit('Expected a numeric 0.major.minor.build version')
+          major, minor, build = map(int, version.split('.')[1:])
+          if major == 0 or major > 255 or minor > 255 or build > 65535:
+              raise SystemExit('Version exceeds native installer limits')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'version={version}\ninstaller-version={major}.{minor}.{build}\n')
+          PYTHON
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: '25'
+
+      - uses: actions/download-artifact@v8
+        if: inputs.jar_artifact != ''
+        with:
+          name: ${{ inputs.jar_artifact }}
+          path: target
+
+      - name: Prepare source JAR artifact
+        if: inputs.jar_artifact != ''
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          mv "target/ajcore-${VERSION}.jar" target/ajcore.jar
+
+      - name: Download and verify published ajcore JAR
+        if: inputs.jar_artifact == ''
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          mkdir -p target
+          url="https://maven.pkg.github.com/applejuicenetz/core/de/applejuicenet/ajcore/${VERSION}/ajcore-${VERSION}.jar"
+          curl --fail --show-error --silent --location --retry 5 --retry-all-errors \
+            --user "${GITHUB_ACTOR}:${GITHUB_TOKEN}" "$url" --output target/ajcore.jar
+          curl --fail --show-error --silent --location --retry 5 --retry-all-errors \
+            --user "${GITHUB_ACTOR}:${GITHUB_TOKEN}" "${url}.sha1" --output target/ajcore.jar.sha1
+          checksum="$(tr -d '\r\n' < target/ajcore.jar.sha1)"
+          [[ "$checksum" =~ ^[0-9a-fA-F]{40}$ ]]
+          printf '%s  %s\n' "$checksum" target/ajcore.jar | sha1sum --check -
+
+      - name: Verify Core main class
+        run: |
+          set -euo pipefail
+          jar tf target/ajcore.jar > target/jar-contents.txt
+          grep -Fx 'de/applejuicenet/client/core/Core.class' target/jar-contents.txt
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ajcore-published-${{ inputs.version }}
+          path: target/ajcore.jar
+          if-no-files-found: error
+
+  package:
+    needs: package-info
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15-intel
+            platform: macos
+            arch: amd64
+            type: dmg
+          - runner: macos-15
+            platform: macos
+            arch: aarch64
+            type: dmg
+          - runner: windows-2025
+            platform: windows
+            arch: amd64
+            type: exe
+          - runner: windows-11-arm
+            platform: windows
+            arch: aarch64
+            type: exe
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          repository: applejuicenetz/core
+          ref: ${{ inputs.packaging_ref }}
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: '25'
+
+      - uses: actions/setup-python@v7
+        if: matrix.platform == 'windows'
+        with:
+          python-version: '3.x'
+
+      - uses: actions/setup-dotnet@v6
+        if: matrix.platform == 'windows'
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install WiX for jpackage
+        if: matrix.platform == 'windows'
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          "$env:USERPROFILE\.dotnet\tools" >> $env:GITHUB_PATH
+          & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add --global WixToolset.UI.wixext/5.0.2
+          & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add --global WixToolset.Util.wixext/5.0.2
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: ajcore-published-${{ needs.package-info.outputs.version }}
+          path: target
+
+      - name: Build native installer from published JAR
+        shell: bash
+        env:
+          INSTALLER_VERSION: ${{ needs.package-info.outputs.installer-version }}
+          PACKAGE_PLATFORM: ${{ matrix.platform }}
+          PACKAGE_ARCH: ${{ matrix.arch }}
+          PACKAGE_TYPE: ${{ matrix.type }}
+        run: |
+          set -euo pipefail
+          version="$INSTALLER_VERSION"
+          mkdir -p target/jpackage-input target/jpackage-output
+          cp target/ajcore.jar target/jpackage-input/
+          package_name=AJCore
+          if [[ "$PACKAGE_PLATFORM" == windows ]]; then
+            package_name="appleJuice Core"
+          fi
+          options=(
+            --type "$PACKAGE_TYPE"
+            --name "$package_name"
+            --app-version "$version"
+            --vendor appleJuiceNETZ
+            --input target/jpackage-input
+            --main-jar ajcore.jar
+            --main-class de.applejuicenet.client.core.Core
+            --add-modules java.desktop,java.management,java.naming,java.sql,java.xml,jdk.crypto.ec,jdk.unsupported
+            --java-options --enable-native-access=ALL-UNNAMED
+            --java-options -XX:MaxRAMPercentage=50
+            --dest target/jpackage-output
+          )
+          if [[ "$PACKAGE_PLATFORM" == macos ]]; then
+            options+=(--icon assets/mac/AJCore.icns --mac-package-identifier de.applejuicenet.client.core --resource-dir assets/mac)
+          else
+            python scripts/windows_installer.py --resource-dir target/jpackage-resources
+            options+=(
+              --resource-dir target/jpackage-resources
+              --icon assets/windows/AJCore.ico
+              --description "appleJuice Core"
+              --copyright appleJuiceNETZ
+              --about-url https://applejuicenetz.github.io
+              --win-help-url https://applejuicenetz.github.io/faq/
+              --install-dir appleJuiceNETZ/Core
+              --win-dir-chooser
+              --win-menu
+              --win-menu-group appleJuiceNETZ
+              --win-shortcut
+              --win-upgrade-uuid ba7617da-3cfc-44ea-a17a-b9654414a9a5
+            )
+          fi
+          jpackage "${options[@]}"
+          mv "target/jpackage-output/${package_name}-${version}.${PACKAGE_TYPE}" "target/AJCore-${PACKAGE_PLATFORM}-${PACKAGE_ARCH}.${PACKAGE_TYPE}"
+
+      - name: Test Windows installer
+        if: matrix.platform == 'windows'
+        shell: pwsh
+        run: python scripts/test_windows_installer.py target/AJCore-windows-${{ matrix.arch }}.exe
+
+      - name: Verify macOS network usage description
+        if: matrix.platform == 'macos'
+        shell: bash
+        env:
+          PACKAGE_ARCH: ${{ matrix.arch }}
+        run: |
+          set -euo pipefail
+          mountpoint="$(mktemp -d)"
+          hdiutil attach -readonly -nobrowse -mountpoint "$mountpoint" "target/AJCore-macos-${PACKAGE_ARCH}.dmg"
+          trap 'hdiutil detach "$mountpoint"' EXIT
+          plist="$mountpoint/AJCore.app/Contents/Info.plist"
+          plutil -lint "$plist"
+          test -n "$(plutil -extract NSLocalNetworkUsageDescription raw -o - "$plist")"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: native-${{ matrix.platform }}-${{ matrix.arch }}
+          path: target/AJCore-${{ matrix.platform }}-${{ matrix.arch }}.${{ matrix.type }}
+          if-no-files-found: error
+
+  flatpak:
+    needs: package-info
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            arch: x86_64
+            package-arch: amd64
+          - runner: ubuntu-24.04-arm
+            arch: aarch64
+            package-arch: aarch64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          repository: applejuicenetz/core
+          ref: ${{ inputs.packaging_ref }}
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: '25'
+      - name: Install Flatpak builder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends flatpak flatpak-builder
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+      - uses: actions/download-artifact@v8
+        with:
+          name: ajcore-published-${{ needs.package-info.outputs.version }}
+          path: target
+
+      - name: Build Flatpak bundle from published JAR
+        shell: bash
+        env:
+          VERSION: ${{ needs.package-info.outputs.version }}
+          FLATPAK_ARCH: ${{ matrix.arch }}
+          PACKAGE_ARCH: ${{ matrix.package-arch }}
+        run: |
+          set -euo pipefail
+          version="$VERSION"
+          release_date="$(date -u +%F)"
+          sed -i -E "s|<release version=\"[^\"]+\" type=\"stable\" date=\"[^\"]+\"/>|<release version=\"$version\" type=\"stable\" date=\"$release_date\"/>|" \
+            flatpak/core/io.github.applejuicenetz.core.metainfo.xml
+          flatpak-builder \
+            --arch="$FLATPAK_ARCH" \
+            --user \
+            --install-deps-from=flathub \
+            --disable-rofiles-fuse \
+            --force-clean \
+            --repo=target/flatpak-repo \
+            --default-branch=stable \
+            target/flatpak-build \
+            flatpak/io.github.applejuicenetz.core.yaml
+          flatpak build-bundle \
+            --arch="$FLATPAK_ARCH" \
+            --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo \
+            target/flatpak-repo \
+            "target/AJCore-linux-${PACKAGE_ARCH}.flatpak" \
+            io.github.applejuicenetz.core stable
+      - uses: actions/upload-artifact@v7
+        with:
+          name: flatpak-${{ matrix.package-arch }}
+          path: target/AJCore-linux-${{ matrix.package-arch }}.flatpak
+          if-no-files-found: error
+
+  collect-packages:
+    needs: [package-info, package, flatpak]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: native-*
+          merge-multiple: true
+          path: target
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: flatpak-*
+          merge-multiple: true
+          path: target
+      - uses: actions/download-artifact@v8
+        with:
+          name: ajcore-published-${{ needs.package-info.outputs.version }}
+          path: target
+      - name: Check all six packages and published JAR
+        shell: bash
+        env:
+          VERSION: ${{ needs.package-info.outputs.version }}
+        run: |
+          set -euo pipefail
+          for file in \
+            AJCore-macos-amd64.dmg \
+            AJCore-macos-aarch64.dmg \
+            AJCore-windows-amd64.exe \
+            AJCore-windows-aarch64.exe \
+            AJCore-linux-amd64.flatpak \
+            AJCore-linux-aarch64.flatpak \
+            ajcore.jar; do
+            test -s "target/$file"
+          done
+          mv target/ajcore.jar "target/ajcore-${VERSION}.jar"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: AJCore-packages-${{ needs.package-info.outputs.version }}
+          path: |
+            target/*.dmg
+            target/*.exe
+            target/*.flatpak
+            target/*.jar
+          if-no-files-found: error
+
