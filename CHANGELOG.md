@@ -4,6 +4,19 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
+### 0.35.185.XX (public beta)
+
+- Unterstützung für 64-Bit Dateigrößen im Server- und Core-zu-Core-Protokoll (Größen > 2 GB), Aushandlung per Protokollversion
+- Partfiles werden versioniert, Fortschrittsfelder für große Dateien ergänzt
+- fix: Fortsetzen von Downloads nach Entfernen des Download Limits
+- minimum JRE (Java) auf `25` erhöht (wird überall mit ausgeliefert)
+- XML API: CORS Header (`Access-Control-Allow-Origin: *`) für alle Antworten
+- natives System Tray über `libtray`, Menüeinträge zum Anzeigen/Verstecken der Konsole
+- native Installer per `jpackage` für Windows (`.exe`) und macOS (`.dmg`) sowie Linux Flatpak
+- macOS fragt Zugriff auf das lokale Netzwerk korrekt an
+- Windows Installer: Installation über einen alten NSIS/Java Ordner wird verweigert
+- maximaler Arbeitsspeicher der JVM standardmäßig auf 50% (`MaxRAMPercentage`)
+
 ### 0.34.101.42 (public beta)
 
 - fix für erkennung von bereits geladenen Files
