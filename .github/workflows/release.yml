@@ -105,3 +105,13 @@ jobs:
             target/AJCore-linux-amd64.flatpak
             target/AJCore-linux-aarch64.flatpak
             target/ajcore-${{ needs.package-info.outputs.version }}.jar
+
+  notify-flatpak:
+    needs: publish-release
+    if: needs.publish-release.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger flatpak repository sync
+        env:
+          GH_TOKEN: ${{ secrets.FLATPAK_DISPATCH_TOKEN }}
+        run: gh api repos/applejuicenetz/flatpak/dispatches -f event_type=flatpak-release
