@@ -1,6 +1,6 @@
 FROM docker.io/library/eclipse-temurin:25-jre-noble
 
-ARG TARGETARCH DOWNLOAD_URL
+ARG TARGETARCH
 
 ENV PUID=1000 \
     PGID=1000 \
@@ -8,7 +8,7 @@ ENV PUID=1000 \
     XML_PORT=9851 \
     HOME="/config"
 
-ADD ${DOWNLOAD_URL} /ajcore.jar
+COPY ajcore.jar /ajcore.jar
 
 RUN apt update && \
     apt install -y curl sudo && \

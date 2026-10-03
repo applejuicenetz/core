@@ -2,36 +2,44 @@ name: 'container beta'
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 7 * * MON'
+    inputs:
+      version:
+        description: 'Published Maven package version (for example 0.35.185.42)'
+        required: true
+        type: string
+      push:
+        description: 'Push image tags to ghcr.io and Docker Hub (false builds only)'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  packages: read
 
 jobs:
-  snapshot:
+  container:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Get snapshot info
-        id: snapshot
+      - name: Download JAR from Maven package
+        env:
+          VERSION: ${{ inputs.version }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          response=$(curl -i -s "http://www.applejuicenet.cc/snapshot.php")
-          download_url=$(echo "$response" | grep -i "^location:" | cut -d' ' -f2- | tr -d '\r')
-          release_tag=$(echo "$response" | grep -i "^x-release-tag:" | cut -d' ' -f2- | tr -d '\r')
-          echo "DOWNLOAD_URL=${download_url}" >> $GITHUB_OUTPUT
-          echo "RELEASE_TAG=${release_tag}" >> $GITHUB_OUTPUT
-          
-          echo "::group::Snapshot Info"
-          echo "DOWNLOAD_URL: ${download_url}"
-          echo "RELEASE_TAG: ${release_tag}"
-          echo "::endgroup::"
-          
-          if [[ -z "$download_url" && -z "$release_tag" ]]; then
-            echo "::error::Both DOWNLOAD_URL and RELEASE_TAG are empty!"
-            exit 1
-          fi
+          set -euo pipefail
+          [[ "$VERSION" =~ ^0\.[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          curl --fail --silent --show-error --location \
+            --user "${GITHUB_ACTOR}:${GITHUB_TOKEN}" \
+            --output docker/ajcore.jar \
+            "https://maven.pkg.github.com/applejuicenetz/core/de/applejuicenet/ajcore/${VERSION}/ajcore-${VERSION}.jar"
+          test -s docker/ajcore.jar
 
       - name: Login to ghcr.io
+        if: inputs.push
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
@@ -39,6 +47,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Login to DockerHub
+        if: inputs.push
         uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKER_HUB_USER }}
@@ -53,7 +62,7 @@ jobs:
             ${{ github.repository }}
           tags: |
             type=raw,value=beta
-            type=raw,value=${{ steps.snapshot.outputs.RELEASE_TAG }}
+            type=raw,value=beta-${{ inputs.version }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -67,9 +76,7 @@ jobs:
           context: ./docker/
           file: ./docker/Beta.Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: true
+          push: ${{ inputs.push }}
           provenance: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            DOWNLOAD_URL=${{ steps.snapshot.outputs.DOWNLOAD_URL }}
