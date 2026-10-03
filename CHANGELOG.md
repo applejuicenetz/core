@@ -4,7 +4,13 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
-### 0.35.185.XX (public beta)
+### 0.35.185.93 (public beta)
+
+- fix: Downloads von Dateien > 2 GB melden nicht mehr fälschlich `found defect part` ab Part 2047 (Überlauf bei der Prüfung der Parts)
+- fix: Upload bricht bei verkürzter Datei mit Fehler ab, statt endlos zu lesen
+- fix: Sharecheck während des Kopierens in den Share erzeugt keine doppelten bzw. dauerhaft hängenden Einträge mehr, veraltete Einträge geänderter Dateien werden entfernt ([core-src#42](https://github.com/applejuicenetz/core-src/issues/42))
+
+### 0.35.185.89 (public beta)
 
 - Unterstützung für 64-Bit Dateigrößen im Server- und Core-zu-Core-Protokoll (Größen > 2 GB), Aushandlung per Protokollversion
 - Partfiles werden versioniert, Fortschrittsfelder für große Dateien ergänzt
