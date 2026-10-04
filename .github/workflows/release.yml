@@ -115,3 +115,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.FLATPAK_DISPATCH_TOKEN }}
         run: gh api repos/applejuicenetz/flatpak/dispatches -f event_type=flatpak-release
+
+  container:
+    needs: [package-info, publish-release]
+    if: needs.publish-release.result == 'success'
+    permissions:
+      contents: read
+      packages: read
+    uses: ./.github/workflows/container.yml
+    secrets: inherit
+    with:
+      version: ${{ needs.package-info.outputs.version }}
+      prerelease: ${{ inputs.prerelease }}
+      push: true

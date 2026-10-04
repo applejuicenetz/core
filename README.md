@@ -12,41 +12,6 @@
 
 Meta Repository für die appleJuice Core Releases.
 
-## Build and release pipeline
-
-`core-src` builds, tests, obfuscates and signs the JAR. On manual start with
-`publish_maven: true`, it publishes an immutable version such as
-`de.applejuicenet:ajcore:0.35.185.42` to this repository's Maven registry.
-
-`.github/workflows/release.yml` starts on `registry_package: published`, filtered
-to the `de.applejuicenet.ajcore` Maven package. As in `server`, incomplete
-publications are ignored until all six Maven files are present. Alternatively,
-run it manually with an already published version. The workflow downloads the
-JAR once, checks its SHA-1 checksum and main class, and shares the exact artifact
-with all package jobs. No Java sources are checked out or compiled here.
-
-The package jobs produce macOS DMGs, Windows EXEs and Linux Flatpak bundles,
-each for amd64 and aarch64. Packaging resources and Windows installer checks
-are maintained in `assets/`, `flatpak/` and `scripts/`. Package builds and the
-combined `AJCore-packages-<version>` artifact never create a release.
-
-Manual runs default to `dry_run: true`: all packages are built and uploaded as
-Actions artifacts, but `publish-release` is skipped. Package events from Maven
-publication also never release. Set `dry_run: false` on a manual run to publish.
-
-Only `publish-release` creates the `<version>` tag and GitHub release, and only
-on manual start with `dry_run: false`. `prerelease` defaults to `true`; set it to
-`false` for a stable release that becomes the latest release. It publishes all six
-packages and the original Maven JAR. The source repository needs the
-`PACKAGE_RW_TOKEN` secret in its `mvn-publish` environment.
-
-Native installer versions omit the leading `0.` from the four-part Maven version:
-`0.35.185.42` becomes `35.185.42`. This preserves the build number for upgrades
-while satisfying the three-part version format of Windows and macOS installers.
-The native major and minor components must not exceed 255, the build component
-must not exceed 65535, and the native major component must be greater than zero.
-Flatpak metadata, Maven coordinates and release tags retain all four components.
-
 ## Installation
 
 | Platform 	  | Link          	                                               |
