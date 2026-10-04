@@ -35,8 +35,6 @@ on:
         required: true
         default: false
         type: boolean
-  schedule:
-    - cron: '0 7 * * MON'
 
 permissions:
   contents: read
@@ -48,10 +46,10 @@ concurrency:
 
 jobs:
   container:
-    if: github.ref == 'refs/heads/main' || (github.event_name != 'schedule' && inputs.push == false)
+    if: github.ref == 'refs/heads/main' || inputs.push == false
     runs-on: ubuntu-latest
     env:
-      DO_PUSH: ${{ github.event_name == 'schedule' || inputs.push }}
+      DO_PUSH: ${{ inputs.push }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7

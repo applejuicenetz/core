@@ -27,7 +27,7 @@ Docker Hub (`applejuicenetz/core`) und GHCR (`ghcr.io/applejuicenetz/core`) erha
 
 Nach erfolgreichem `publish-release` ruft `release.yml` den wiederverwendbaren Workflow `container.yml` mit der veröffentlichten Maven-Version und dem Flag `prerelease` auf. Pre-Releases aktualisieren nur Beta-Tags, stabile Releases nur stabile Tags. Dry-Runs und reine Maven-Veröffentlichungen veröffentlichen nie Container.
 
-Der Wochen-Build ermittelt den letzten stabilen GitHub-Release und baut diese Version mit dem aktuellen Basis-Image neu. Die passende JAR muss in der Maven Registry vorhanden sein. Das Dockerfile kopiert die heruntergeladene JAR; Java-Quellcode wird hier nicht kompiliert.
+Es gibt keinen Zeitplan (Cron). Container entstehen nur durch `release.yml` oder manuell. Die passende JAR muss in der Maven Registry vorhanden sein. Das Dockerfile kopiert die heruntergeladene JAR; Java-Quellcode wird hier nicht kompiliert. Für Basis-Image-Updates `container.yml` manuell starten.
 
 Für manuelle Builds in `container.yml` die Eingaben `version` und `prerelease` setzen. Eine leere Version ermittelt den letzten stabilen GitHub-Release. Manuelle Läufe verwenden standardmäßig `push: false`; zum Veröffentlichen muss Push auf `main` ausdrücklich aktiviert werden. `container_beta.yml` ist ein Wrapper, der denselben Build mit `prerelease: true` aufruft.
 
