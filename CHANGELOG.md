@@ -4,6 +4,12 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
+### Unveröffentlicht
+
+- Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert; die Download-Regelung behält ihr bisheriges Zeitfenster
+- fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
+- XML API: Passwort kann über `X-AppleJuice-Password` statt als URL-Parameter übergeben werden; bisherige Authentifizierung bleibt unterstützt
+
 ### 0.35.185.93
 
 - fix: Downloads von Dateien > 2 GB melden nicht mehr fälschlich `found defect part` ab Part 2047 (Überlauf bei der Prüfung der Parts)
