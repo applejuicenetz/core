@@ -6,6 +6,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### Unveröffentlicht
 
+- fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt; noch ungeprüfte Dateien bleiben erhalten
 - Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert; die Download-Regelung behält ihr bisheriges Zeitfenster
 - fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
 - XML API: Passwort kann über `X-AppleJuice-Password` statt als URL-Parameter übergeben werden; bisherige Authentifizierung bleibt unterstützt
