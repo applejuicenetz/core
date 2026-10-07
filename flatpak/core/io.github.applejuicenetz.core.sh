@@ -8,4 +8,6 @@ JAVA_ARGS="-Djava.net.preferIPv4Stack=true -Dsun.java2d.xrender=false --enable-n
 
 cd /app/share/io.github.applejuicenetz.core/ || exit 1
 
-exec java $JAVA_ARGS -jar /app/share/io.github.applejuicenetz.core/ajcore.jar "$@"
+mkdir -p "$HOME/appleJuice"
+
+exec java $JAVA_ARGS "-XX:ErrorFile=$HOME/appleJuice/hs_err_pid%p.log" -jar /app/share/io.github.applejuicenetz.core/ajcore.jar "$@"

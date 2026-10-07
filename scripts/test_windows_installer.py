@@ -11,6 +11,15 @@ import winreg
 from windows_installer import DISPLAY_NAME, LEGACY_PRODUCTS, UNINSTALL_KEY
 
 
+def check_error_file(target):
+    configs = list((target / 'app').glob('*.cfg'))
+    if len(configs) != 1:
+        raise RuntimeError(f'Expected exactly one launcher config: {configs}')
+    expected = 'java-options=-XX:ErrorFile=$USERPROFILE/appleJuice/hs_err_pid%p.log'
+    if expected not in configs[0].read_text(encoding='utf-8').splitlines():
+        raise RuntimeError(f'ErrorFile option missing in {configs[0]}')
+
+
 def check_shortcuts(target):
     command = ("[Environment]::GetFolderPath('CommonDesktopDirectory'); "
                "[Environment]::GetFolderPath('CommonPrograms')")
@@ -131,6 +140,7 @@ def main():
             if not marker.is_dir():
                 raise RuntimeError('Installer removed the unrelated Java directory')
             shortcuts = check_shortcuts(target)
+            check_error_file(target)
             with legacy_entry(products[-1], winreg.KEY_WOW64_64KEY):
                 check_install(msi, target, parent / 'repair.log', (0, 3010),
                               'REINSTALL=ALL', 'REINSTALLMODE=vomus')
@@ -142,7 +152,7 @@ def main():
                 raise RuntimeError(f'Uninstall returned {result.returncode}')
         if any(shortcut.exists() for shortcut in shortcuts):
             raise RuntimeError('Uninstall left product shortcuts behind')
-    print('Windows installer: registry rejection, generic error, shortcut names, install, repair and uninstall passed')
+    print('Windows installer: registry rejection, generic error, shortcut names, ErrorFile option, install, repair and uninstall passed')
 
 
 if __name__ == '__main__':

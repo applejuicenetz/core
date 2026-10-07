@@ -178,6 +178,12 @@ jobs:
             --java-options -XX:MaxRAMPercentage=50
             --dest target/jpackage-output
           )
+          # launcher expands $VAR in the .cfg; the JVM does not create the directory, the core does at startup
+          if [[ "$PACKAGE_PLATFORM" == windows ]]; then
+            options+=(--java-options '-XX:ErrorFile=$USERPROFILE/appleJuice/hs_err_pid%p.log')
+          else
+            options+=(--java-options '-XX:ErrorFile=$HOME/appleJuice/hs_err_pid%p.log')
+          fi
           if [[ "$PACKAGE_PLATFORM" == macos ]]; then
             options+=(--icon assets/mac/AJCore.icns --mac-package-identifier de.applejuicenet.client.core --resource-dir assets/mac)
           else

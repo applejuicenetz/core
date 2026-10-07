@@ -27,6 +27,6 @@ HEALTHCHECK --interval=30s --start-period=10s CMD curl --fail http://127.0.0.1:$
 
 ENTRYPOINT ["/init"]
 
-CMD ["/opt/java/openjdk/bin/java", "-Duser.home=/config", "-XX:MaxRAMPercentage=95.0", "-jar", "/ajcore.jar"]
+CMD ["/opt/java/openjdk/bin/java", "-Duser.home=/config", "-XX:MaxRAMPercentage=95.0", "-XX:ErrorFile=/config/appleJuice/hs_err_pid%p.log", "-jar", "/ajcore.jar"]
 
 SHELL ["/bin/bash"]

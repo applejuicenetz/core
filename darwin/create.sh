@@ -83,6 +83,7 @@ build_arch() {
     --resource-dir "$stage_dir" \
     --app-content "${stage_dir}/app" \
     --java-options "-splash:\$APPDIR/splash.png" \
+    --java-options '-XX:ErrorFile=$HOME/appleJuice/hs_err_pid%p.log' \
     --arguments "--withgui"
 
   mv "${APP_NAME}-$CORE_VERSION_SEMVER.dmg" "$dmg_out"
