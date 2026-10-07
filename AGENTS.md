@@ -8,7 +8,7 @@ Meta-Repository für die appleJuice Core Releases. Die Datei `README.md` im Repo
 
 `.github/workflows/release.yml` startet bei `registry_package: published`, gefiltert auf das Maven-Paket `de.applejuicenet.ajcore`. Wie im Repository `server` werden unvollständige Veröffentlichungen ignoriert, bis alle sechs Maven-Dateien vorhanden sind. Alternativ lässt sich der Workflow manuell mit einer bereits veröffentlichten Version starten. Er lädt die JAR einmal herunter, prüft SHA-1-Prüfsumme und Main-Klasse und teilt dasselbe Artefakt mit allen Paket-Jobs. Java-Quellcode wird hier weder ausgecheckt noch kompiliert.
 
-Die Paket-Jobs erzeugen macOS-DMGs, Windows-EXEs und Linux-Flatpak-Bundles, jeweils für amd64 und aarch64. Paketierungsressourcen und Windows-Installer-Prüfungen liegen in `assets/`, `flatpak/` und `scripts/`. Paket-Builds und das gemeinsame Artefakt `AJCore-packages-<version>` erstellen nie einen Release.
+Die Paket-Jobs erzeugen macOS-DMGs, Windows-EXEs und Linux-Flatpak-Bundles, jeweils für amd64 und aarch64. Paketierungsressourcen und Windows-Installer-Prüfungen liegen in `assets/`, `flatpak/` und `scripts/`. Paket-Builds erstellen nie einen Release; es gibt kein gemeinsames Sammel-Artefakt, `publish-release` lädt die Einzel-Artefakte (`native-*`, `flatpak-*`, `ajcore-published-<version>`).
 
 Manuelle Läufe verwenden standardmäßig `dry_run: true`: Alle Pakete werden gebaut und als Actions-Artefakte hochgeladen, `publish-release` wird übersprungen. Paket-Events aus der Maven-Veröffentlichung erstellen ebenfalls nie einen Release. Zum Veröffentlichen den manuellen Lauf mit `dry_run: false` starten.
 
