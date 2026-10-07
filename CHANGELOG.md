@@ -6,6 +6,10 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### Unveröffentlicht
 
+- Ein laufender Sharecheck kann gestoppt werden, ohne den Core zu beenden: Konsolenbefehl `stopsharecheck` und XML API `/function/stopsharecheck`; Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
+- fix: Dateien mit Sonderzeichen wie Gedankenstrich (–) im Namen werden nicht mehr bei jedem Sharecheck neu gehasht; Namen gehen in `shareidx.xml` und `share.xml` nicht mehr verloren
+- fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
+- XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
 - fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden nicht mehr als UNC-Pfad erkannt; dadurch ist kein kompletter Neu-Sharecheck mehr nötig
 - fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt; noch ungeprüfte Dateien bleiben erhalten
 - Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert; die Download-Regelung behält ihr bisheriges Zeitfenster

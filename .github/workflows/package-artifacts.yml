@@ -161,6 +161,7 @@ jobs:
           version="$INSTALLER_VERSION"
           mkdir -p target/jpackage-input target/jpackage-output
           cp target/ajcore.jar target/jpackage-input/
+          cp assets/splash.png target/jpackage-input/
           package_name=AJCore
           if [[ "$PACKAGE_PLATFORM" == windows ]]; then
             package_name="appleJuice Core"
@@ -176,6 +177,7 @@ jobs:
             --add-modules java.desktop,java.management,java.naming,java.sql,java.xml,jdk.crypto.ec,jdk.unsupported
             --java-options --enable-native-access=ALL-UNNAMED
             --java-options -XX:MaxRAMPercentage=50
+            --java-options '-splash:$APPDIR/splash.png'
             --dest target/jpackage-output
           )
           # launcher expands $VAR in the .cfg; the JVM does not create the directory, the core does at startup

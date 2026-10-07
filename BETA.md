@@ -16,11 +16,11 @@
 
 ## Windows Portable
 
-die Beta funktioniert **noch** nicht mit der Portable Version
+selber die `ajcore-*.jar` austauschen
 
 ## macOS
 
-- es muss keine extra Java (JRE) Installation vorhanden sein (das setup bringt eine eigene Java Version mit)
+- es muss keine extra Java (JRE) Installation vorhanden sein (die App hat eine eigene Java Version eingebettet)
 - downloade die Datei `AJCore-macos-*.dmg`, installiere es und starte danach die `AJCore`
 
 ## Container (Docker, Podman etc)

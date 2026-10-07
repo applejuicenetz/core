@@ -32,7 +32,3 @@ Es gibt keinen Zeitplan (Cron). Container entstehen nur durch `release.yml` oder
 Für manuelle Builds in `container.yml` die Eingaben `version` und `prerelease` setzen. Eine leere Version ermittelt den letzten stabilen GitHub-Release. Manuelle Läufe verwenden standardmäßig `push: false`; zum Veröffentlichen muss Push auf `main` ausdrücklich aktiviert werden. `container_beta.yml` ist ein Wrapper, der denselben Build mit `prerelease: true` aufruft.
 
 Nach dem Pull eines neuen Images bestehende Container neu erstellen und dabei Konfiguration und Daten-Volumes beibehalten. Ein Neustart allein ersetzt das Image nicht.
-
-## Dateien
-
-Beim Anlegen oder Ändern dieser Datei `CLAUDE.md` als symbolischen Link auf `AGENTS.md` beibehalten.
