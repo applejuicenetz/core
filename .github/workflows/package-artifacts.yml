@@ -92,6 +92,7 @@ jobs:
           name: ajcore-published-${{ inputs.version }}
           path: target/ajcore.jar
           if-no-files-found: error
+          retention-days: 1
 
   package:
     needs: package-info
@@ -232,6 +233,7 @@ jobs:
           name: native-${{ matrix.platform }}-${{ matrix.arch }}
           path: target/AJCore-${{ matrix.platform }}-${{ matrix.arch }}.${{ matrix.type }}
           if-no-files-found: error
+          retention-days: 1
 
   flatpak:
     needs: package-info
@@ -298,6 +300,7 @@ jobs:
           name: flatpak-${{ matrix.package-arch }}
           path: target/AJCore-linux-${{ matrix.package-arch }}.flatpak
           if-no-files-found: error
+          retention-days: 1
 
   collect-packages:
     needs: [package-info, package, flatpak]
@@ -343,4 +346,5 @@ jobs:
             target/*.flatpak
             target/*.jar
           if-no-files-found: error
+          retention-days: 1
 
