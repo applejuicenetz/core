@@ -4,16 +4,18 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
-### Unveröffentlicht
+### 0.35.186.XX (WIP)
 
-- Ein laufender Sharecheck kann gestoppt werden, ohne den Core zu beenden: Konsolenbefehl `stopsharecheck` und XML API `/function/stopsharecheck`; Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
-- fix: Dateien mit Sonderzeichen wie Gedankenstrich (–) im Namen werden nicht mehr bei jedem Sharecheck neu gehasht; Namen gehen in `shareidx.xml` und `share.xml` nicht mehr verloren
-- fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
-- XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
-- fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden nicht mehr als UNC-Pfad erkannt; dadurch ist kein kompletter Neu-Sharecheck mehr nötig
-- fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt; noch ungeprüfte Dateien bleiben erhalten
-- Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert; die Download-Regelung behält ihr bisheriges Zeitfenster
+- neu: Zeitstempel in der Konsolenausgabe sind immer 24h (`HH:mm:ss`), unabhängig von Sprache/Region der JVM (kein AM/PM mehr)
+- neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
+- neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
 - fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
+- fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
+- fix: Dateien mit Sonderzeichen wie Gedankenstrich (–) im Namen werden nicht mehr bei jedem Sharecheck neu gehasht
+- fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt
+- fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
+- XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
+- XML API: Ein laufender Sharecheck kann gestoppt werden, ohne den Core zu beenden: Konsolenbefehl `stopsharecheck` und XML API `/function/stopsharecheck`
 - XML API: Passwort kann über `X-AppleJuice-Password` statt als URL-Parameter übergeben werden; bisherige Authentifizierung bleibt unterstützt
 
 ### 0.35.185.93
@@ -35,7 +37,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - Windows Installer: Installation über einen alten NSIS/Java Ordner wird verweigert
 - maximaler Arbeitsspeicher der JVM standardmäßig auf 50% (`MaxRAMPercentage`)
 
-### 0.34.101.42 (public beta)
+### 0.34.101.42
 
 - fix für erkennung von bereits geladenen Files
 - fix für Nullpointer Exception im XML API Server
