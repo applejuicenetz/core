@@ -9,6 +9,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - neu: Zeitstempel in der Konsolenausgabe sind immer 24h (`HH:mm:ss`), unabhängig von Sprache/Region der JVM (kein AM/PM mehr)
 - neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
 - neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
+- fix: Die XML API und der Core hängen nicht mehr, wenn ein Download gleichzeitig Quellen verarbeitet und die Download-Liste abgefragt wird (Deadlock)
 - fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
 - fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
 - fix: Dateien mit Unicode-Zeichen wie Gedankenstrich (–) oder Auslassungszeichen (…) sowie mit Tabulatoren und Zeilenumbrüchen im Namen werden nicht mehr durch Zeichenverlust bei jedem Sharecheck neu gehasht
