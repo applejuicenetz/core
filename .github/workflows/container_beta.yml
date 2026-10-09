@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Published Maven package version (for example 0.35.185.42)'
+        description: 'Published Maven package version (for example 0.35.186.42)'
         required: true
         type: string
       push:
