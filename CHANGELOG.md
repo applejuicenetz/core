@@ -6,20 +6,20 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.35.186.XX (WIP)
 
-- neu: Zeitstempel in der Konsolenausgabe sind immer 24h (`HH:mm:ss`), unabhängig von Sprache/Region der JVM (kein AM/PM mehr)
+- neu: Zeitstempel in der Konsole sind immer 24h (`HH:mm:ss`), kein AM/PM mehr
 - neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
 - neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
-- fix: Die XML API und der Core hängen nicht mehr, wenn ein Download gleichzeitig Quellen verarbeitet und die Download-Liste abgefragt wird (Deadlock)
+- fix: Core und XML API hängen nicht mehr beim Abfragen der Download-Liste (Deadlock)
 - fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
-- fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
-- fix: Dateien mit Unicode-Zeichen wie Gedankenstrich (–) oder Auslassungszeichen (…) sowie mit Tabulatoren und Zeilenumbrüchen im Namen werden nicht mehr durch Zeichenverlust bei jedem Sharecheck neu gehasht
-- fix: Betriebssystem-Metadaten wie `.DS_Store`, `._*`, `Thumbs.db`, `desktop.ini` und Ordner wie `$RECYCLE.BIN` oder `System Volume Information` werden beim Sharecheck nicht mehr geshared und in der Ordnerauswahl (XML API `/xml/directory.xml`) nicht mehr aufgelistet; bereits aufgenommene Einträge verschwinden beim nächsten Sharecheck (#12)
+- fix: Quellen mit Protokoll unter 150 werden bei Downloads > 2 GB übersprungen statt abgebrochen
+- fix: Dateien mit Sonderzeichen im Namen (z. B. –, …, Tabulator) werden nicht mehr bei jedem Sharecheck neu gehasht
+- fix: OS-Dateien wie `.DS_Store`, `Thumbs.db` oder `$RECYCLE.BIN` werden nicht mehr geshared oder in der Ordnerauswahl angezeigt (#12)
 - fix: Kein `NullPointerException` mehr, wenn die Gegenseite während eines Downloads die Verbindung schließt (#50)
 - fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt
 - fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
 - XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
-- XML API: Ein laufender Sharecheck kann gestoppt werden, ohne den Core zu beenden: Konsolenbefehl `stopsharecheck` und XML API `/function/stopsharecheck`
-- XML API: Passwort kann über `X-AppleJuice-Password` statt als URL-Parameter übergeben werden; bisherige Authentifizierung bleibt unterstützt
+- XML API: Sharecheck stoppen per Konsolenbefehl `stopsharecheck` oder `/function/stopsharecheck`
+- XML API: Passwort per Header `X-AppleJuice-Password` möglich, URL-Parameter bleibt unterstützt
 
 ### 0.35.185.93
 
