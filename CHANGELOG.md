@@ -14,6 +14,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
 - fix: Dateien mit Unicode-Zeichen wie Gedankenstrich (–) oder Auslassungszeichen (…) sowie mit Tabulatoren und Zeilenumbrüchen im Namen werden nicht mehr durch Zeichenverlust bei jedem Sharecheck neu gehasht
 - fix: Betriebssystem-Metadaten wie `.DS_Store`, `._*`, `Thumbs.db`, `desktop.ini` und Ordner wie `$RECYCLE.BIN` oder `System Volume Information` werden beim Sharecheck nicht mehr geshared und in der Ordnerauswahl (XML API `/xml/directory.xml`) nicht mehr aufgelistet; bereits aufgenommene Einträge verschwinden beim nächsten Sharecheck (#12)
+- fix: Kein `NullPointerException` mehr, wenn die Gegenseite während eines Downloads die Verbindung schließt (#50)
 - fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt
 - fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
 - XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
