@@ -11,7 +11,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
 - fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
 - fix: Quellen mit altem Core-Protokoll (unter 150) werden bei Downloads > 2 GB übersprungen, statt mit `File size cannot be represented by protocol` abzubrechen
-- fix: Dateien mit Sonderzeichen wie Gedankenstrich (–) im Namen werden nicht mehr bei jedem Sharecheck neu gehasht
+- fix: Dateien mit Unicode-Zeichen wie Gedankenstrich (–) oder Auslassungszeichen (…) sowie mit Tabulatoren und Zeilenumbrüchen im Namen werden nicht mehr durch Zeichenverlust bei jedem Sharecheck neu gehasht
 - fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt
 - fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
 - XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
