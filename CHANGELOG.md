@@ -15,7 +15,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Dateien mit Sonderzeichen im Namen (z. B. –, …, Tabulator) werden nicht mehr bei jedem Sharecheck neu gehasht
 - fix: OS-Dateien wie `.DS_Store`, `Thumbs.db` oder `$RECYCLE.BIN` werden nicht mehr geshared oder in der Ordnerauswahl angezeigt (#12)
 - fix: Kein `NullPointerException` mehr, wenn die Gegenseite während eines Downloads die Verbindung schließt (#50)
-- fix: Auch beim Abbruch eines laufenden Sharechecks werden gelöschte Dateien aus Share und XML-Dateien entfernt
+- fix: Auch beim Abbruch eines Sharechecks werden gelöschte Dateien aus dem Share entfernt
 - fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
 - XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
 - XML API: Sharecheck stoppen per Konsolenbefehl `stopsharecheck` oder `/function/stopsharecheck`
