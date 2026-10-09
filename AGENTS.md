@@ -4,7 +4,7 @@ Meta-Repository für die appleJuice Core Releases. Die Datei `README.md` im Repo
 
 ## Build- und Release-Pipeline
 
-`core-src` baut, testet, obfuskiert und signiert die JAR. Beim manuellen Start mit `publish_maven: true` veröffentlicht es eine unveränderliche Version wie `de.applejuicenet:ajcore:0.35.186.42` in der Maven Registry dieses Repositories.
+Die JAR wird außerhalb dieses Repositories gebaut und als unveränderliche Version wie `de.applejuicenet:ajcore:0.35.186.42` in der Maven Registry dieses Repositories veröffentlicht.
 
 `.github/workflows/release.yml` startet bei `registry_package: published`, gefiltert auf das Maven-Paket `de.applejuicenet.ajcore`. Wie im Repository `server` werden unvollständige Veröffentlichungen ignoriert, bis alle sechs Maven-Dateien vorhanden sind. Alternativ lässt sich der Workflow manuell mit einer bereits veröffentlichten Version starten. Er lädt die JAR einmal herunter, prüft SHA-1-Prüfsumme und Main-Klasse und teilt dasselbe Artefakt mit allen Paket-Jobs. Java-Quellcode wird hier weder ausgecheckt noch kompiliert.
 
