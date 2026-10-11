@@ -6,6 +6,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.35.186.XX (WIP)
 
+- fix: `--nogui` aktiviert den Java-Headless-Modus, damit keine Bildschirmereignisse verarbeitet werden
+
 - neu: Zeitstempel in der Konsole sind immer 24h (`HH:mm:ss`), kein AM/PM mehr
 - neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
 - neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
