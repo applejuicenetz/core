@@ -1,8 +1,6 @@
 name: Build core packages and release
 
 on:
-  registry_package:
-    types: [published]
   workflow_dispatch:
     inputs:
       version:
@@ -25,20 +23,15 @@ permissions:
   packages: read
 
 concurrency:
-  group: core-packages-${{ github.event.inputs.version || github.event.registry_package.package_version.version }}
+  group: core-packages-${{ inputs.version }}
   cancel-in-progress: true
 
 jobs:
   package-info:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.registry_package.package_type == 'maven' &&
-       github.event.registry_package.name == 'de.applejuicenet.ajcore')
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
       installer-version: ${{ steps.version.outputs.installer-version }}
-      complete: ${{ steps.version.outputs.complete }}
     steps:
       - name: Resolve completed Maven publication
         id: version
@@ -49,13 +42,7 @@ jobs:
           import re
           from pathlib import Path
           event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
-          if os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch':
-              version = event['inputs']['version']
-              complete = True
-          else:
-              package = event['registry_package']['package_version']
-              version = package['version']
-              complete = len(package['package_files']) == 6
+          version = event['inputs']['version']
           if not re.fullmatch(r'0\.[0-9]+\.[0-9]+\.[0-9]+', version):
               raise SystemExit('Expected a numeric 0.major.minor.build Maven version')
           major, minor, build = map(int, version.split('.')[1:])
@@ -63,14 +50,11 @@ jobs:
               raise SystemExit('Version exceeds native installer limits')
           installer_version = f'{major}.{minor}.{build}'
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
-              output.write(f'version={version}\ninstaller-version={installer_version}\ncomplete={str(complete).lower()}\n')
-          if not complete:
-              print('Waiting for all six Maven package files')
+              output.write(f'version={version}\ninstaller-version={installer_version}\n')
           PY
 
   build-packages:
     needs: package-info
-    if: needs.package-info.outputs.complete == 'true'
     uses: ./.github/workflows/package-artifacts.yml
     with:
       version: ${{ needs.package-info.outputs.version }}
