@@ -4,6 +4,10 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
+### 0.35.186.X (WIP)
+
+- fix: Beim Kopieren von Dateien (z. B. beim Abschluss eines Downloads) werden Dateien auch bei einem Fehler wieder geschlossen
+
 ### 0.35.186.1 (public beta)
 
 - fix: `--nogui` aktiviert den Java-Headless-Modus, damit keine Bildschirmereignisse verarbeitet werden
