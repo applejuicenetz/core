@@ -7,6 +7,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 ### 0.35.186.X (WIP)
 
 - fix: Beim Kopieren von Dateien (z. B. beim Abschluss eines Downloads) werden Dateien auch bei einem Fehler wieder geschlossen
+- fix: Schlägt das Kopieren einer Datei fehl, wird die unvollständige Zieldatei wieder entfernt
 
 ### 0.35.186.1 (public beta)
 
