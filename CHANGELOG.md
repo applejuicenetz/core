@@ -6,19 +6,15 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.35.187.1 (WIP)
 
-- fix: Wartezeiten für Download-Quellen werden wieder ab dem letzten Kontakt berechnet; verhindert wiederholte Verbindungsversuche alle zehn Sekunden
-- neu: Kürzere Wiederholungszeiten für Quellen: indirekte Verbindung nach 2 Minuten, keine brauchbaren Parts nach 15 Minuten, volle Warteschlange nach 30 Minuten; Quellen in der Warteschlange werden nach 10 Minuten erneut angefragt. Stabile Streuung pro Quelle verteilt Wiederholungsanfragen
-- neu: Suche fragt weitere Server bis zu 100 verschiedenen Dateien oder 1000 Einzelantworten ab, statt bereits bei 100 Quellen weniger Dateien aufzuhören; Grenze von 200 durch Server gemeldeten Dateien bleibt bestehen
-- fix: Suchzähler mehrerer Server werden korrekt aufsummiert
-- fix: Abbrechen einer Suche hängt nicht mehr beim Warten auf einen freien Server-Suchplatz
-- fix: Fragmentierte Netzwerkdaten werden beim Lesen von Handshakes, Schlüsseln und Zeichenketten korrekt über mehrere Empfangsvorgänge verarbeitet
-- fix: Suche nach Bytefolgen im Empfangspuffer erkennt überlappende Treffer und liest nicht über das Schreibende hinaus
-- fix: Leere oder abgeschnittene komprimierte Daten führen zu einem Fehler statt zu einer Endlosschleife im Netzwerk-Worker
-- fix: Geschwindigkeits-Timer überstehen eine noch fehlende Core-Instanz oder Download-/Upload-Liste, ohne den gemeinsamen Timer zu beenden
-- intern: Download-Verarbeitung und Bereichsauswahl überarbeitet und mit zusätzlichen Unit-Tests abgesichert; kleine Dateien mit Core 0.34.101.42 in beiden Richtungen im isolierten Netz geprüft
-- fix: Beim Kopieren von Dateien (z. B. beim Abschluss eines Downloads) werden Dateien auch bei einem Fehler wieder geschlossen
-- fix: Schlägt das Kopieren einer Datei fehl, wird die unvollständige Zieldatei wieder entfernt
-- fix: Bricht die Konsoleneingabe wegen eines Fehlers ab, wird das im Log vermerkt
+- neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
+- neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
+- fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
+- fix: Suchzähler korrigiert und Hänger beim Suchabbruch behoben
+- fix: Fragmentierte Netzwerkdaten und überlappende Puffertreffer korrekt gelesen
+- fix: Kaputte komprimierte Daten blockieren keinen Netzwerk-Worker mehr
+- fix: Fehlende Core-Listen beenden den gemeinsamen Timer nicht mehr
+- fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
+- fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
 
