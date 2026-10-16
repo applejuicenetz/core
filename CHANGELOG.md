@@ -14,6 +14,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Kaputte komprimierte Daten blockieren keinen Netzwerk-Worker mehr
 - fix: Fehlende Core-Listen beenden den gemeinsamen Timer nicht mehr
 - fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
+- fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
