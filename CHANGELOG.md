@@ -8,6 +8,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 - fix: Beim Kopieren von Dateien (z. B. beim Abschluss eines Downloads) werden Dateien auch bei einem Fehler wieder geschlossen
 - fix: Schlägt das Kopieren einer Datei fehl, wird die unvollständige Zieldatei wieder entfernt
+- fix: Bricht die Konsoleneingabe wegen eines Fehlers ab, wird das im Log vermerkt
 
 ### 0.35.186.1 (public beta)
 
