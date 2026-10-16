@@ -4,7 +4,7 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
-### 0.35.186.XX (WIP)
+### 0.35.186.1 (public beta)
 
 - fix: `--nogui` aktiviert den Java-Headless-Modus, damit keine Bildschirmereignisse verarbeitet werden
 
