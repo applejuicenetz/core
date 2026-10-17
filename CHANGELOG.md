@@ -6,34 +6,53 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.35.187.1 (WIP)
 
+#### Downloads und Uploads
+
 - neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
-- neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
 - fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
+- fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
+- fix: Dateien mit falscher Größe werden nicht als fertig übernommen
+- fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
+- fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
+- fix: Hashfehler beim Upload erhält geladene Bereiche hinter dem beschädigten Teil
+
+#### Suche und Freigaben
+
+- neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
 - fix: Suchzähler korrigiert und Hänger beim Suchabbruch behoben
+- fix: Suchzähler pro Datei bleibt nach Neustart erhalten (shareinfo.xml)
+
+#### Dateien und Einstellungen
+
+- fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
+- fix: Teildateien (.part) werden beim Laden geschlossen und ohne vorheriges Löschen ersetzt
+- fix: Fehlgeschlagener Dateiersatz erhält Einstellungen und Freigabelisten
+  (settings.xml, shareinfo.xml, shareidx.xml)
+
+#### HTTP/XML-Schnittstelle
+
+- fix: Keep-alive übernimmt keine Header, Parameter, Zugangsdaten oder Inhalte früherer Anfragen
+- fix: Formular-POST ohne Content-Length wird ohne Verbindungsfehler verarbeitet
+- fix: Anfragen über 1 MiB erhalten 413, ungültiges Content-Length erhält 400
+
+#### Serverlisten
+
+- fix: Defekte XML-Einträge werden übersprungen, ungültige Ports verworfen
+- fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
+- fix: Bekannte Server erhalten aktuelle Namen und Zeitstempel; auch beim XML-Abruf aufgefrischt
+- fix: Sonderzeichen im Serverhost beschädigen XML-Ausgaben nicht mehr
+
+#### Netzwerk und Laufzeit
+
 - fix: Fragmentierte Netzwerkdaten und überlappende Puffertreffer korrekt gelesen
 - fix: Kaputte komprimierte Daten blockieren keinen Netzwerk-Worker mehr
-- fix: Fehlende Core-Listen beenden den gemeinsamen Timer nicht mehr
-- fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
-- fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
-- fix: Schlägt die Hashprüfung eines Teils beim Upload fehl, bleiben bereits geladene Daten hinter dem beschädigten Teil erhalten
-- fix: Teildateien (.part) werden beim Laden geschlossen und beim Speichern ersetzt, ohne die alte Datei zu verlieren
-- fix: Download-Wartung und Server-Wiederanmeldung beenden den gemeinsamen Timer nicht mehr, wenn der Start noch läuft
-- fix: Der Suchzähler pro Datei bleibt nach einem Neustart erhalten (shareinfo.xml)
-- fix: Einstellungen und Freigabelisten (settings.xml, shareinfo.xml, shareidx.xml) gehen beim Speichern nicht mehr verloren, wenn das Ersetzen der Datei scheitert
-- fix: Der HTTP/XML-Server übernimmt bei Keep-alive keine Header, Parameter, Zugangsdaten oder Inhalte der vorherigen Anfrage mehr
-- fix: Ein Formular-POST ohne Content-Length bricht die Verbindung nicht mehr mit einem Fehler ab
-- fix: Der HTTP/XML-Server lehnt Anfragen über 1 MiB mit 413 und ungültiges Content-Length mit 400 ab
-- fix: Defekte XML-Servereinträge verhindern nicht mehr das Laden gültiger Folgeeinträge
-- fix: Ungültige Ports aus Serverlisten werden verworfen
-- fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
-- fix: Bekannte Server erhalten wieder aktuelle Namen und Zeitstempel aus der Serverliste
-- fix: XML-Serverliste aktualisiert auch bekannte Server statt nur neue Einträge
-- fix: Sonderzeichen im Serverhost beschädigen XML-Ausgaben nicht mehr
-- fix: Download-Abschluss erhält vorhandene Dateien und nutzt bei Namenskollision einen Zusatz
-- fix: Dateien mit falscher Größe werden beim Download-Abschluss nicht als fertig übernommen
-- fix: Bei fehlgeschlagenem Download-Abschluss bleiben Daten und Wiederaufnahmedatei erhalten und ein erneuter Versuch ist möglich.
-- fix: Kein erzwungener Full-GC mehr alle 10 Sekunden (stoppte den Core bei großen Shares)
+- fix: Fehlende Core-Listen und unvollständiger Start beenden gemeinsamen Timer nicht mehr
+- fix: Kein erzwungener Full-GC mehr alle zehn Sekunden
 - fix: Fehler der Konsoleneingabe werden protokolliert
+
+#### Hinweise
+
+- Download-Abschluss kopiert auch auf gleichem Dateisystem und braucht vorübergehend mehr Platz.
 
 ### 0.35.186.1 (public beta)
 
