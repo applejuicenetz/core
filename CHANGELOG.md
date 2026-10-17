@@ -19,6 +19,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Teildateien (.part) werden beim Laden geschlossen und beim Speichern ersetzt, ohne die alte Datei zu verlieren
 - fix: Download-Wartung und Server-Wiederanmeldung beenden den gemeinsamen Timer nicht mehr, wenn der Start noch läuft
 - fix: Der Suchzähler pro Datei bleibt nach einem Neustart erhalten (shareinfo.xml)
+- fix: Einstellungen und Freigabelisten (settings.xml, shareinfo.xml, shareidx.xml) gehen beim Speichern nicht mehr verloren, wenn das Ersetzen der Datei scheitert
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
