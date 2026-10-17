@@ -63,6 +63,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 #### Netzwerk und Laufzeit
 
+- fix: Veraltete DLL-Prüfung blockiert Core-Start nicht mehr
+
 - fix: Fragmentierte Netzwerkdaten und überlappende Puffertreffer korrekt gelesen
 - fix: Kaputte komprimierte Daten blockieren keinen Netzwerk-Worker mehr
 - fix: Fehlende Core-Listen und unvollständiger Start beenden gemeinsamen Timer nicht mehr
