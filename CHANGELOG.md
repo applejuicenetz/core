@@ -28,6 +28,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
 - fix: Bekannte Server erhalten wieder aktuelle Namen und Zeitstempel aus der Serverliste
 - fix: XML-Serverliste aktualisiert auch bekannte Server statt nur neue Einträge
+- fix: Sonderzeichen im Serverhost beschädigen XML-Ausgaben nicht mehr
 - fix: Kein erzwungener Full-GC mehr alle 10 Sekunden (stoppte den Core bei großen Shares)
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
