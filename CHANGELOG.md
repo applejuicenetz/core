@@ -27,6 +27,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
 - fix: Suchzähler korrigiert und Hänger beim Suchabbruch behoben
 - fix: Suchzähler pro Datei bleibt nach Neustart erhalten (shareinfo.xml)
+- fix: Fertige Downloads unterbrechen laufendes Hashen nicht mehr
 - fix: Fehlgeschlagener Sharecheck blockiert Herunterfahren nicht mehr
 - fix: Neu angelegte Download-Datei zählt keine alten Bereiche als geladen
 - fix: Quellen mit Port außerhalb 1–65535 werden abgewiesen statt umgerechnet
