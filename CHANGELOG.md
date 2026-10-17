@@ -29,6 +29,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Fehlgeschlagener Sharecheck blockiert Herunterfahren nicht mehr
 - fix: Neu angelegte Download-Datei zählt keine alten Bereiche als geladen
 - fix: Quellen mit Port außerhalb 1–65535 werden abgewiesen statt umgerechnet
+- fix: Erneuter Link startet abgebrochene oder fehlgeschlagene Downloads neu
 - fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
 - fix: Beenden der Konsole löst blockierende Eingabe-Leser
 
