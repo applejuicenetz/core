@@ -11,6 +11,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
 - fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
 - fix: Download-Anfragen und Hash-Wiederholungen beachten Quellbereichsgrenzen
+- fix: Hash-Wiederholungen erfassen alle Restbereiche bei mehreren Quellen
 - fix: Abschlussflag berücksichtigt Hashfehler im letzten Download-Teil.
 - fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
