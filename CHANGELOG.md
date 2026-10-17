@@ -48,6 +48,9 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Keep-alive übernimmt keine Header, Parameter, Zugangsdaten oder Inhalte früherer Anfragen
 - fix: Formular-POST ohne Content-Length wird ohne Verbindungsfehler verarbeitet
 - fix: Anfragen über 1 MiB erhalten 413, ungültiges Content-Length erhält 400
+- fix: Überlange Anfragezeilen und Header werden begrenzt und abgewiesen
+- fix: Chunked-Anfragen und Expect: 100-continue werden verarbeitet
+- fix: Mehrdeutige Body-Header werden mit Verbindungsende abgewiesen
 
 #### Serverlisten
 
