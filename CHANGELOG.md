@@ -28,6 +28,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Suchzähler pro Datei bleibt nach Neustart erhalten (shareinfo.xml)
 - fix: Fehlgeschlagener Sharecheck blockiert Herunterfahren nicht mehr
 - fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
+- fix: Beenden der Konsole löst blockierende Eingabe-Leser
 
 #### Dateien und Einstellungen
 
