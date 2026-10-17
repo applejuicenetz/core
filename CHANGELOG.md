@@ -62,6 +62,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Fehlende Core-Listen und unvollständiger Start beenden gemeinsamen Timer nicht mehr
 - fix: Kein erzwungener Full-GC mehr alle zehn Sekunden
 - fix: Fehler der Konsoleneingabe werden protokolliert
+- fix: Konsolenausgabe verliert keine Wecksignale; Ausgabe-Thread endet zuverlässig
 - fix: Interne Suchbäume bleiben nach Löschungen korrekt ausbalanciert
 - fix: Up- und Download-Limits werden eingehalten, auch nach einer Pause (Spitzen vorher bis etwa das 4-fache)
 
