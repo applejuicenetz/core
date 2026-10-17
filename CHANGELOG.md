@@ -16,6 +16,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Abschlussflag berücksichtigt Hashfehler im letzten Download-Teil.
 - fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
 - fix: Absturz beim Download-Abschluss hinterlässt keine halbfertige Datei unter endgültigem Namen
+- fix: Wiederholter Abschluss nach Prozessabsturz erkennt fertig kopierte Dateien
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
 - fix: Fehlende Download-Datei pausiert Empfang statt Ersatzdatei anzulegen
 - fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
@@ -86,7 +87,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 #### Hinweise
 
 - Download-Abschluss kopiert auch auf gleichem Dateisystem und braucht vorübergehend mehr Platz.
-- Nach Prozessabsturz können `.aj-complete-*.tmp`-Kopierreste liegen bleiben; sie werden nicht freigegeben.
+- Zugeordnete Kopierreste werden beim erneuten Download-Abschluss bereinigt; fremde Reste bleiben erhalten.
 
 ### 0.35.186.1 (public beta)
 
