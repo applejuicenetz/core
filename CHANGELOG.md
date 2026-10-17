@@ -12,6 +12,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
 - fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
+- fix: Verschwindet die Download-Datei während Empfang, pausiert Download statt eine leere Ersatzdatei anzulegen.
 - fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
 - fix: Ungültige Upload-Bereiche werden vor Dateizugriff und Hashprüfung abgewiesen
 - fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
