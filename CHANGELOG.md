@@ -26,6 +26,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
 - fix: Suchzähler korrigiert und Hänger beim Suchabbruch behoben
 - fix: Suchzähler pro Datei bleibt nach Neustart erhalten (shareinfo.xml)
+- fix: Fehlgeschlagener Sharecheck blockiert Herunterfahren nicht mehr
+- fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
 
 #### Dateien und Einstellungen
 
@@ -54,6 +56,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Fehlende Core-Listen und unvollständiger Start beenden gemeinsamen Timer nicht mehr
 - fix: Kein erzwungener Full-GC mehr alle zehn Sekunden
 - fix: Fehler der Konsoleneingabe werden protokolliert
+- fix: Interne Suchbäume bleiben nach Löschungen korrekt ausbalanciert
 
 #### Hinweise
 
