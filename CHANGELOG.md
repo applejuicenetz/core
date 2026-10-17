@@ -66,6 +66,9 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Fehler beim Beenden verhindern nicht mehr das Speichern von Downloads, Servern und Einstellungen
 - fix: Core endet bei Startfehlern (z. B. belegter Port) mit Exit-Code 1 statt 0
 - fix: Port-Wechsel auf einen belegten Port beendet den Core nicht mehr; alter Port und Server bleiben aktiv
+- fix: Defekte Einträge in server.xml (fehlender Host, Port außerhalb 1–65535) werden übersprungen statt den Start zu stören
+- fix: server.xml wird atomar ersetzt; ein Absturz beim Speichern verliert die Serverliste nicht mehr
+- fix: Eine unlesbare Part-Datei (z. B. kopiert als backup.part) verdeckt die übrigen Downloads nicht mehr
 - fix: Steuerzeichen (z. B. Strg+C) landen nicht mehr im Konsolenbefehl
 - fix: Interne Suchbäume bleiben nach Löschungen korrekt ausbalanciert
 - fix: Up- und Download-Limits werden eingehalten, auch nach einer Pause (Spitzen vorher bis etwa das 4-fache)
