@@ -10,6 +10,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 - neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
 - fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
+- fix: Download-Anfragen bleiben innerhalb der von einer Quelle angebotenen Bereiche, auch bei Teilfreigaben mit unterschiedlicher Verfügbarkeit.
 - fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
 - fix: Verschwindet die Download-Datei während Empfang, pausiert Download statt eine leere Ersatzdatei anzulegen.
