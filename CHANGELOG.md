@@ -10,6 +10,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 - neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
 - fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
+- fix: Downloadlimit 0 begrenzt Transferbereiche nicht mehr auf 500 KiB
 - fix: Download-Anfragen und Hash-Wiederholungen beachten Quellbereichsgrenzen
 - fix: Hash-Wiederholungen erfassen alle Restbereiche bei mehreren Quellen
 - fix: Abschlussflag berücksichtigt Hashfehler im letzten Download-Teil.
