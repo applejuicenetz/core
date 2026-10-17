@@ -20,6 +20,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Download-Wartung und Server-Wiederanmeldung beenden den gemeinsamen Timer nicht mehr, wenn der Start noch läuft
 - fix: Der Suchzähler pro Datei bleibt nach einem Neustart erhalten (shareinfo.xml)
 - fix: Einstellungen und Freigabelisten (settings.xml, shareinfo.xml, shareidx.xml) gehen beim Speichern nicht mehr verloren, wenn das Ersetzen der Datei scheitert
+- fix: Der HTTP/XML-Server übernimmt bei Keep-alive keine Header, Parameter, Zugangsdaten oder Inhalte der vorherigen Anfrage mehr
+- fix: Ein Formular-POST ohne Content-Length bricht die Verbindung nicht mehr mit einem Fehler ab
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
