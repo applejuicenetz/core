@@ -33,6 +33,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
 - fix: Beenden der Konsole löst blockierende Eingabe-Leser
 - fix: Fehler und Stacktraces erscheinen mit Zeitstempel im Log statt unsortiert auf stderr
+- fix: Ein Verbindungsfehler (z. B. Stack-Überlauf) beendet nicht mehr den ganzen Core
 
 #### Dateien und Einstellungen
 
