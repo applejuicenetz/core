@@ -15,6 +15,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Fehlende Core-Listen beenden den gemeinsamen Timer nicht mehr
 - fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
 - fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
+- fix: Teildateien (.part) werden beim Laden geschlossen und beim Speichern ersetzt, ohne die alte Datei zu verlieren
+- fix: Download-Wartung und Server-Wiederanmeldung beenden den gemeinsamen Timer nicht mehr, wenn der Start noch läuft
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
