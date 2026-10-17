@@ -27,6 +27,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Ungültige Ports aus Serverlisten werden verworfen
 - fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
 - fix: Bekannte Server erhalten wieder aktuelle Namen und Zeitstempel aus der Serverliste
+- fix: XML-Serverliste aktualisiert auch bekannte Server statt nur neue Einträge
 - fix: Kein erzwungener Full-GC mehr alle 10 Sekunden (stoppte den Core bei großen Shares)
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
