@@ -23,6 +23,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Der HTTP/XML-Server übernimmt bei Keep-alive keine Header, Parameter, Zugangsdaten oder Inhalte der vorherigen Anfrage mehr
 - fix: Ein Formular-POST ohne Content-Length bricht die Verbindung nicht mehr mit einem Fehler ab
 - fix: Der HTTP/XML-Server lehnt Anfragen über 1 MiB mit 413 und ungültiges Content-Length mit 400 ab
+- fix: Defekte XML-Servereinträge verhindern nicht mehr das Laden gültiger Folgeeinträge
 - fix: Ungültige Ports aus Serverlisten werden verworfen
 - fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
 - fix: Bekannte Server erhalten wieder aktuelle Namen und Zeitstempel aus der Serverliste
