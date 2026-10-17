@@ -32,6 +32,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Erneuter Link startet abgebrochene oder fehlgeschlagene Downloads neu
 - fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
 - fix: Beenden der Konsole löst blockierende Eingabe-Leser
+- fix: Fehler und Stacktraces erscheinen mit Zeitstempel im Log statt unsortiert auf stderr
 
 #### Dateien und Einstellungen
 
