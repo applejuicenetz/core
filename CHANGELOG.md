@@ -29,6 +29,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Bekannte Server erhalten wieder aktuelle Namen und Zeitstempel aus der Serverliste
 - fix: XML-Serverliste aktualisiert auch bekannte Server statt nur neue Einträge
 - fix: Sonderzeichen im Serverhost beschädigen XML-Ausgaben nicht mehr
+- fix: Download-Abschluss erhält vorhandene Dateien und nutzt bei Namenskollision einen Zusatz
+- fix: Bei fehlgeschlagenem Download-Abschluss bleiben Daten und Wiederaufnahmedatei erhalten und ein erneuter Versuch ist möglich.
 - fix: Kein erzwungener Full-GC mehr alle 10 Sekunden (stoppte den Core bei großen Shares)
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
