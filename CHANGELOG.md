@@ -17,6 +17,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
 - fix: Teildateien (.part) werden beim Laden geschlossen und beim Speichern ersetzt, ohne die alte Datei zu verlieren
 - fix: Download-Wartung und Server-Wiederanmeldung beenden den gemeinsamen Timer nicht mehr, wenn der Start noch läuft
+- fix: Der Suchzähler pro Datei bleibt nach einem Neustart erhalten (shareinfo.xml)
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
