@@ -13,7 +13,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
 - fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
-- fix: Uploads lehnen Bereiche mit negativem Anfang ab statt falsche Dateidaten zu senden
+- fix: Ungültige Upload-Bereiche werden vor Dateizugriff und Hashprüfung abgewiesen
 - fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
 - fix: Hashfehler beim Upload erhält geladene Bereiche hinter dem beschädigten Teil
 
