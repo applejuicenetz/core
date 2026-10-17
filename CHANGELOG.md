@@ -22,6 +22,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Einstellungen und Freigabelisten (settings.xml, shareinfo.xml, shareidx.xml) gehen beim Speichern nicht mehr verloren, wenn das Ersetzen der Datei scheitert
 - fix: Der HTTP/XML-Server übernimmt bei Keep-alive keine Header, Parameter, Zugangsdaten oder Inhalte der vorherigen Anfrage mehr
 - fix: Ein Formular-POST ohne Content-Length bricht die Verbindung nicht mehr mit einem Fehler ab
+- fix: Der HTTP/XML-Server lehnt Anfragen über 1 MiB mit 413 und ungültiges Content-Length mit 400 ab
 - fix: Fehler der Konsoleneingabe werden protokolliert
 
 ### 0.35.186.1 (public beta)
