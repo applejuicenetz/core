@@ -48,6 +48,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 #### HTTP/XML-Schnittstelle
 
+- intern: Ungenutzten SSL-Zweig entfernt; Schnittstelle bleibt HTTP
+
 - fix: Keep-alive übernimmt keine Header, Parameter, Zugangsdaten oder Inhalte früherer Anfragen
 - fix: Formular-POST ohne Content-Length wird ohne Verbindungsfehler verarbeitet
 - fix: Anfragen über 1 MiB erhalten 413, ungültiges Content-Length erhält 400
