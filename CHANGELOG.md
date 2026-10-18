@@ -6,6 +6,10 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ## 0.35.187.3 (public beta, 2026-10-18)
 
+### Gesperrte Versionen
+
+- change: Freischaltung für 0.35.185.89, 0.34.101.30 und 0.34.101.39 entfernt; diese Cores können sich nicht mehr anmelden
+
 ### Downloads und Uploads
 
 - fix: Downloadlimit 0 (unbegrenzt) begrenzt Transferbereiche nicht mehr auf 500 KiB
