@@ -60,6 +60,8 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 #### Serverlisten
 
+- fix: Langsame Serverlisten-Antwort blockiert andere Zugriffe auf Serverliste nicht mehr
+
 - fix: Defekte XML-Einträge werden übersprungen, ungültige Ports verworfen
 - fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
 - fix: Bekannte Server erhalten aktuelle Namen und Zeitstempel; auch beim XML-Abruf aufgefrischt
