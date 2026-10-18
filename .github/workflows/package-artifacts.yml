@@ -178,6 +178,10 @@ jobs:
             --add-modules java.desktop,java.management,java.naming,java.sql,java.xml,jdk.crypto.ec,jdk.unsupported
             --java-options --enable-native-access=ALL-UNNAMED
             --java-options -XX:MaxRAMPercentage=50
+            --java-options -XX:+UseG1GC
+            --java-options -XX:MinHeapFreeRatio=10
+            --java-options -XX:MaxHeapFreeRatio=30
+            --java-options -XX:G1PeriodicGCInterval=15000
             --java-options '-splash:$APPDIR/splash.png'
             --dest target/jpackage-output
           )

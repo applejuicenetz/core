@@ -4,7 +4,7 @@ if [ -e /tmp/ajcore.lock ] && kill -0 "$(cat /tmp/ajcore.lock)" 2>/dev/null; the
   exit 0
 fi
 
-JAVA_ARGS="-Djava.net.preferIPv4Stack=true -Dsun.java2d.xrender=false --enable-native-access=ALL-UNNAMED -XX:MaxRAMPercentage=50"
+JAVA_ARGS="-Djava.net.preferIPv4Stack=true -Dsun.java2d.xrender=false --enable-native-access=ALL-UNNAMED -XX:MaxRAMPercentage=50 -XX:+UseG1GC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -XX:G1PeriodicGCInterval=15000"
 
 cd /app/share/io.github.applejuicenetz.core/ || exit 1
 
