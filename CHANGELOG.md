@@ -4,9 +4,9 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
-### 0.35.187.1 (public beta, 2026-10-18)
+## 0.35.187.3 (public beta, 2026-10-18)
 
-#### Downloads und Uploads
+### Downloads und Uploads
 
 - fix: Downloadlimit 0 (unbegrenzt) begrenzt Transferbereiche nicht mehr auf 500 KiB
 - fix: Up- und Download-Limits werden auch nach einer Pause eingehalten (vorher Spitzen bis ca. 4-fach)
@@ -17,20 +17,20 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Mehrquellen-Downloads laden nach Hashfehlern alle fehlenden Bereiche erneut
 - fix: Erneuter Link startet abgebrochene oder fehlgeschlagene Downloads neu
 
-#### Suche und Freigaben
+### Suche und Freigaben
 
 - neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
 - fix: Hänger beim Suchabbruch behoben und Suchzähler korrigiert
 - fix: Fertige Downloads unterbrechen laufendes Hashen nicht mehr
 
-#### Netzwerk und Laufzeit
+### Netzwerk und Laufzeit
 
 - fix: Deadlock beim Abfragen der Verbindungszahl behoben
 - fix: Port-Wechsel auf belegten Port beendet Core nicht mehr; bisheriger Port bleibt aktiv
 - fix: Einzelne Verbindungsfehler und kaputte komprimierte Daten legen Core nicht mehr lahm
 - fix: keine erzwungene vollständige Speicherbereinigung mehr alle zehn Sekunden
 
-### 0.35.186.1 (public beta)
+## 0.35.186.1 (public beta, 2026-10-15)
 
 - neu: Download-/Uploadrate und offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
 - neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
@@ -48,13 +48,13 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - XML API: Sharecheck stoppen per Konsolenbefehl `stopsharecheck` oder `/function/stopsharecheck`
 - XML API: Passwort per Header `X-AppleJuice-Password`, URL-Parameter bleibt unterstützt
 
-### 0.35.185.93
+## 0.35.185.93 (2026-10-03)
 
 - fix: Downloads von Dateien > 2 GB melden nicht mehr fälschlich `found defect part` ab Part 2047
 - fix: Sharecheck beim Kopieren in den Share erzeugt keine doppelten oder hängenden Einträge mehr
 - fix: Upload bricht bei verkürzter Datei mit Fehler ab, statt endlos zu lesen
 
-### 0.35.185.89 (public beta)
+## 0.35.185.89 (public beta, 2026-10-02)
 
 - Unterstützung für 64-Bit Dateigrößen im Server- und Core-zu-Core-Protokoll (Größen > 2 GB), Aushandlung per Protokollversion
 - Partfiles werden versioniert, Fortschrittsfelder für große Dateien ergänzt
@@ -67,18 +67,18 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - Windows Installer: Installation über einen alten NSIS/Java Ordner wird verweigert
 - maximaler Arbeitsspeicher der JVM standardmäßig auf 50% (`MaxRAMPercentage`)
 
-### 0.34.101.42
+## 0.34.101.42 (2026-02-23)
 
 - fix für erkennung von bereits geladenen Files
 - fix für Nullpointer Exception im XML API Server
 
-### 0.34.101.39 (closed beta)
+## 0.34.101.39 (closed beta, 2026-02-15)
 
 - fix `java.lang.ArrayIndexOutOfBoundsException: Array index out of range` (Core FAQ [2.22](https://applejuicenetz.github.io/faq/applejuice-core/#array_index_out_of_range))
 - Abruf der Serverliste von applejuicenet.cc nun per `https` möglich
 - Zoomen im Core Fenster im GUI Modus mittelst Strg +/- möglich (nur für die Session, wird nicht gespeichert)
 
-### 0.34.101.30 (public beta)
+## 0.34.101.30 (public beta, 2026-02-01)
 
 - Quellcode wiederhergestellt
 - minimum JRE (Java) auf `21` erhöht (ältere Java Versionen werden vom Core nicht mehr unterstützt)
@@ -87,39 +87,39 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - veränderte Dateien im Share werden nun korrekt referenziert bzw. aktualisiert/entfernt (Allgemeine FAQ [23](https://applejuicenetz.github.io/faq/#datei_doppelt_laden))
     - Download einer gleichen Datei somit auch möglich
 
-### 0.32.101.02
+## 0.32.101.02 (gesperrt seit 2026-02-01)
 
 - nie veröffentlichte Beta von `muhviehstar` mit unbekannten Änderungen
 
-### 0.31.149.113
+## 0.31.149.113 (2025-05-27)
 
 - Download Limit von `15kb/s` auf `256kb/s` erhöht
 - Core Fenster Standardgröße von `400x300` auf `800x600` erhöht
 
-### 0.31.149.112
+## 0.31.149.112 (2020-11-17)
 
 - default server auf die .CC Domain umgestellt
 - neue Server werden ebenfalls von der .CC Domain abgerufen
 
-### 0.31.149.111
+## 0.31.149.111 (2020-08-06, gesperrt seit 2023-05-01)
 
 - prüfung der eingesetzten JRE Version deaktiviert, so kann der Core auch mit Java Version > 1.8 gestartet werden
 
-### 0.31.149.110
+## 0.31.149.110 (gesperrt seit 2023-05-01)
 
 - Pflege einer Whitelist für Clients
 - Gültigkeitsprüfung für Java-Version ab JRE 1.7.x
 
-### 0.31.148.103
+## 0.31.148.103 (gesperrt seit 2020-08-17)
 
 - ???
 
-### 0.30.147.1227
+## 0.31.147.1227 (gesperrt seit 2020-08-17)
 
 - MaxDownload von 0 Blockt nicht mehr.
 - processLink prüft besser auf Ungültigkeit und gibt incorrect Link als Fehlermeldung zurück.
 
-### 0.30.146.1203
+## 0.30.146.1203 (gesperrt seit 2020-08-17)
 
 - LogDateien werden nicht mehr erstellt. Der Fehler wurde gefunden und beseitigt.
 - Problem beim Laden von nichtgrünen Teilen behoben (Bug #245, #408)
@@ -133,7 +133,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - Die Zeichen `..` und `:` dürfen beim Setzen des Targetdirs nicht vorkommen. (Bug #486)
 - Informationen zur Lösung von Bug #470 eingebaut.
 
-### 0.30.145.610
+## 0.30.145.610
 
 - OutOfMemoryBug behoben (Bug #388)
 - Anzeige, wieviel der Gegenüber geladen hat. (Bug #124)
@@ -147,7 +147,7 @@ Es werden evtl. logdateien im AJCore-Home-Verzeichnis erstellt (`C:\Dokumente un
 
 Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt. Die Nummer kann sich ändern.
 
-### 0.30.144.522
+## 0.30.144.522
 
 - IP wird schneller an GUI gesendet (Bug #302)
 - Textsuche verbessert
@@ -165,19 +165,19 @@ Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt
 - Welcomemessage wird mit angezeigt. (Bug #35)
 - Uploadsystem verbessert. Wenn man auf eine Quelle warten muß, wird derweil nun eine andere vorgezogen und zu der geuploaded.
 
-### 0.30.143.313
+## 0.30.143.313
 
 - graphische Fehlermeldung wenn Start vom Core schief geht und man mit `--withgui` oder unter Windows ohne Parameter startet
 
-### 0.29.142.229
+## 0.29.142.229 (gesperrt seit 2020-08-05)
 
 - Nach Portwechsel keine 30 Minuten Warten mehr bis neuem Serverlogin
 
-### 0.29.141.220
+## 0.29.141.220
 
 - Icon fehlte, somit ging unter Windows der GUI-Modus nicht.
 
-### 0.29.140.219
+## 0.29.140.219
 
 - 100 % CPU Bug gefixt (Danke an UP^), war ein fehler in der Uploadlimitierung (Bug #216)
 - Exception versucht zu beheben. Bitte um Rückmeldung:
@@ -188,23 +188,23 @@ Bitte diese Logdateien mir zusenden, falls Sie da sind. Heißen log123981238.txt
 
 Code verändert nach Angaben von JRE Bug 4801882
 
-### 0.29.139.215
+## 0.29.139.215
 
 - Fixed: Probleme mit nicht konfigurierten ISDN-Treibern behoben
 - Improved: Core shared sich selbst
 - Improved. Verteilung Quellen unter Clients verbessert
 
-### 0.29.138.213
+## 0.29.138.213
 
 - Fixed: Vorbelegung von Einstellungen stimmen nicht zu 100% wenn keine settings.xml vorhanden ist
 - Fixed: 2 Exception behoben (Bug #205)
 - Improved. Verteilung Quellen unter Clients verbessert
 
-### 0.29.137.209
+## 0.29.137.209
 
 - Fixed: noch Fehler bei 136 <-> 136 Kommunikation
 
-### 0.29.136.209
+## 0.29.136.209
 
 - Fixed: Handling von indirekten Verbindungen verbessert
 - Removed: unnötige Option allowBrowse
@@ -214,7 +214,7 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Fixed: Problem mit Diskettenlaufwerk bei my Shares unter Windows (Bug #186, #26)
 - Fixed: Problem beim Abbrechen einer Datei bei nicht genügend Plattenplatz (Bug #61)
 
-### 0.29.135.208
+## 0.29.135.208
 
 - Fixed: evtl. zu frühes Löschen von angeforderten indirekten Verbindungen
 - Fixed: Nachrichten an Server wurden teilweise falsch geschickt
@@ -228,11 +228,11 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Added: neuer Parameter MaxSourcesPerFile
 - Fixed: Part speichern und checken ist nun ein synchronisierter Prozess. Dadurch kann nicht eine andere Quelle die Datei fertigstellen, wenn nicht alle Quellen ihre Parts , die sie geadded haben auch gecheckt haben
 
-### 0.29.134.202
+## 0.29.134.202
 
 - Bug im Upload behoben
 
-### 0.29.133.201
+## 0.29.133.201
 
 - Core schließt in GUIModus nun richtig. (Bug #144)
 - Wenn genug aktive Quellen vorhanden sind, wird an den serverbelastenden indirekten Verbindungen gespart
@@ -240,14 +240,14 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Ausgabe der Daten an GUI beschleunigt
 - Daten werden optional auch gepackt übermittelt
 
-### 0.29.132.126
+## 0.29.132.126
 
 - Bug bei Textausgabe behoben (hat im GUI-Modus gehangen)
 - Indirekte Verbindungsanfrage verbessert
 - doppelte Quellenanfrage beim Server unterbunden
 - alte Suchergebnisse / indirekte Anfragen an neuen Server unterbunden
 
-### 0.29.131.122
+## 0.29.131.122
 
 - Schreiben auf die Festplatte sicherer gemacht. (Daten werden er ist .new geschrieben, dann alte Datei gelöscht und neue umbenannt), bei Parts, Settings, Serverliste, Shareidx, Shareinfo. (Bug #120, Bug #75)
 - 2 Exceptions behoben (Bug #34, Bug #89, Bug #25)
@@ -265,11 +265,11 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Beim added gibt es nun eine neue Statusmeldung; nicht mehr "nicht genügend Festplattenplatz"
 - NullPointerExceptions: neue Logzeile: "socket closed: true / false". Bitte Melden.
 
-### 0.29.130.1231
+## 0.29.130.1231
 
 - Blackdown 1.4.1 + Sun 1.5.0 wird erlaubt
 
-### 0.29.129.1230
+## 0.29.129.1230
 
 - Einstellungsüberprüfung verbessert.
 - wenn Nickname mit "nonick" los geht wird der Serverlogin verweigert
@@ -286,7 +286,7 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Probleme beim Suchen gefixt (Bug #12)
 - Subhashs herunterladen verbessert
 
-### 0.29.128.1227
+## 0.29.128.1227
 
 - Hashing-Thread hat nun minimale Priorität
 - Deadlock behoben (Danke an garnichda)
@@ -297,21 +297,21 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Indirecte Verbindungen, die vom Server abgewiesen werden, werden nun angezeigt und erst nach einer Minute gelöscht
 - neue PDF für Dokumentation Core <--> GUI
 
-### 0.29.127.1223
+## 0.29.127.1223
 
 - 2 Deadlocks behoben
 - 1 Exception behoben beim Suchen (Danke an Desmo)
 - 1 Exception behoben (Danke an Netgrabber)
 - Wenn man mehr als 500 Quellen hat (bei einer Datei) wird beim Server nicht mehr nach 30 minuten nochmals neu nachgefragt
 
-### 0.29.126.1220
+## 0.29.126.1220
 
 - Indirekte Verbindungen gefixt. (Upload + Download)
 - Search als Filter hinzugefügt. Suchergebnisse und Suchen selbst sind dadurch nicht mehr der Kategorie Informationen zugeordnet
 - Fehler beim Limitieren der Downloads behoben  (Danke an Fumpi + Akku)
 - Socketoperationen (register) nun neben close und select auch mit synchronisiert
 
-### 0.29.125.1217
+## 0.29.125.1217
 
 - Verbesserung der Erkennung für ungültige Quellen (z.b. sich selbst)
 - 1 Deadlock behoben (Danke an Tuxhomer)
@@ -319,34 +319,34 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Bug beim Abbrechen der Suche behoben
 - neue PDF für Dokumentation Core <--> GUI
 
-### 0.29.124.1215
+## 0.29.124.1215
 
 - Deadlock behoben (Danke an fumpi)
 - Exception behoben (Danke an whitewindow)
 
-### 0.29.123.1214
+## 0.29.123.1214
 
 - mehr logausgaben für den OutOfMemory-Bug
 - Too Many Open Files behoben. (ist nicht auf Linux bezogen, war auch unter Windows möglich)
 - Suche stabiler gemacht (bitte beachten: Suche geht nur Java <--> Java)
 - Suchen können nun abgebrochen werden
 
-### 0.29.122.1211
+## 0.29.122.1211
 
 - mehr logausgaben für den OutOfMemory-Bug
 
-### 0.29.121.1205
+## 0.29.121.1205
 
 - vorrübergehende Ausgabe des verbrauchten RAMs und Anzahl Downloadverbindungen. (aller 10 Sekunden)
 - blaue Teile werden wieder angezeigt in der GUI
 - Exception behoben (Danke an Meiner, Fumpi & Co.)
 
-### 0.29.120.1203
+## 0.29.120.1203
 
 - Optimierung des Speicherverhaltens
 - Limitierung der Downloadverbindungen. Empfehlung: Maxdownload wahrheitsgemäß angeben
 
-### 0.29.119.1115
+## 0.29.119.1115
 
 - Exception behoben beim Schließen von Sockets (Danke an Paderborner)
 - Wenn Fehler beim Fertigstellen der Datei auftritt wird die fehlerhafte File ausm Incoming gelöscht (Danke an Fumpi)
@@ -355,12 +355,12 @@ Code verändert nach Angaben von JRE Bug 4801882
 - Pausieren wenn letztes Stück defekt aufgehoben (Danke an MeineR)
 - Speicherverwaltung optimiert (evtl. war das der 0ul0dl; WORKTHREAD DIED = java.lang.outofmemory)
 
-### 0.29.118.1108
+## 0.29.118.1108
 
 - Problem beim Verbinden als Firewalled user behoben.
 - Eingebaut bestimmte Exceptions anzuzeigen wegen 0ul0dl. Beim beenden kommt deswegen InterruptedException (beim Shutdown uninteressant)
 
-### 0.29.117.1104
+## 0.29.117.1104
 
 - Fehler beim "alte Verbindungen wegräumen" behoben
 - RAM anzeigen verbessert
