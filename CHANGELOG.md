@@ -4,7 +4,7 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
-### 0.35.187.1 (WIP)
+### 0.35.187.1 (public beta, 2026-10-18)
 
 #### Downloads und Uploads
 
