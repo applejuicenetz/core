@@ -9,8 +9,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 #### Downloads und Uploads
 
 - fix: Downloadlimit 0 (unbegrenzt) begrenzt Transferbereiche nicht mehr auf 500 KiB
-- fix: Up- und Download-Limits werden auch nach einer Pause eingehalten
-  (Spitzen vorher bis etwa zum Vierfachen)
+- fix: Up- und Download-Limits werden auch nach einer Pause eingehalten (vorher Spitzen bis ca. 4-fach)
 - change: Neue Quellensuche nach 10 statt 30 Minuten, etwa bei Ausfall der einzigen Quelle
 - neu: Kürzere Quellen-Wartezeiten und zeitlich verteilte Anfragen
 - fix: Download-Abschluss überschreibt keine vorhandenen Dateien; Namenszusatz bei Kollision
@@ -42,28 +41,27 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### 0.35.186.1 (public beta)
 
-- fix: `--nogui` aktiviert den Java-Headless-Modus, damit keine Bildschirmereignisse verarbeitet werden
-
-- neu: Zeitstempel in der Konsole sind immer 24h (`HH:mm:ss`), kein AM/PM mehr
+- neu: Download-/Uploadrate und offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
 - neu: Hash-Lesepuffer auf 1 MB vergrößert (Durchsatz) (#10)
-- neu: Download- und Uploadrate sowie offene Verbindungen werden jede Sekunde statt alle zehn Sekunden aktualisiert
+- neu: Zeitstempel in der Konsole immer 24h (`HH:mm:ss`), kein AM/PM mehr
 - fix: Core und XML API hängen nicht mehr beim Abfragen der Download-Liste (Deadlock)
-- fix: Die Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt aus vorhandenen Quellen berechnet
 - fix: Quellen mit Protokoll unter 150 werden bei Downloads > 2 GB übersprungen statt abgebrochen
-- fix: Dateien mit Sonderzeichen im Namen (z. B. –, …, Tabulator) werden nicht mehr bei jedem Sharecheck neu gehasht
-- fix: OS-Dateien wie `.DS_Store`, `Thumbs.db` oder `$RECYCLE.BIN` werden nicht mehr geshared oder in der Ordnerauswahl angezeigt (#12)
-- fix: Kein `NullPointerException` mehr, wenn die Gegenseite während eines Downloads die Verbindung schließt (#50)
-- fix: Auch beim Abbruch eines Sharechecks werden gelöschte Dateien aus dem Share entfernt
-- fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder korrekt erkannt
-- XML API: Neue Funktion `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
+- fix: Part-Verfügbarkeit von Downloads wird beim Neuaufbau korrekt berechnet
+- fix: Dateien mit Sonderzeichen im Namen (z. B. –, …, Tabulator) werden nicht bei jedem Sharecheck neu gehasht
+- fix: OS-Dateien wie `.DS_Store`, `Thumbs.db`, `$RECYCLE.BIN` werden nicht mehr geshared (#12)
+- fix: Freigaben auf verbundenen Netzlaufwerken (z. B. `R:`) werden wieder erkannt
+- fix: Abbruch eines Sharechecks entfernt gelöschte Dateien trotzdem aus dem Share
+- fix: Kein `NullPointerException`, wenn die Gegenseite während eines Downloads trennt (#50)
+- fix: `--nogui` aktiviert den Java-Headless-Modus
+- XML API: `/function/sharecheck` startet einen Sharecheck, wie im Tray-Menü
 - XML API: Sharecheck stoppen per Konsolenbefehl `stopsharecheck` oder `/function/stopsharecheck`
-- XML API: Passwort per Header `X-AppleJuice-Password` möglich, URL-Parameter bleibt unterstützt
+- XML API: Passwort per Header `X-AppleJuice-Password`, URL-Parameter bleibt unterstützt
 
 ### 0.35.185.93
 
-- fix: Downloads von Dateien > 2 GB melden nicht mehr fälschlich `found defect part` ab Part 2047 (Überlauf bei der Prüfung der Parts)
+- fix: Downloads von Dateien > 2 GB melden nicht mehr fälschlich `found defect part` ab Part 2047
+- fix: Sharecheck beim Kopieren in den Share erzeugt keine doppelten oder hängenden Einträge mehr
 - fix: Upload bricht bei verkürzter Datei mit Fehler ab, statt endlos zu lesen
-- fix: Sharecheck während des Kopierens in den Share erzeugt keine doppelten bzw. dauerhaft hängenden Einträge mehr, veraltete Einträge geänderter Dateien werden entfernt
 
 ### 0.35.185.89 (public beta)
 
