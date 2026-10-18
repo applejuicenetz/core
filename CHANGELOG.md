@@ -23,21 +23,12 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Hänger beim Suchabbruch behoben und Suchzähler korrigiert
 - fix: Fertige Downloads unterbrechen laufendes Hashen nicht mehr
 
-#### HTTP/XML-Schnittstelle
-
-- fix: Keep-alive übernimmt keine Zugangsdaten früherer Anfragen
-
-#### Serverlisten
-
-- fix: Langsame Serverlisten-Antwort blockiert andere Zugriffe auf Serverliste nicht mehr
-
 #### Netzwerk und Laufzeit
 
 - fix: Deadlock beim Abfragen der Verbindungszahl behoben
 - fix: Port-Wechsel auf belegten Port beendet Core nicht mehr; bisheriger Port bleibt aktiv
 - fix: Einzelne Verbindungsfehler und kaputte komprimierte Daten legen Core nicht mehr lahm
-- fix: Veraltete DLL-Prüfung blockiert Core-Start nicht mehr
-- fix: Keine erzwungene vollständige Speicherbereinigung mehr alle zehn Sekunden
+- fix: keine erzwungene vollständige Speicherbereinigung mehr alle zehn Sekunden
 
 ### 0.35.186.1 (public beta)
 
