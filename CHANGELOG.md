@@ -8,7 +8,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ### Freischaltungen
 
-- change: Gesperrt (Anmeldung nicht mehr möglich): 0.35.185.89, 0.34.101.30, 0.34.101.39
+- change: Gesperrt ab 2026-10-18 (Anmeldung nicht mehr möglich): 0.35.185.89, 0.34.101.30, 0.34.101.39
 - neu: Freigeschaltet: 0.35.187.3
 
 ### Downloads und Uploads
@@ -91,10 +91,6 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - keine `TrayIcon12` Bibliothek mehr benötigt
 - veränderte Dateien im Share werden nun korrekt referenziert bzw. aktualisiert/entfernt (Allgemeine FAQ [23](https://applejuicenetz.github.io/faq/#datei_doppelt_laden))
     - Download einer gleichen Datei somit auch möglich
-
-## 0.32.101.02 (gesperrt seit 2026-02-01)
-
-- nie veröffentlichte Beta von `muhviehstar` mit unbekannten Änderungen
 
 ## 0.31.149.113 (2025-05-27)
 
