@@ -8,93 +8,37 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 #### Downloads und Uploads
 
-- neu: Quellen-Wartezeiten verkürzt und Anfragen zeitlich verteilt
-- fix: Quellen-Wartezeiten greifen wieder statt alle zehn Sekunden neu zu verbinden
-- fix: Verbindungszahl-Abfrage blockiert nicht mehr, wenn der Netzwerk-Thread auf Sperren des Aufrufers wartet
-- fix: Downloadlimit 0 begrenzt Transferbereiche nicht mehr auf 500 KiB
-- fix: Download-Anfragen und Hash-Wiederholungen beachten Quellbereichsgrenzen
-- fix: Hash-Wiederholungen erfassen alle Restbereiche bei mehreren Quellen
-- fix: Abschlussflag berücksichtigt Hashfehler im letzten Download-Teil.
-- fix: Download-Abschluss erhält vorhandene Dateien; Namenskollisionen bekommen einen Zusatz
-- fix: Absturz beim Download-Abschluss hinterlässt keine halbfertige Datei unter endgültigem Namen
-- fix: Wiederholter Abschluss nach Prozessabsturz erkennt fertig kopierte Dateien
-- fix: Defekte Abschlussmarkierungen blockieren erneuten Kopierversuch nicht mehr
-- fix: Unterbrochener Download-Abbruch erhält Daten und erlaubt erneuten Versuch
-- fix: Dateien mit falscher Größe werden nicht als fertig übernommen
-- fix: Pausierter Download bleibt pausiert, wenn seine Datendatei neu angelegt wird
-- fix: Fehlende Download-Datei pausiert Empfang statt Ersatzdatei anzulegen
-- fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
-- fix: Ungültige Upload-Bereiche werden vor Dateizugriff und Hashprüfung abgewiesen
-- fix: Upload-Hashprüfung schließt Dateien auch bei Abbruch
-- fix: Hashfehler beim Upload erhält geladene Bereiche hinter dem beschädigten Teil
+- fix: Downloadlimit 0 (unbegrenzt) begrenzt Transferbereiche nicht mehr auf 500 KiB
+- fix: Up- und Download-Limits werden auch nach einer Pause eingehalten
+  (Spitzen vorher bis etwa zum Vierfachen)
+- change: Neue Quellensuche nach 10 statt 30 Minuten, etwa bei Ausfall der einzigen Quelle
+- neu: Kürzere Quellen-Wartezeiten und zeitlich verteilte Anfragen
+- fix: Download-Abschluss überschreibt keine vorhandenen Dateien; Namenszusatz bei Kollision
+- fix: Fehlgeschlagener Abschluss und unterbrochener Abbruch erhalten die Download-Daten
+- fix: Mehrquellen-Downloads laden nach Hashfehlern alle fehlenden Bereiche erneut
+- fix: Erneuter Link startet abgebrochene oder fehlgeschlagene Downloads neu
 
 #### Suche und Freigaben
 
 - neu: Suche berücksichtigt mehr verschiedene Dateien statt nur viele Quellen
-- fix: Suchzähler korrigiert und Hänger beim Suchabbruch behoben
-- fix: Suchzähler pro Datei bleibt nach Neustart erhalten (shareinfo.xml)
+- fix: Hänger beim Suchabbruch behoben und Suchzähler korrigiert
 - fix: Fertige Downloads unterbrechen laufendes Hashen nicht mehr
-- fix: Fehlgeschlagener Sharecheck blockiert Herunterfahren nicht mehr
-- fix: Neu angelegte Download-Datei zählt keine alten Bereiche als geladen
-- fix: Quellen mit Port außerhalb 1–65535 werden abgewiesen statt umgerechnet
-- fix: Erneuter Link startet abgebrochene oder fehlgeschlagene Downloads neu
-- fix: Defekte Indexeinträge verändern keine Hashlisten anderer Freigaben.
-- fix: Beenden der Konsole löst blockierende Eingabe-Leser
-- fix: Fehler und Stacktraces erscheinen mit Zeitstempel im Log statt unsortiert auf stderr
-- fix: Ein Verbindungsfehler (z. B. Stack-Überlauf) beendet nicht mehr den ganzen Core
-
-#### Dateien und Einstellungen
-
-- fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
-- fix: Teildateien mit abgeschnittenen Quellenfeldern werden beim Laden abgewiesen
-- fix: Teildateien (.part) werden beim Laden geschlossen und ohne vorheriges Löschen ersetzt
-- fix: Fehlgeschlagener Dateiersatz erhält Einstellungen und Freigabelisten
-  (settings.xml, shareinfo.xml, shareidx.xml)
 
 #### HTTP/XML-Schnittstelle
 
-- fix: Keep-alive übernimmt keine Header, Parameter, Zugangsdaten oder Inhalte früherer Anfragen
-- fix: Formular-POST ohne Content-Length wird ohne Verbindungsfehler verarbeitet
-- fix: Anfragen über 1 MiB erhalten 413, ungültiges Content-Length erhält 400
-- fix: Überlange Anfragezeilen und Header werden begrenzt und abgewiesen
-- fix: Chunked-Anfragen und Expect: 100-continue werden verarbeitet
-- fix: Mehrdeutige Body-Header werden mit Verbindungsende abgewiesen
+- fix: Keep-alive übernimmt keine Zugangsdaten früherer Anfragen
 
 #### Serverlisten
 
 - fix: Langsame Serverlisten-Antwort blockiert andere Zugriffe auf Serverliste nicht mehr
 
-- fix: Defekte XML-Einträge werden übersprungen, ungültige Ports verworfen
-- fix: Ungültige Serverlisten-Antworten brechen Verarbeitung und Verbindung sauber ab
-- fix: Bekannte Server erhalten aktuelle Namen und Zeitstempel; auch beim XML-Abruf aufgefrischt
-- fix: Sonderzeichen im Serverhost beschädigen XML-Ausgaben nicht mehr
-
 #### Netzwerk und Laufzeit
 
+- fix: Deadlock beim Abfragen der Verbindungszahl behoben
+- fix: Port-Wechsel auf belegten Port beendet Core nicht mehr; bisheriger Port bleibt aktiv
+- fix: Einzelne Verbindungsfehler und kaputte komprimierte Daten legen Core nicht mehr lahm
 - fix: Veraltete DLL-Prüfung blockiert Core-Start nicht mehr
-
-- fix: Fragmentierte Netzwerkdaten und überlappende Puffertreffer korrekt gelesen
-- fix: Kaputte komprimierte Daten blockieren keinen Netzwerk-Worker mehr
-- fix: Fehlende Core-Listen und unvollständiger Start beenden gemeinsamen Timer nicht mehr
-- fix: Kein erzwungener Full-GC mehr alle zehn Sekunden
-- fix: Fehler der Konsoleneingabe werden protokolliert
-- fix: Konsolenausgabe verliert keine Wecksignale; Ausgabe-Thread endet zuverlässig
-- fix: Fehler beim Beenden verhindern nicht mehr das Speichern von Downloads, Servern und Einstellungen
-- fix: Core endet bei Startfehlern (z. B. belegter Port) mit Exit-Code 1 statt 0
-- fix: Port-Wechsel auf einen belegten Port beendet den Core nicht mehr; alter Port und Server bleiben aktiv
-- change: Neue Quellensuche beim Server nach 10 statt 30 Minuten, z. B. wenn die einzige Quelle ausfällt
-- fix: Defekte Einträge in server.xml (fehlender Host, Port außerhalb 1–65535) werden übersprungen statt den Start zu stören
-- fix: server.xml wird atomar ersetzt; ein Absturz beim Speichern verliert die Serverliste nicht mehr
-- fix: Eine unlesbare Part-Datei (z. B. kopiert als backup.part) verdeckt die übrigen Downloads nicht mehr
-- fix: Geänderte, danach unlesbare Datei wird nicht mehr unter dem alten Hash weiter angeboten
-- fix: Steuerzeichen (z. B. Strg+C) landen nicht mehr im Konsolenbefehl
-- fix: Interne Suchbäume bleiben nach Löschungen korrekt ausbalanciert
-- fix: Up- und Download-Limits werden eingehalten, auch nach einer Pause (Spitzen vorher bis etwa das 4-fache)
-
-#### Hinweise
-
-- Download-Abschluss kopiert auch auf gleichem Dateisystem und braucht vorübergehend mehr Platz.
-- Zugeordnete Kopierreste werden beim erneuten Download-Abschluss bereinigt; fremde Reste bleiben erhalten.
+- fix: Keine erzwungene vollständige Speicherbereinigung mehr alle zehn Sekunden
 
 ### 0.35.186.1 (public beta)
 
