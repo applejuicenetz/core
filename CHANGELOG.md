@@ -6,11 +6,6 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 
 ## 0.35.187.3 (public beta, 2026-10-18)
 
-### Freischaltungen
-
-- change: Gesperrt ab 2026-10-18 (Anmeldung nicht mehr möglich): 0.35.185.89, 0.34.101.30, 0.34.101.39
-- neu: Freigeschaltet: 0.35.187.3
-
 ### Downloads und Uploads
 
 - fix: Downloadlimit 0 (unbegrenzt) begrenzt Transferbereiche nicht mehr auf 500 KiB
@@ -59,7 +54,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Sharecheck beim Kopieren in den Share erzeugt keine doppelten oder hängenden Einträge mehr
 - fix: Upload bricht bei verkürzter Datei mit Fehler ab, statt endlos zu lesen
 
-## 0.35.185.89 (public beta, 2026-10-02)
+## 0.35.185.89 (public beta, 2026-10-02, gesperrt seit 2026-10-18)
 
 - Unterstützung für 64-Bit Dateigrößen im Server- und Core-zu-Core-Protokoll (Größen > 2 GB), Aushandlung per Protokollversion
 - Partfiles werden versioniert, Fortschrittsfelder für große Dateien ergänzt
@@ -77,13 +72,13 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix für erkennung von bereits geladenen Files
 - fix für Nullpointer Exception im XML API Server
 
-## 0.34.101.39 (closed beta, 2026-02-15)
+## 0.34.101.39 (closed beta, 2026-02-15, gesperrt seit 2026-10-18)
 
 - fix `java.lang.ArrayIndexOutOfBoundsException: Array index out of range` (Core FAQ [2.22](https://applejuicenetz.github.io/faq/applejuice-core/#array_index_out_of_range))
 - Abruf der Serverliste von applejuicenet.cc nun per `https` möglich
 - Zoomen im Core Fenster im GUI Modus mittelst Strg +/- möglich (nur für die Session, wird nicht gespeichert)
 
-## 0.34.101.30 (public beta, 2026-02-01)
+## 0.34.101.30 (public beta, 2026-02-01, gesperrt seit 2026-10-18)
 
 - Quellcode wiederhergestellt
 - minimum JRE (Java) auf `21` erhöht (ältere Java Versionen werden vom Core nicht mehr unterstützt)
