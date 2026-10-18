@@ -45,6 +45,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 #### Dateien und Einstellungen
 
 - fix: Dateikopien schließen Streams bei Fehlern und entfernen unvollständige Ziele
+- fix: Teildateien mit abgeschnittenen Quellenfeldern werden beim Laden abgewiesen
 - fix: Teildateien (.part) werden beim Laden geschlossen und ohne vorheriges Löschen ersetzt
 - fix: Fehlgeschlagener Dateiersatz erhält Einstellungen und Freigabelisten
   (settings.xml, shareinfo.xml, shareidx.xml)
