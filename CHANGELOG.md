@@ -18,6 +18,7 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Absturz beim Download-Abschluss hinterlässt keine halbfertige Datei unter endgültigem Namen
 - fix: Wiederholter Abschluss nach Prozessabsturz erkennt fertig kopierte Dateien
 - fix: Dateien mit falscher Größe werden nicht als fertig übernommen
+- fix: Pausierter Download bleibt pausiert, wenn seine Datendatei neu angelegt wird
 - fix: Fehlende Download-Datei pausiert Empfang statt Ersatzdatei anzulegen
 - fix: Fehlgeschlagener Abschluss erhält Daten und Wiederaufnahmedatei für erneuten Versuch
 - fix: Ungültige Upload-Bereiche werden vor Dateizugriff und Hashprüfung abgewiesen
