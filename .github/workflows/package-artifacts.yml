@@ -167,6 +167,8 @@ jobs:
           if [[ "$PACKAGE_PLATFORM" == windows ]]; then
             package_name="appleJuice Core"
           fi
+          runtime_modules=java.desktop,java.management,java.naming,java.net.http,java.sql,java.xml,jdk.crypto.ec,jdk.unsupported
+          python scripts/check_runtime_modules.py target/ajcore.jar "$runtime_modules"
           options=(
             --type "$PACKAGE_TYPE"
             --name "$package_name"
@@ -175,7 +177,7 @@ jobs:
             --input target/jpackage-input
             --main-jar ajcore.jar
             --main-class de.applejuicenet.client.core.Core
-            --add-modules java.desktop,java.management,java.naming,java.net.http,java.sql,java.xml,jdk.crypto.ec,jdk.unsupported
+            --add-modules "$runtime_modules"
             --java-options --enable-native-access=ALL-UNNAMED
             --java-options -XX:MaxRAMPercentage=50
             --java-options -XX:+UseG1GC
