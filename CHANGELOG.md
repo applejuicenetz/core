@@ -12,9 +12,7 @@
 
 alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https://github.com/applejuicenetz/core/packages/2873021/versions) zu finden
 
-Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
-
-## 0.35.187.3 (public beta, 2026-10-18)
+## 0.35.187.3 (2026-10-18)
 
 ### Downloads und Uploads
 
@@ -40,7 +38,6 @@ Informationen zur **Beta** befinden sich der [BETA.md](BETA.md)
 - fix: Einzelne Verbindungsfehler und kaputte komprimierte Daten legen Core nicht mehr lahm
 - fix: keine erzwungene vollständige Speicherbereinigung mehr alle zehn Sekunden
 - fix: Arbeitsspeicher wird nach Lastspitzen wieder freigegeben (G1 mit kleinerem Heap-Puffer)
-- fix: Windows- und macOS-Pakete enthalten das Modul `java.net.http` (Fehler `NoClassDefFoundError: HttpClient` beim Start)
 
 ## 0.35.186.1 (public beta, 2026-10-15)
 
