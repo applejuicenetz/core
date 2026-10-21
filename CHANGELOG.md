@@ -16,8 +16,7 @@ alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https:/
 
 ### Suche und Freigaben
 
-- fix: Erneuter Sharecheck verwendet vorhandene Subhashes wieder, statt den großen Share-Index doppelt im Speicher zu halten
-- fix: Weniger kurzlebige Objekte beim Einlesen von Hashes aus dem Share-Index
+- fix: Große Shares verbrauchen beim Sharecheck deutlich weniger RAM, Absturz durch Speichermangel behoben
 
 ## 0.35.187.3 (2026-10-18)
 
