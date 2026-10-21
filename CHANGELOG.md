@@ -12,7 +12,7 @@
 
 alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https://github.com/applejuicenetz/core/packages/2873021/versions) zu finden
 
-## 0.35.187.7 (public beta, 2026-10-21)
+## 0.35.187.7 (2026-10-21)
 
 ### Suche und Freigaben
 
