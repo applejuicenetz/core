@@ -12,7 +12,15 @@
 
 alle jemals öffentlich erschienen Core Versionen sind in den [Packages](https://github.com/applejuicenetz/core/packages/2873021/versions) zu finden
 
+## 0.35.187.4 (unveröffentlicht)
+
+### Suche und Freigaben
+
+- fix: Erneuter Sharecheck verwendet vorhandene Subhashes wieder, statt den großen Share-Index doppelt im Speicher zu halten
+- fix: Weniger kurzlebige Objekte beim Einlesen von Hashes aus dem Share-Index
+
 ## 0.35.187.3 (2026-10-18)
+
 
 ### Downloads und Uploads
 
