@@ -1,9 +1,10 @@
 # geplante Sperrung von alten Core-Versionen
 
 - `0.35.186.1` Ende `Oktober` 2026
-- `0.35.185.93` Ende `November` 2026
-- `0.31.149.112` Ende `November` 2026
+- `0.35.185.93` Ende `Dezember` 2026
+- `0.31.149.112` Ende `Dezember` 2026
 - `0.31.149.113` Ende `Dezember` 2026
+- `0.35.187.3` Ende `März` 2027
 
 > [!NOTE]
 > Die Version `0.34.101.42` wird als letzte `32bit` fähige Version bestehen bleiben.
