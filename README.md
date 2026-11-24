@@ -14,7 +14,7 @@ Meta Repository für die appleJuice Core Releases.
 
 | Platform 	  | Link          	                                               |
 |-------------|---------------------------------------------------------------|
-| Windows  	  | [*setup.exe](https://github.com/applejuicenetz/core/releases) |
-| macOS    	  | [AJCore.dmg](https://github.com/applejuicenetz/core/releases) |
+| Windows  	  | [AJCore-windows-*.exe](https://github.com/applejuicenetz/core/releases) |
+| macOS    	  | [AJCore-macos-*.dmg](https://github.com/applejuicenetz/core/releases) |
 | Linux    	  | [Flatpak Package](https://github.com/applejuicenetz/flatpak)	 |
 | Docker    	 | [zur Anleitung](./docker/)	                                   |
